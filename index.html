@@ -5,7 +5,14 @@
   <title>Satyam Kumar | CA Finalist & Data Analytics Professional</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="CA Finalist specializing in Data Analytics, Internal Audit, and AI Automation. Transforming financial data into strategic insights.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="Satyam.jpg">
+  <link rel="apple-touch-icon" href="Satyam.jpg">
+  
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
   <style>
     :root {
       --sunlife-blue: #0056A6;
@@ -45,7 +52,6 @@
       min-height: 100vh;
     }
 
-    /* Container for content */
     .container {
       width: 100%;
       max-width: 1400px;
@@ -53,7 +59,7 @@
       padding: 0 20px;
     }
 
-    /* Sun Life inspired header */
+    /* Header */
     header {
       position: fixed;
       top: 0;
@@ -157,17 +163,18 @@
       z-index: 1001;
     }
 
-    /* Hero Section */
+    /* Hero Section - Fixed Alignment */
     .hero {
       padding: 180px 2rem 100px;
       width: 100%;
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1.2fr 1fr;
       gap: 4rem;
       align-items: center;
       opacity: 0;
       transform: translateY(30px);
       animation: fadeInUp 1s forwards 0.3s;
+      min-height: 90vh;
     }
 
     @keyframes fadeInUp {
@@ -175,6 +182,10 @@
         opacity: 1;
         transform: translateY(0);
       }
+    }
+
+    .hero-content {
+      text-align: left;
     }
 
     .hero-content h1 {
@@ -189,7 +200,7 @@
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      display: block;
+      display: inline-block;
     }
 
     .hero-subtitle {
@@ -197,6 +208,7 @@
       color: var(--sunlife-muted);
       margin-bottom: 2rem;
       max-width: 600px;
+      line-height: 1.8;
     }
 
     .hero-badges {
@@ -304,6 +316,8 @@
       transform: perspective(1000px) rotateY(-10deg) rotateX(5deg);
       transition: var(--transition-smooth);
       animation: float 6s ease-in-out infinite, borderGlow 4s infinite alternate;
+      width: 100%;
+      height: 500px;
     }
 
     @keyframes float {
@@ -323,11 +337,10 @@
 
     .profile-img {
       width: 100%;
-      height: auto;
+      height: 100%;
+      object-fit: cover;
       display: block;
       transition: transform 0.5s;
-      min-height: 300px;
-      object-fit: cover;
     }
 
     .floating-elements {
@@ -386,6 +399,7 @@
     section {
       padding: 100px 2rem;
       width: 100%;
+      position: relative;
     }
 
     .section-title {
@@ -993,6 +1007,10 @@
         padding: 150px 2rem 80px;
       }
       
+      .hero-content {
+        text-align: center;
+      }
+      
       .hero-content h1 {
         font-size: 2.8rem;
       }
@@ -1000,6 +1018,7 @@
       .profile-frame {
         transform: none;
         max-width: 400px;
+        height: 400px;
       }
       
       .floating-elements {
@@ -1087,6 +1106,10 @@
       .contact-container {
         padding: 2rem 1.5rem;
       }
+
+      .profile-frame {
+        height: 350px;
+      }
     }
 
     @media (max-width: 480px) {
@@ -1119,6 +1142,10 @@
       
       .skills-container {
         grid-template-columns: 1fr;
+      }
+
+      .profile-frame {
+        height: 300px;
       }
     }
 
@@ -1187,7 +1214,6 @@
       </button>
       
       <ul class="nav-links">
-        <li><a href="#hero">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#skills">Skills</a></li>
@@ -1250,10 +1276,11 @@
     <div class="hero-visual">
       <div class="profile-container">
         <div class="profile-frame">
-          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" 
+          <!-- Your image reference - Make sure Satyam.jpg is in the same folder -->
+          <img src="Satyam.jpg" 
                alt="Satyam Kumar - CA Finalist & Data Analytics Professional" 
                class="profile-img"
-               onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=774&q=80'">
+               onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=774&q=80'">
         </div>
         
         <div class="floating-elements">
@@ -1539,32 +1566,19 @@
         </div>
       </div>
       
-      <!-- Education 3 -->
+      <!-- Education 3 - Schooling Combined -->
       <div class="timeline-item">
         <div class="timeline-dot"></div>
         <div class="timeline-content">
           <div class="timeline-date">
             <i class="far fa-calendar-alt"></i>
-            2021
+            2005 - 2019
           </div>
-          <h3>Class 12th (CBSE)</h3>
+          <h3>Schooling</h3>
           <p><strong>Jawahar Navodaya Vidyalaya, Sheikhpura</strong></p>
-          <p><strong>Percentage:</strong> 92.6% | School Topper</p>
+          <p><strong>Class 12th (CBSE, 2021):</strong> 92.6% | School Topper</p>
+          <p><strong>Class 10th (CBSE, 2019):</strong> 92%</p>
           <div class="achievement-badge">Academic Excellence</div>
-        </div>
-      </div>
-      
-      <!-- Education 4 -->
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-          <div class="timeline-date">
-            <i class="far fa-calendar-alt"></i>
-            2019
-          </div>
-          <h3>Class 10th (CBSE)</h3>
-          <p><strong>Jawahar Navodaya Vidyalaya, Sheikhpura</strong></p>
-          <p><strong>Percentage:</strong> 92%</p>
         </div>
       </div>
       
@@ -1628,11 +1642,8 @@
         <a href="https://www.instagram.com/satyqm2.o?igsh=bmQ0aThzamRmMHli" class="social-icon instagram" target="_blank">
           <i class="fab fa-instagram"></i>
         </a>
-        <a href="https://github.com" class="social-icon github" target="_blank">
+        <a href="https://github.com/satyam-kumar" class="social-icon github" target="_blank">
           <i class="fab fa-github"></i>
-        </a>
-        <a href="https://twitter.com" class="social-icon twitter" target="_blank">
-          <i class="fab fa-twitter"></i>
         </a>
         <a href="SATYAM (1) (1).pdf" class="social-icon" download="Satyam_Kumar_Resume.pdf">
           <i class="fas fa-download"></i>
@@ -1795,42 +1806,54 @@
       badge.style.setProperty('--badge-index', index);
     });
 
-    // Add typing effect to hero title
-    const heroTitle = document.querySelector('.hero-gradient');
-    const text = "Financial Data";
-    let i = 0;
-    
-    function typeWriter() {
-      if (i < text.length) {
-        heroTitle.textContent += text.charAt(i);
-        i++;
-        setTimeout(typeWriter, 100);
-      }
-    }
-    
-    // Start typing effect after page loads
-    setTimeout(() => {
-      heroTitle.textContent = '';
-      typeWriter();
-    }, 1500);
-
-    // Add parallax effect to floating elements
-    window.addEventListener('scroll', () => {
-      const scrolled = window.pageYOffset;
-      const floatingElements = document.querySelectorAll('.floating-element');
-      
-      floatingElements.forEach((element, index) => {
-        const speed = 0.3 + (index * 0.1);
-        const yPos = -(scrolled * speed);
-        element.style.transform = `translateY(${yPos}px)`;
-      });
-    });
-
-    // Image fallback handler
+    // Fix for image loading
     const profileImg = document.querySelector('.profile-img');
-    profileImg.addEventListener('error', function() {
-      this.src = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=774&q=80';
-    });
+    if (profileImg) {
+      profileImg.addEventListener('error', function() {
+        console.log('Image failed to load, using fallback');
+        this.src = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=774&q=80';
+      });
+      
+      // Preload image
+      const img = new Image();
+      img.src = profileImg.src;
+      img.onload = function() {
+        console.log('Profile image loaded successfully');
+      };
+      img.onerror = function() {
+        console.log('Profile image not found, will use fallback');
+        profileImg.src = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=774&q=80';
+      };
+    }
+
+    // Initialize typing effect for hero title
+    const heroTitle = document.querySelector('.hero-gradient');
+    if (heroTitle) {
+      const text = "Financial Data";
+      let i = 0;
+      
+      function typeWriter() {
+        if (i < text.length) {
+          heroTitle.textContent += text.charAt(i);
+          i++;
+          setTimeout(typeWriter, 100);
+        }
+      }
+      
+      // Start typing effect after page loads
+      setTimeout(() => {
+        if (heroTitle.textContent === "Financial Data") {
+          heroTitle.textContent = '';
+          typeWriter();
+        }
+      }, 1500);
+    }
+
+    // Remove duplicate Home link from desktop navigation
+    const navLinks = document.querySelector('.nav-links');
+    if (navLinks && navLinks.querySelector('a[href="#hero"]')) {
+      navLinks.querySelector('a[href="#hero"]').parentElement.remove();
+    }
   </script>
 </body>
-</html>
+  </html>
