@@ -5,14 +5,7 @@
   <title>Satyam Kumar | CA Finalist & Data Analytics Professional</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="CA Finalist specializing in Data Analytics, Internal Audit, and AI Automation. Transforming financial data into strategic insights.">
-  
-  <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="Satyam.jpg">
-  <link rel="apple-touch-icon" href="Satyam.jpg">
-  
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
   <style>
     :root {
       --primary-blue: #0056A6;
@@ -258,7 +251,7 @@
       background: rgba(0, 86, 166, 0.08);
     }
 
-    /* Hero Section */
+    /* Hero Section - Improved Alignment */
     .hero {
       padding: 180px 2rem 100px;
       width: 100%;
@@ -412,6 +405,9 @@
     .hero-visual {
       position: relative;
       width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .profile-container {
@@ -984,7 +980,1091 @@
 
     .achievement-badge.purple {
       background: linear-gradient(135deg, var(--accent-purple), #9B59B6);
+      box-shadow: 0 5px 15px rgba(155, 89, 182, 0.3);
     }
 
     @keyframes achievementGlow {
-      from { box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3
+      from { box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3); }
+      to { box-shadow: 0 5px 20px rgba(255, 215, 0, 0.6); }
+    }
+
+    /* Contact Section */
+    .contact-container {
+      background: white;
+      border-radius: var(--radius-lg);
+      padding: 3rem;
+      box-shadow: var(--card-shadow);
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .contact-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .contact-card {
+      padding: 1.5rem;
+      background: var(--medium-gray);
+      border-radius: var(--radius-md);
+      transition: var(--transition-smooth);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .contact-card:hover {
+      background: var(--gradient-primary);
+      color: white;
+      transform: translateY(-5px) scale(1.05);
+    }
+
+    .contact-card:hover i {
+      color: white;
+      transform: scale(1.2);
+    }
+
+    .contact-card i {
+      font-size: 2rem;
+      color: var(--primary-blue);
+      margin-bottom: 1rem;
+      transition: var(--transition-smooth);
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .social-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--medium-gray);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary-blue);
+      font-size: 1.2rem;
+      transition: var(--transition-smooth);
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .social-icon::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.5s;
+    }
+
+    .social-icon:hover::before {
+      left: 100%;
+    }
+
+    .social-icon:hover {
+      transform: translateY(-5px) scale(1.1);
+    }
+
+    .social-icon.instagram:hover {
+      background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+      color: white;
+    }
+
+    .social-icon.linkedin:hover {
+      background: #0077B5;
+      color: white;
+    }
+
+    .social-icon.whatsapp:hover {
+      background: #25D366;
+      color: white;
+    }
+
+    .social-icon.twitter:hover {
+      background: #1DA1F2;
+      color: white;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark-gray);
+      color: white;
+      padding: 3rem 2rem;
+      text-align: center;
+      margin-top: 100px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--gradient-primary);
+      animation: footerGlow 3s infinite alternate;
+    }
+
+    @keyframes footerGlow {
+      from { opacity: 0.7; }
+      to { opacity: 1; }
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-tagline {
+      font-size: 1.2rem;
+      margin: 1rem auto;
+      max-width: 600px;
+      color: rgba(255, 255, 255, 0.9);
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .copyright {
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.9rem;
+    }
+
+    /* Back to Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background: var(--gradient-primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 1.2rem;
+      box-shadow: 0 5px 15px rgba(0, 86, 166, 0.3);
+      transition: var(--transition-smooth);
+      opacity: 0;
+      visibility: hidden;
+      z-index: 999;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-5px) rotate(360deg);
+      box-shadow: 0 10px 25px rgba(0, 86, 166, 0.4);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1100px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 3rem;
+        padding: 150px 2rem 80px;
+      }
+      
+      .hero-content {
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      
+      .hero-content h1 {
+        font-size: 2.8rem;
+      }
+      
+      .profile-frame {
+        transform: none;
+        max-width: 450px;
+        height: 450px;
+      }
+      
+      .floating-elements {
+        display: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      
+      .mobile-menu-btn {
+        display: block;
+      }
+      
+      .mobile-menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(10px);
+        padding: 100px 2rem 2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        transform: translateX(-100%);
+        transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+        z-index: 999;
+      }
+      
+      .mobile-menu.active {
+        transform: translateX(0);
+      }
+      
+      .mobile-menu a {
+        font-size: 1.5rem;
+        padding: 1rem;
+        text-align: center;
+        color: var(--dark-gray);
+        text-decoration: none;
+        font-weight: 600;
+        border-bottom: 1px solid rgba(0, 86, 166, 0.1);
+        transition: var(--transition-smooth);
+      }
+      
+      .mobile-menu a:hover {
+        color: var(--primary-blue);
+        padding-left: 2rem;
+      }
+      
+      .timeline::before {
+        left: 30px;
+      }
+      
+      .timeline-item {
+        width: calc(100% - 80px);
+        margin-left: 80px !important;
+      }
+      
+      .timeline-item:nth-child(even) .timeline-dot {
+        left: -60px;
+      }
+      
+      .timeline-item:nth-child(even) .timeline-content::before {
+        right: auto;
+        left: -10px;
+      }
+
+      .exp-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .exp-period {
+        align-self: flex-start;
+      }
+
+      section {
+        padding: 80px 1.5rem;
+      }
+
+      .contact-container {
+        padding: 2rem 1.5rem;
+      }
+
+      .profile-frame {
+        height: 380px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero {
+        padding: 140px 1rem 60px;
+      }
+      
+      .hero-content h1 {
+        font-size: 2.2rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1rem;
+      }
+      
+      .btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+        width: 100%;
+        justify-content: center;
+      }
+      
+      .cta-buttons {
+        flex-direction: column;
+      }
+      
+      .experience-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .skills-container {
+        grid-template-columns: 1fr;
+      }
+
+      .profile-frame {
+        height: 320px;
+      }
+    }
+
+    /* Scroll Animation */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s, transform 0.8s;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Loading Animation */
+    .loading-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--primary-blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.5s, visibility 0.5s;
+    }
+
+    .loading-overlay.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .loader {
+      width: 60px;
+      height: 60px;
+      border: 4px solid rgba(255, 255, 255, 0.3);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <!-- YouTube-Style Opening Animation -->
+  <div class="intro-animation">
+    <div class="intro-logo">SK</div>
+    <div class="intro-text">Satyam Kumar | CA Finalist & Data Analytics Professional</div>
+  </div>
+
+  <!-- Header -->
+  <header id="header">
+    <div class="nav-container">
+      <a href="#hero" class="logo">
+        <div class="logo-circle">SK</div>
+        <span>Satyam Kumar</span>
+      </a>
+      
+      <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <ul class="nav-links">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#hero">Home</a>
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="hero" class="hero container">
+    <div class="hero-content">
+      <div class="hero-badges">
+        <div class="badge" style="--badge-index: 0">
+          <i class="fas fa-graduation-cap"></i>
+          CA Finalist
+        </div>
+        <div class="badge" style="--badge-index: 1">
+          <i class="fas fa-chart-line"></i>
+          Data Analytics
+        </div>
+        <div class="badge" style="--badge-index: 2">
+          <i class="fas fa-robot"></i>
+          Prompt Engineering
+        </div>
+      </div>
+      
+      <h1>
+        Transforming <span class="hero-gradient">Financial Data</span><br>
+        Into Strategic Insights
+      </h1>
+      
+      <p class="hero-subtitle">
+        CA Finalist specializing in internal audit, risk assessment, and data analytics. 
+        Expert in leveraging AI automation, Excel, Power BI, and Tableau to strengthen 
+        governance and enhance financial reporting efficiency.
+      </p>
+      
+      <div class="cta-buttons">
+        <a href="#contact" class="btn btn-primary">
+          <i class="fas fa-paper-plane"></i>
+          Connect With Me
+        </a>
+        <a href="SATYAM (1) (1).pdf" class="btn btn-secondary" download="Satyam_Kumar_Resume.pdf">
+          <i class="fas fa-download"></i>
+          Download Resume
+        </a>
+      </div>
+    </div>
+    
+    <div class="hero-visual">
+      <div class="profile-container">
+        <div class="profile-frame">
+          <!-- Local image with Google Drive backup -->
+          <img src="Satyam.jpg" 
+               alt="Satyam Kumar - CA Finalist & Data Analytics Professional" 
+               class="profile-img"
+               onerror="this.src='https://drive.google.com/uc?export=view&id=1UvRz5HZPPLKaFX0540lmo9q1vhg9Z6bG'">
+        </div>
+        
+        <div class="floating-elements">
+          <div class="floating-element fe1">
+            <i class="fas fa-chart-pie"></i>
+          </div>
+          <div class="floating-element fe2">
+            <i class="fas fa-file-invoice-dollar"></i>
+          </div>
+          <div class="floating-element fe3">
+            <i class="fas fa-database"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="fade-in container">
+    <div class="section-title">
+      <h2>About Me</h2>
+      <div class="underline"></div>
+      <p>Passionate finance professional with a tech-first mindset, bridging traditional accounting with modern data analytics</p>
+    </div>
+    
+    <div class="contact-container">
+      <p style="font-size: 1.1rem; margin-bottom: 2rem; line-height: 1.8; text-align: center;">
+        Passionate finance professional with a tech-first mindset, aiming to bridge the gap between traditional 
+        accounting and modern data analytics. I specialize in transforming complex financial data into actionable 
+        insights through automation and AI-driven solutions.
+      </p>
+      
+      <div class="contact-info">
+        <div class="contact-card">
+          <i class="fas fa-bullseye"></i>
+          <h3>Career Objective</h3>
+          <p>To contribute to organizational growth by integrating deep financial expertise with modern analytical tools, 
+             solving complex business problems through automation and data-driven insights.</p>
+        </div>
+        
+        <div class="contact-card">
+          <i class="fas fa-basketball-ball"></i>
+          <h3>Hobbies & Interests</h3>
+          <p>Avid basketball player enhancing teamwork and strategic thinking. Passionate about exploring AI, 
+             automation technologies, and their application in finance and auditing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience" class="fade-in container">
+    <div class="section-title">
+      <h2>Work Experience</h2>
+      <div class="underline"></div>
+      <p>Professional journey in data analytics, internal audit, and financial governance</p>
+    </div>
+    
+    <div class="experience-grid">
+      <!-- Experience 1 -->
+      <div class="experience-card">
+        <div class="exp-header">
+          <div>
+            <h3 class="exp-title">Industrial Trainee</h3>
+            <p class="exp-company">Sun Life · Data Analytics & Internal Audit</p>
+          </div>
+          <span class="exp-period">Jun 2025 - Present</span>
+        </div>
+        <ul class="exp-points">
+          <li>Enhancing risk assessment and compliance monitoring through Tableau visualizations</li>
+          <li>Developing Excel VBA automation tools for audit process optimization</li>
+          <li>Streamlining business processes to improve reporting accuracy and audit effectiveness</li>
+          <li>Integrating data analytics with traditional audit methodologies</li>
+        </ul>
+        <div class="tags">
+          <span class="tag">Internal Audit</span>
+          <span class="tag">Data Analytics</span>
+          <span class="tag">Risk Assessment</span>
+          <span class="tag">Automation</span>
+          <span class="tag">Compliance</span>
+        </div>
+      </div>
+      
+      <!-- Experience 2 -->
+      <div class="experience-card">
+        <div class="exp-header">
+          <div>
+            <h3 class="exp-title">Article Trainee</h3>
+            <p class="exp-company">MGB Advisors Pvt Ltd · Internal Audit</p>
+          </div>
+          <span class="exp-period">May 2024 - June 2025</span>
+        </div>
+        <ul class="exp-points">
+          <li>Conducted Internal Audit & IFC/ICFR testing for P2P, O2C, H2R processes</li>
+          <li>Managed financial compliance across multiple industries and company structures</li>
+          <li>Assisted in Treasury, Fixed Assets, and Statutory compliance audits</li>
+          <li>Developed comprehensive audit documentation and reporting</li>
+        </ul>
+        <div class="tags">
+          <span class="tag">IFC Testing</span>
+          <span class="tag">Risk Assessment</span>
+          <span class="tag">Compliance</span>
+          <span class="tag">Financial Accuracy</span>
+          <span class="tag">Process Auditing</span>
+        </div>
+      </div>
+      
+      <!-- Experience 3 -->
+      <div class="experience-card">
+        <div class="exp-header">
+          <div>
+            <h3 class="exp-title">Multi-Industry Audit Exposure</h3>
+            <p class="exp-company">Various Client Projects</p>
+          </div>
+          <span class="exp-period">2024 - Present</span>
+        </div>
+        <ul class="exp-points">
+          <li>Gained exposure across diverse industries including OLX, Shriram Automall, ZEE Media</li>
+          <li>Worked with Earth Rhythm/Nykaa, Venus Sugar, and Grew Energy</li>
+          <li>Concurrent audit and ratio analysis for operational efficiency</li>
+          <li>Inventory forecasting and process optimization</li>
+        </ul>
+        <div class="tags">
+          <span class="tag">SOP Understanding</span>
+          <span class="tag">Concurrent Audit</span>
+          <span class="tag">Ratio Analysis</span>
+          <span class="tag">Inventory Forecasting</span>
+          <span class="tag">Cross-Industry</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="fade-in container">
+    <div class="section-title">
+      <h2>Technical Skills</h2>
+      <div class="underline"></div>
+      <p>Expertise in analytics, automation, audit, tax, and financial governance</p>
+    </div>
+    
+    <div class="skills-container">
+      <!-- Analytics & Automation -->
+      <div class="skill-category">
+        <h3><i class="fas fa-chart-line"></i> Analytics & Automation</h3>
+        <div class="skill-list">
+          <div class="skill-item">
+            <i class="fas fa-database"></i>
+            SQL
+          </div>
+          <div class="skill-item">
+            <i class="fab fa-python"></i>
+            Python
+          </div>
+          <div class="skill-item">
+            <i class="fas fa-file-excel"></i>
+            Advanced Excel
+          </div>
+          <div class="skill-item">
+            <i class="fas fa-code"></i>
+            VBA Automation
+          </div>
+          <div class="skill-item">
+            <i class="fas fa-laptop-code"></i>
+            Full Stack Web Development
+          </div>
+          <div class="skill-item">
+            <i class="fas fa-robot"></i>
+            Prompt Engineering
+          </div>
+          <div class="skill-item">
+            <i class="fas fa-chart-bar"></i>
+            Tableau
+          </div>
+          <div class="skill-item">
+            <i class="fas fa-robot"></i>
+            Power Query
+          </div>
+        </div>
+      </div>
+      
+      <!-- Audit & Finance -->
+      <div class="skill-category">
+        <h3><i class="fas fa-search-dollar"></i> Audit, Tax & Governance</h3>
+        <div class="skill-list">
+          <div class="skill-item">
+            <i class="fas fa-balance-scale"></i>
+            Internal Audit
+          </div>
+          <div class="skill-item">
+            <i class="fas fa-file-invoice-dollar"></i>
+            Financial Management
+          </div>
+          <div class="skill-item">
+            <i class="fas fa-shield-alt"></i>
+            Risk & Controls
+          </div>
+          <div class="skill-item">
+            <i class="fas fa-gavel"></i>
+            Company Law
+          </div>
+          <div class="skill-item">
+            <i class="fas fa-calculator"></i>
+            Ind AS
+          </div>
+          <div class="skill-item">
+            <i class="fas fa-chart-pie"></i>
+            Taxation
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Certifications -->
+    <div class="certifications-container">
+      <h3><i class="fas fa-certificate"></i> Certifications & Training</h3>
+      <div class="skill-list" style="margin-top: 1.5rem;">
+        <div class="skill-item">
+          <i class="fas fa-shield-alt"></i>
+          AI Security & Governance
+        </div>
+        <div class="skill-item">
+          <i class="fas fa-robot"></i>
+          BCG GenAI - Financial Chatbot
+        </div>
+        <div class="skill-item">
+          <i class="fas fa-chart-line"></i>
+          KPMG Audit Certification
+        </div>
+        <div class="skill-item">
+          <i class="fas fa-file-excel"></i>
+          Excel Skills for Business
+        </div>
+        <div class="skill-item">
+          <i class="fas fa-certificate"></i>
+          NISM Certifications
+        </div>
+        <div class="skill-item">
+          <i class="fas fa-laptop-code"></i>
+          ICTSS - IT Course (ICAI)
+        </div>
+      </div>
+      
+      <a href="Certificates.pdf" class="cert-download" download="Satyam_Kumar_Certificates.pdf">
+        <i class="fas fa-download"></i>
+        Download All Certificates
+      </a>
+    </div>
+  </section>
+
+  <!-- Education Section -->
+  <section id="education" class="fade-in container">
+    <div class="section-title">
+      <h2>Education & Achievements</h2>
+      <div class="underline"></div>
+      <p>Academic journey and notable accomplishments</p>
+    </div>
+    
+    <div class="timeline">
+      <!-- Education 1 -->
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-date">
+            <i class="far fa-calendar-alt"></i>
+            2022 - Present
+          </div>
+          <h3>CA Intermediate</h3>
+          <p><strong>Institute of Chartered Accountants of India (ICAI)</strong></p>
+          <p><strong>Foundation:</strong> 247 | <strong>Group 1:</strong> 213 | <strong>Group 2:</strong> 200</p>
+          <p>Exemptions in Corporate Law, Financial Management, and Economics</p>
+        </div>
+      </div>
+      
+      <!-- Education 2 -->
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-date">
+            <i class="far fa-calendar-alt"></i>
+            2021 - 2024
+          </div>
+          <h3>BA Programme (Commerce + Economics)</h3>
+          <p><strong>Shaheed Bhagat Singh College, Delhi University</strong></p>
+          <p><strong>CGPA:</strong> 7.4/10.0</p>
+          <p>Specializations in Marketing Management and Data Analytics</p>
+        </div>
+      </div>
+      
+      <!-- Schooling (Updated: 2006-2021) -->
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-date">
+            <i class="far fa-calendar-alt"></i>
+            2006 - 2021
+          </div>
+          <h3>Schooling</h3>
+          <p><strong>Jawahar Navodaya Vidyalaya, Sheikhpura</strong></p>
+          <p><strong>Class 12th (CBSE, 2021):</strong> 92.6% | School Topper</p>
+          <p><strong>Class 10th (CBSE, 2019):</strong> 92%</p>
+          <div class="achievement-badge">Academic Excellence</div>
+        </div>
+      </div>
+      
+      <!-- Achievement 1 -->
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-date">
+            <i class="fas fa-trophy"></i>
+            2008 - 2019
+          </div>
+          <h3>National Science Exhibition Achievement</h3>
+          <p><strong>National Recognition Award</strong></p>
+          <p>Awarded ₹50,000 cash prize for "Rural Health Project" at National Science Exhibition</p>
+          <p>Demonstrated innovative problem-solving and social impact through scientific approach</p>
+          <div class="achievement-badge">National Award Winner</div>
+        </div>
+      </div>
+      
+      <!-- New Achievement: MSME Essay Competition -->
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-date">
+            <i class="fas fa-award"></i>
+            2023
+          </div>
+          <h3>MSME Essay Competition Winner</h3>
+          <p><strong>10K Prize Winner</strong></p>
+          <p>Won 1st prize in national-level MSME Essay Competition on "Digital Transformation in Indian SMEs"</p>
+          <p>Analyzed challenges and opportunities for small businesses in digital era</p>
+          <div class="achievement-badge purple">MSME Award Winner</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="fade-in container">
+    <div class="section-title">
+      <h2>Get In Touch</h2>
+      <div class="underline"></div>
+      <p style="margin-top: 1rem; color: var(--text-medium); max-width: 600px; margin: 1rem auto;">
+        Open to roles in internal audit, data analytics, risk management, and FP&A. 
+        Available for relocation and flexible working hours.
+      </p>
+    </div>
+    
+    <div class="contact-container">
+      <div class="contact-info">
+        <a href="mailto:satqm2991@gmail.com" class="contact-card">
+          <i class="fas fa-envelope"></i>
+          <h3>Email</h3>
+          <p>satqm2991@gmail.com</p>
+        </a>
+        
+        <a href="tel:+919142300129" class="contact-card">
+          <i class="fas fa-phone"></i>
+          <h3>Phone</h3>
+          <p>+91 91423 00129</p>
+        </a>
+        
+        <div class="contact-card">
+          <i class="fas fa-map-marker-alt"></i>
+          <h3>Location</h3>
+          <p>Sector 55, Gurugram</p>
+          <p>Haryana, India</p>
+          <p><strong>Open to Relocation</strong></p>
+        </div>
+      </div>
+      
+      <!-- Social Media Links with WhatsApp -->
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/satyam-kumar5286o" class="social-icon linkedin" target="_blank">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="https://www.instagram.com/satyqm2.o?igsh=bmQ0aThzamRmMHli" class="social-icon instagram" target="_blank">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <!-- WhatsApp Icon (Replaces GitHub) -->
+        <a href="https://wa.me/919142300129?text=Hi%20Satyam,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect" class="social-icon whatsapp" target="_blank">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="SATYAM (1) (1).pdf" class="social-icon" download="Satyam_Kumar_Resume.pdf">
+          <i class="fas fa-download"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="logo" style="justify-content: center; margin-bottom: 1.5rem;">
+        <div class="logo-circle">SK</div>
+        <span style="color: white; font-size: 1.8rem;">Satyam Kumar</span>
+      </div>
+      
+      <p class="footer-tagline">
+        Empowering Decision-Makers with Data Intelligence and AI Automation
+      </p>
+      
+      <p style="max-width: 600px; margin: 1rem auto; opacity: 0.9; line-height: 1.6;">
+        CA Finalist | Data Analytics | Prompt Engineering | Internal Audit | Risk Management | Financial Governance
+      </p>
+      
+      <div class="social-links" style="margin-top: 2rem;">
+        <a href="https://www.linkedin.com/in/satyam-kumar5286o" class="social-icon linkedin" target="_blank">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="https://www.instagram.com/satyqm2.o?igsh=bmQ0aThzamRmMHli" class="social-icon instagram" target="_blank">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <!-- WhatsApp in Footer -->
+        <a href="https://wa.me/919142300129?text=Hi%20Satyam,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect" class="social-icon whatsapp" target="_blank">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="mailto:satqm2991@gmail.com" class="social-icon">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="SATYAM (1) (1).pdf" class="social-icon" download="Satyam_Kumar_Resume.pdf">
+          <i class="fas fa-file-pdf"></i>
+        </a>
+      </div>
+      
+      <div class="copyright">
+        &copy; <span id="currentYear"></span> Satyam Kumar. All Rights Reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <a href="#hero" class="back-to-top" id="backToTop">
+    <i class="fas fa-chevron-up"></i>
+  </a>
+
+  <script>
+    // Loading screen
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('loadingOverlay').classList.add('hidden');
+      }, 1000);
+    });
+
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('active');
+      mobileMenuBtn.innerHTML = mobileMenu.classList.contains('active') 
+        ? '<i class="fas fa-times"></i>' 
+        : '<i class="fas fa-bars"></i>';
+    });
+    
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+      });
+    });
+    
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+      const header = document.getElementById('header');
+      const backToTop = document.getElementById('backToTop');
+      
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+      
+      // Show back to top button
+      if (window.scrollY > 500) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
+    });
+    
+    // Scroll animation
+    const fadeElements = document.querySelectorAll('.fade-in');
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    const experienceCards = document.querySelectorAll('.experience-card');
+    const skillCategories = document.querySelectorAll('.skill-category');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          
+          // For timeline items, add delay
+          if (entry.target.classList.contains('timeline-item')) {
+            const index = Array.from(timelineItems).indexOf(entry.target);
+            entry.target.style.animationDelay = `${index * 0.2}s`;
+          }
+          
+          // For experience cards
+          if (entry.target.classList.contains('experience-card')) {
+            const index = Array.from(experienceCards).indexOf(entry.target);
+            entry.target.style.animationDelay = `${index * 0.1}s`;
+          }
+          
+          // For skill categories
+          if (entry.target.classList.contains('skill-category')) {
+            const index = Array.from(skillCategories).indexOf(entry.target);
+            entry.target.style.animationDelay = `${index * 0.1}s`;
+          }
+        }
+      });
+    }, { 
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
+    
+    fadeElements.forEach(el => observer.observe(el));
+    timelineItems.forEach(el => observer.observe(el));
+    experienceCards.forEach(el => observer.observe(el));
+    skillCategories.forEach(el => observer.observe(el));
+    
+    // Set current year
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+    
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Add hover effect to badges
+    document.querySelectorAll('.badge').forEach((badge, index) => {
+      badge.style.setProperty('--badge-index', index);
+    });
+
+    // Add typing effect to hero title
+    const heroTitle = document.querySelector('.hero-gradient');
+    if (heroTitle) {
+      const text = "Financial Data";
+      let i = 0;
+      
+      function typeWriter() {
+        if (i < text.length) {
+          heroTitle.textContent += text.charAt(i);
+          i++;
+          setTimeout(typeWriter, 100);
+        }
+      }
+      
+      // Start typing effect after opening animation
+      setTimeout(() => {
+        heroTitle.textContent = '';
+        typeWriter();
+      }, 2500);
+    }
+
+    // Add parallax effect to floating elements
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const floatingElements = document.querySelectorAll('.floating-element');
+      
+      floatingElements.forEach((element, index) => {
+        const speed = 0.3 + (index * 0.1);
+        const yPos = -(scrolled * speed);
+        element.style.transform = `translateY(${yPos}px)`;
+      });
+    });
+
+    // Image fallback handler
+    const profileImg = document.querySelector('.profile-img');
+    profileImg.addEventListener('error', function() {
+      console.log('Local image failed, using Google Drive backup');
+      this.src = 'https://drive.google.com/uc?export=view&id=1UvRz5HZPPLKaFX0540lmo9q1vhg9Z6bG';
+    });
+    
+    // Preload image for better performance
+    window.addEventListener('load', function() {
+      const img = new Image();
+      img.src = 'Satyam.jpg';
+      img.onload = function() {
+        console.log('Local image loaded successfully');
+      };
+      img.onerror = function() {
+        console.log('Local image not found, will use backup if needed');
+      };
+    });
+  </script>
+</body>
+  </html>
