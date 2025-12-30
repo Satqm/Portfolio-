@@ -134,7 +134,7 @@
       }
     }
 
-    /* Header */
+    /* Improved Header & Navigation */
     header {
       position: fixed;
       top: 0;
@@ -234,21 +234,30 @@
       width: 100%;
     }
 
+    /* Improved Mobile Menu Button */
     .mobile-menu-btn {
       display: none;
-      background: none;
+      background: var(--gradient-primary);
       border: none;
       font-size: 1.5rem;
-      color: var(--primary-blue);
+      color: white;
       cursor: pointer;
       z-index: 1001;
-      padding: 0.5rem;
-      border-radius: var(--radius-sm);
+      padding: 0.8rem 1rem;
+      border-radius: var(--radius-md);
       transition: var(--transition-smooth);
+      box-shadow: 0 4px 15px rgba(0, 86, 166, 0.2);
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .mobile-menu-btn:hover {
-      background: rgba(0, 86, 166, 0.08);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 86, 166, 0.3);
+      background: var(--primary-blue-dark);
     }
 
     /* Hero Section - Improved Alignment */
@@ -574,6 +583,109 @@
       0% { left: -100%; }
       60% { left: 100%; }
       100% { left: 100%; }
+    }
+
+    /* About Section - Fixed duplicate */
+    .about-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      line-height: 1.8;
+      font-size: 1.1rem;
+      color: var(--text-medium);
+    }
+
+    /* Projects Section */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2.5rem;
+      margin-top: 2rem;
+    }
+
+    .project-card {
+      background: white;
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      box-shadow: var(--card-shadow);
+      transition: var(--transition-smooth);
+      position: relative;
+      overflow: hidden;
+      border-top: 5px solid transparent;
+      opacity: 0;
+      transform: translateY(30px);
+      border: 1px solid rgba(0, 86, 166, 0.05);
+    }
+
+    .project-card.visible {
+      animation: cardSlideUp 0.6s forwards;
+    }
+
+    .project-card:hover {
+      transform: translateY(-12px);
+      box-shadow: var(--card-shadow-hover);
+      border-top: 5px solid var(--accent-purple);
+    }
+
+    .project-icon {
+      font-size: 2.5rem;
+      color: var(--primary-blue);
+      margin-bottom: 1.5rem;
+      display: inline-block;
+      background: var(--light-gray);
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .project-card h3 {
+      font-size: 1.5rem;
+      color: var(--dark-gray);
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .project-card p {
+      color: var(--text-medium);
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-bottom: 2rem;
+    }
+
+    .project-tech span {
+      padding: 0.4rem 1rem;
+      background: var(--medium-gray);
+      border-radius: 50px;
+      font-size: 0.85rem;
+      color: var(--primary-blue);
+      font-weight: 600;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0.8rem 1.5rem;
+      background: var(--gradient-primary);
+      color: white;
+      text-decoration: none;
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      transition: var(--transition-smooth);
+    }
+
+    .project-link:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0, 86, 166, 0.2);
     }
 
     /* Experience Cards */
@@ -1097,6 +1209,140 @@
       color: white;
     }
 
+    /* Password Modal */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(5px);
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal {
+      background: white;
+      border-radius: var(--radius-lg);
+      padding: 3rem;
+      max-width: 500px;
+      width: 90%;
+      text-align: center;
+      transform: translateY(30px);
+      transition: transform 0.3s ease;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+
+    .modal-overlay.active .modal {
+      transform: translateY(0);
+    }
+
+    .modal h3 {
+      color: var(--dark-gray);
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+
+    .modal p {
+      color: var(--text-medium);
+      margin-bottom: 2rem;
+    }
+
+    .password-input {
+      width: 100%;
+      padding: 1rem;
+      border: 2px solid var(--medium-gray);
+      border-radius: var(--radius-md);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      transition: var(--transition-smooth);
+    }
+
+    .password-input:focus {
+      outline: none;
+      border-color: var(--primary-blue);
+    }
+
+    .modal-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    .modal-btn {
+      padding: 0.8rem 2rem;
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      border: none;
+    }
+
+    .modal-btn.submit {
+      background: var(--gradient-primary);
+      color: white;
+    }
+
+    .modal-btn.cancel {
+      background: var(--medium-gray);
+      color: var(--text-dark);
+    }
+
+    .modal-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 86, 166, 0.2);
+    }
+
+    /* WhatsApp Notification Banner */
+    .whatsapp-notification {
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      background: #25D366;
+      color: white;
+      padding: 1rem 1.5rem;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+      z-index: 999;
+      opacity: 0;
+      transform: translateX(-100px);
+      transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    .whatsapp-notification.show {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .whatsapp-notification a {
+      color: white;
+      text-decoration: underline;
+      font-weight: 600;
+    }
+
+    .close-notification {
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+      font-size: 1.2rem;
+      margin-left: 10px;
+    }
+
     /* Footer */
     footer {
       background: var(--dark-gray);
@@ -1205,6 +1451,12 @@
       .floating-elements {
         display: none;
       }
+      
+      .whatsapp-notification {
+        left: 20px;
+        right: 20px;
+        bottom: 20px;
+      }
     }
 
     @media (max-width: 768px) {
@@ -1213,7 +1465,7 @@
       }
       
       .mobile-menu-btn {
-        display: block;
+        display: flex;
       }
       
       .mobile-menu {
@@ -1291,6 +1543,10 @@
       .profile-frame {
         height: 380px;
       }
+      
+      .modal {
+        padding: 2rem 1.5rem;
+      }
     }
 
     @media (max-width: 480px) {
@@ -1327,6 +1583,12 @@
 
       .profile-frame {
         height: 320px;
+      }
+      
+      .whatsapp-notification {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
       }
     }
 
@@ -1383,6 +1645,29 @@
     <div class="intro-text">Satyam Kumar | CA Finalist & Data Analytics Professional</div>
   </div>
 
+  <!-- Password Modal -->
+  <div class="modal-overlay" id="passwordModal">
+    <div class="modal">
+      <h3><i class="fas fa-lock"></i> Secure Document Access</h3>
+      <p>Please enter the password to download this document:</p>
+      <input type="password" class="password-input" id="passwordInput" placeholder="Enter password" autocomplete="off">
+      <p id="passwordError" style="color: #ff4757; margin-top: -1rem; margin-bottom: 1.5rem; display: none;">
+        <i class="fas fa-exclamation-circle"></i> Incorrect password. Please try again.
+      </p>
+      <div class="modal-buttons">
+        <button class="modal-btn submit" id="submitPassword">Submit</button>
+        <button class="modal-btn cancel" id="cancelPassword">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- WhatsApp Notification Banner -->
+  <div class="whatsapp-notification" id="whatsappNotification">
+    <i class="fab fa-whatsapp"></i>
+    <span>New visitor on your portfolio! <a href="https://wa.me/919142300129?text=Hi%20Satyam,%20I%20just%20visited%20your%20portfolio%20and%20wanted%20to%20connect" target="_blank">Click here to notify Satyam</a></span>
+    <button class="close-notification" id="closeNotification">&times;</button>
+  </div>
+
   <!-- Header -->
   <header id="header">
     <div class="nav-container">
@@ -1398,6 +1683,7 @@
       <ul class="nav-links">
         <li><a href="#hero">Home</a></li>
         <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#education">Education</a></li>
@@ -1408,6 +1694,7 @@
     <div class="mobile-menu" id="mobileMenu">
       <a href="#hero">Home</a>
       <a href="#about">About</a>
+      <a href="#projects">Projects</a>
       <a href="#experience">Experience</a>
       <a href="#skills">Skills</a>
       <a href="#education">Education</a>
@@ -1449,7 +1736,7 @@
           <i class="fas fa-paper-plane"></i>
           Connect With Me
         </a>
-        <a href="SATYAM (1) (1).pdf" class="btn btn-secondary" download="Satyam_Kumar_Resume.pdf">
+        <a href="#" class="btn btn-secondary" id="downloadResumeBtn">
           <i class="fas fa-download"></i>
           Download Resume
         </a>
@@ -1481,22 +1768,22 @@
     </div>
   </section>
 
-  <!-- About Section -->
+  <!-- About Section - Fixed duplicate -->
   <section id="about" class="fade-in container">
     <div class="section-title">
       <h2>About Me</h2>
       <div class="underline"></div>
-      <p>Passionate finance professional with a tech-first mindset, bridging traditional accounting with modern data analytics</p>
+      <p>Bridging traditional accounting with modern data analytics</p>
     </div>
     
-    <div class="contact-container">
-      <p style="font-size: 1.1rem; margin-bottom: 2rem; line-height: 1.8; text-align: center;">
+    <div class="about-content">
+      <p style="margin-bottom: 2rem;">
         Passionate finance professional with a tech-first mindset, aiming to bridge the gap between traditional 
         accounting and modern data analytics. I specialize in transforming complex financial data into actionable 
         insights through automation and AI-driven solutions.
       </p>
       
-      <div class="contact-info">
+      <div class="contact-info" style="max-width: 800px; margin: 3rem auto;">
         <div class="contact-card">
           <i class="fas fa-bullseye"></i>
           <h3>Career Objective</h3>
@@ -1510,6 +1797,39 @@
           <p>Avid basketball player enhancing teamwork and strategic thinking. Passionate about exploring AI, 
              automation technologies, and their application in finance and auditing.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- New Projects Section -->
+  <section id="projects" class="fade-in container">
+    <div class="section-title">
+      <h2>Projects</h2>
+      <div class="underline"></div>
+      <p>Showcasing my technical expertise through practical implementations</p>
+    </div>
+    
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-icon">
+          <i class="fas fa-chalkboard-teacher"></i>
+        </div>
+        <h3>Coaching Institute PWA</h3>
+        <p>A Progressive Web Application for coaching institute management with offline capabilities, 
+           responsive design, and interactive features for student engagement and performance tracking.</p>
+        
+        <div class="project-tech">
+          <span>HTML5</span>
+          <span>CSS3</span>
+          <span>JavaScript</span>
+          <span>PWA</span>
+          <span>Responsive Design</span>
+        </div>
+        
+        <a href="https://satqm.github.io/Mithilesh-/" class="project-link" target="_blank">
+          <i class="fas fa-external-link-alt"></i>
+          View Live Project
+        </a>
       </div>
     </div>
   </section>
@@ -1626,10 +1946,10 @@
             <i class="fas fa-code"></i>
             VBA Automation
           </div>
-          <div class="skill-item">
+          <a href="https://satqm.github.io/Mithilesh-/" target="_blank" class="skill-item" style="text-decoration: none;">
             <i class="fas fa-laptop-code"></i>
             Full Stack Web Development
-          </div>
+          </a>
           <div class="skill-item">
             <i class="fas fa-robot"></i>
             Prompt Engineering
@@ -1707,7 +2027,7 @@
         </div>
       </div>
       
-      <a href="Certificates.pdf" class="cert-download" download="Satyam_Kumar_Certificates.pdf">
+      <a href="#" class="cert-download" id="downloadCertificatesBtn">
         <i class="fas fa-download"></i>
         Download All Certificates
       </a>
@@ -1845,11 +2165,11 @@
         <a href="https://www.instagram.com/satyqm2.o?igsh=bmQ0aThzamRmMHli" class="social-icon instagram" target="_blank">
           <i class="fab fa-instagram"></i>
         </a>
-        <!-- WhatsApp Icon (Replaces GitHub) -->
+        <!-- WhatsApp Icon -->
         <a href="https://wa.me/919142300129?text=Hi%20Satyam,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect" class="social-icon whatsapp" target="_blank">
           <i class="fab fa-whatsapp"></i>
         </a>
-        <a href="SATYAM (1) (1).pdf" class="social-icon" download="Satyam_Kumar_Resume.pdf">
+        <a href="#" class="social-icon" id="downloadResumeSocial">
           <i class="fas fa-download"></i>
         </a>
       </div>
@@ -1886,7 +2206,7 @@
         <a href="mailto:satqm2991@gmail.com" class="social-icon">
           <i class="fas fa-envelope"></i>
         </a>
-        <a href="SATYAM (1) (1).pdf" class="social-icon" download="Satyam_Kumar_Resume.pdf">
+        <a href="#" class="social-icon" id="downloadResumeFooter">
           <i class="fas fa-file-pdf"></i>
         </a>
       </div>
@@ -1903,10 +2223,15 @@
   </a>
 
   <script>
+    // Fixed password
+    const FIXED_PASSWORD = "R@dha";
+    let currentDownloadType = null;
+    let visitorNotified = false;
+
     // Loading screen
     window.addEventListener('load', () => {
       setTimeout(() => {
-        document.getElementById('loadingOverlay').classList.add('hidden');
+        document.getElementById('loadingOverlay')?.classList.add('hidden');
       }, 1000);
     });
 
@@ -1953,6 +2278,7 @@
     const timelineItems = document.querySelectorAll('.timeline-item');
     const experienceCards = document.querySelectorAll('.experience-card');
     const skillCategories = document.querySelectorAll('.skill-category');
+    const projectCards = document.querySelectorAll('.project-card');
     
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -1976,6 +2302,12 @@
             const index = Array.from(skillCategories).indexOf(entry.target);
             entry.target.style.animationDelay = `${index * 0.1}s`;
           }
+          
+          // For project cards
+          if (entry.target.classList.contains('project-card')) {
+            const index = Array.from(projectCards).indexOf(entry.target);
+            entry.target.style.animationDelay = `${index * 0.1}s`;
+          }
         }
       });
     }, { 
@@ -1987,6 +2319,7 @@
     timelineItems.forEach(el => observer.observe(el));
     experienceCards.forEach(el => observer.observe(el));
     skillCategories.forEach(el => observer.observe(el));
+    projectCards.forEach(el => observer.observe(el));
     
     // Set current year
     document.getElementById('currentYear').textContent = new Date().getFullYear();
@@ -2012,6 +2345,178 @@
     // Add hover effect to badges
     document.querySelectorAll('.badge').forEach((badge, index) => {
       badge.style.setProperty('--badge-index', index);
+    });
+
+    // Password protection system
+    const passwordModal = document.getElementById('passwordModal');
+    const passwordInput = document.getElementById('passwordInput');
+    const passwordError = document.getElementById('passwordError');
+    const submitPassword = document.getElementById('submitPassword');
+    const cancelPassword = document.getElementById('cancelPassword');
+    
+    // Download buttons
+    const downloadResumeBtn = document.getElementById('downloadResumeBtn');
+    const downloadCertificatesBtn = document.getElementById('downloadCertificatesBtn');
+    const downloadResumeSocial = document.getElementById('downloadResumeSocial');
+    const downloadResumeFooter = document.getElementById('downloadResumeFooter');
+    
+    function showPasswordModal(type) {
+      currentDownloadType = type;
+      passwordModal.classList.add('active');
+      passwordInput.value = '';
+      passwordError.style.display = 'none';
+      passwordInput.focus();
+    }
+    
+    function hidePasswordModal() {
+      passwordModal.classList.remove('active');
+      currentDownloadType = null;
+    }
+    
+    function downloadFile(filename) {
+      // Create a temporary anchor element to trigger download
+      const link = document.createElement('a');
+      link.href = filename;
+      link.download = filename.split('/').pop();
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      
+      // Show WhatsApp notification banner after download
+      setTimeout(() => {
+        showWhatsAppNotification();
+      }, 1000);
+    }
+    
+    function verifyPassword() {
+      const enteredPassword = passwordInput.value.trim();
+      
+      if (enteredPassword === FIXED_PASSWORD) {
+        passwordError.style.display = 'none';
+        
+        // Determine which file to download
+        let filename = '';
+        if (currentDownloadType === 'resume') {
+          filename = 'SATYAM (1) (1).pdf';
+        } else if (currentDownloadType === 'certificates') {
+          filename = 'Certificates.pdf';
+        }
+        
+        hidePasswordModal();
+        downloadFile(filename);
+      } else {
+        passwordError.style.display = 'block';
+        passwordInput.value = '';
+        passwordInput.focus();
+      }
+    }
+    
+    // Event listeners for password modal
+    downloadResumeBtn?.addEventListener('click', (e) => {
+      e.preventDefault();
+      showPasswordModal('resume');
+    });
+    
+    downloadCertificatesBtn?.addEventListener('click', (e) => {
+      e.preventDefault();
+      showPasswordModal('certificates');
+    });
+    
+    downloadResumeSocial?.addEventListener('click', (e) => {
+      e.preventDefault();
+      showPasswordModal('resume');
+    });
+    
+    downloadResumeFooter?.addEventListener('click', (e) => {
+      e.preventDefault();
+      showPasswordModal('resume');
+    });
+    
+    submitPassword.addEventListener('click', verifyPassword);
+    
+    cancelPassword.addEventListener('click', hidePasswordModal);
+    
+    passwordInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        verifyPassword();
+      }
+    });
+    
+    // Close modal when clicking outside
+    passwordModal.addEventListener('click', (e) => {
+      if (e.target === passwordModal) {
+        hidePasswordModal();
+      }
+    });
+    
+    // WhatsApp Notification System
+    const whatsappNotification = document.getElementById('whatsappNotification');
+    const closeNotification = document.getElementById('closeNotification');
+    
+    function showWhatsAppNotification() {
+      if (!visitorNotified) {
+        setTimeout(() => {
+          whatsappNotification.classList.add('show');
+          visitorNotified = true;
+          
+          // Auto-hide after 15 seconds
+          setTimeout(() => {
+            whatsappNotification.classList.remove('show');
+          }, 15000);
+        }, 3000); // Show after 3 seconds
+      }
+    }
+    
+    closeNotification.addEventListener('click', () => {
+      whatsappNotification.classList.remove('show');
+    });
+    
+    // Show notification on page load
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        showWhatsAppNotification();
+      }, 5000); // Show after 5 seconds
+    });
+    
+    // Track page visits (simulated - in real scenario you'd use analytics)
+    let visitCount = localStorage.getItem('portfolioVisits') || 0;
+    visitCount++;
+    localStorage.setItem('portfolioVisits', visitCount);
+    
+    // Show notification more prominently for first-time visitors
+    if (visitCount === 1) {
+      setTimeout(() => {
+        whatsappNotification.innerHTML = `
+          <i class="fab fa-whatsapp"></i>
+          <span>Welcome to my portfolio! <a href="https://wa.me/919142300129?text=Hi%20Satyam,%20I'm%20a%20first-time%20visitor%20to%20your%20portfolio" target="_blank">Click here to introduce yourself</a></span>
+          <button class="close-notification" id="closeNotification">&times;</button>
+        `;
+        whatsappNotification.classList.add('show');
+        
+        // Re-attach close button event listener
+        document.getElementById('closeNotification').addEventListener('click', () => {
+          whatsappNotification.classList.remove('show');
+        });
+      }, 8000);
+    }
+    
+    // Image fallback handler
+    const profileImg = document.querySelector('.profile-img');
+    profileImg.addEventListener('error', function() {
+      console.log('Local image failed, using Google Drive backup');
+      this.src = 'https://drive.google.com/uc?export=view&id=1UvRz5HZPPLKaFX0540lmo9q1vhg9Z6bG';
+    });
+    
+    // Preload image for better performance
+    window.addEventListener('load', function() {
+      const img = new Image();
+      img.src = 'Satyam.jpg';
+      img.onload = function() {
+        console.log('Local image loaded successfully');
+      };
+      img.onerror = function() {
+        console.log('Local image not found, will use backup if needed');
+      };
     });
 
     // Add typing effect to hero title
@@ -2045,25 +2550,6 @@
         const yPos = -(scrolled * speed);
         element.style.transform = `translateY(${yPos}px)`;
       });
-    });
-
-    // Image fallback handler
-    const profileImg = document.querySelector('.profile-img');
-    profileImg.addEventListener('error', function() {
-      console.log('Local image failed, using Google Drive backup');
-      this.src = 'https://drive.google.com/uc?export=view&id=1UvRz5HZPPLKaFX0540lmo9q1vhg9Z6bG';
-    });
-    
-    // Preload image for better performance
-    window.addEventListener('load', function() {
-      const img = new Image();
-      img.src = 'Satyam.jpg';
-      img.onload = function() {
-        console.log('Local image loaded successfully');
-      };
-      img.onerror = function() {
-        console.log('Local image not found, will use backup if needed');
-      };
     });
   </script>
 </body>
