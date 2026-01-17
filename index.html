@@ -1,0 +1,1826 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Quest - Satyam Kumar</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
+  <style>
+    :root {
+      --primary-gradient: linear-gradient(135deg, #3b82f6, #0ea5e9);
+      --secondary-gradient: linear-gradient(135deg, #8b5cf6, #ec4899);
+      --success-gradient: linear-gradient(135deg, #10b981, #0ea5e9);
+      --warning-gradient: linear-gradient(135deg, #f59e0b, #ef4444);
+      --indigo-gradient: linear-gradient(135deg, #6366f1, #8b5cf6);
+      --rose-gradient: linear-gradient(135deg, #f43f5e, #ec4899);
+      --sky-gradient: linear-gradient(135deg, #0ea5e9, #3b82f6);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: white;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(56, 189, 248, 0.05) 0%, transparent 40%);
+      z-index: -1;
+      transition: background 0.1s ease;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header Styles */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+      padding: 12px 0;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-section {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-circle {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--primary-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .level-info {
+      display: none;
+      text-align: center;
+    }
+
+    .level-title {
+      font-size: 20px;
+      font-weight: bold;
+      background: linear-gradient(to right, #3b82f6, #0ea5e9);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .level-progress-container {
+      height: 6px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 3px;
+      margin-top: 8px;
+      overflow: hidden;
+    }
+
+    .level-progress {
+      height: 100%;
+      background: var(--primary-gradient);
+      border-radius: 3px;
+      transition: width 0.5s ease;
+    }
+
+    .nav-buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .nav-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .nav-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .nav-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* Main Content */
+    main {
+      min-height: calc(100vh - 150px);
+      padding: 100px 0 100px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .hero-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-height: calc(100vh - 150px);
+      padding: 20px;
+    }
+
+    .hero-logo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: var(--primary-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 30px;
+      font-size: 48px;
+      font-weight: bold;
+      box-shadow: 0 0 30px rgba(56, 189, 248, 0.4);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.4); }
+      70% { box-shadow: 0 0 0 15px rgba(56, 189, 248, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0); }
+    }
+
+    .hero-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      background: linear-gradient(to right, #3b82f6, #0ea5e9);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      line-height: 1.2;
+    }
+
+    .hero-subtitle {
+      font-size: 1.2rem;
+      color: #94a3b8;
+      max-width: 600px;
+      margin-bottom: 40px;
+      line-height: 1.6;
+    }
+
+    .start-btn {
+      background: var(--primary-gradient);
+      color: white;
+      border: none;
+      padding: 16px 40px;
+      font-size: 18px;
+      font-weight: 600;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .start-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .start-btn:active {
+      transform: translateY(1px);
+    }
+
+    .game-section {
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .level-header {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 50px;
+    }
+
+    .level-icon-container {
+      width: 80px;
+      height: 80px;
+      border-radius: 24px;
+      margin: 0 auto 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .level-icon {
+      font-size: 36px;
+    }
+
+    .level-title-main {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+      background: linear-gradient(to right, #3b82f6, #0ea5e9);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .level-description {
+      font-size: 1.1rem;
+      color: #94a3b8;
+      line-height: 1.6;
+    }
+
+    /* Level Content Styles */
+    .level-content {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 25px;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .card:hover {
+      border-color: rgba(255, 255, 255, 0.3);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: white;
+    }
+
+    .card-subtitle {
+      color: #64748b;
+      margin-bottom: 15px;
+      font-size: 0.95rem;
+    }
+
+    .card-text {
+      color: #cbd5e1;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 15px;
+    }
+
+    .tag {
+      background: rgba(255, 255, 255, 0.1);
+      color: #94a3b8;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Timeline Styles */
+    .timeline {
+      position: relative;
+      max-width: 1000px;
+      margin: 40px auto;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: var(--primary-gradient);
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
+
+    .timeline-item {
+      position: relative;
+      width: calc(50% - 40px);
+      margin-bottom: 50px;
+    }
+
+    .timeline-item:nth-child(odd) {
+      margin-left: auto;
+    }
+
+    .timeline-item:nth-child(even) {
+      margin-right: auto;
+    }
+
+    .timeline-content {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 30px;
+      position: relative;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+
+    .timeline-content:hover {
+      border-color: rgba(255, 255, 255, 0.3);
+      transform: translateY(-5px);
+    }
+
+    .timeline-content::before {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: white;
+      top: 30px;
+      border-radius: 50%;
+      border: 4px solid #0f172a;
+      box-shadow: 0 0 0 2px #3b82f6;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-content::before {
+      right: -54px;
+    }
+
+    .timeline-item:nth-child(even) .timeline-content::before {
+      left: -54px;
+    }
+
+    .timeline-date {
+      color: #64748b;
+      font-weight: 600;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .timeline-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: white;
+    }
+
+    .timeline-details {
+      color: #cbd5e1;
+      line-height: 1.6;
+    }
+
+    .timeline-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #f59e0b, #f97316);
+      color: white;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-top: 12px;
+    }
+
+    /* Skills Section */
+    .skills-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .skill-category {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 30px;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+
+    .skill-category:hover {
+      border-color: rgba(255, 255, 255, 0.3);
+      transform: translateY(-5px);
+    }
+
+    .skill-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .skill-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+
+    .skill-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: white;
+    }
+
+    .skill-item {
+      margin-bottom: 20px;
+    }
+
+    .skill-name {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      color: white;
+      font-weight: 500;
+    }
+
+    .skill-bar {
+      height: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .skill-progress {
+      height: 100%;
+      border-radius: 4px;
+      background: var(--primary-gradient);
+    }
+
+    /* Project Section */
+    .project-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+    }
+
+    .project-header {
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      margin-bottom: 20px;
+    }
+
+    .project-icon-container {
+      width: 50px;
+      height: 50px;
+      border-radius: 16px;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .project-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: white;
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 20px 0;
+    }
+
+    .project-tech-tag {
+      background: rgba(255, 255, 255, 0.1);
+      color: #94a3b8;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+    }
+
+    .project-demo {
+      background: rgba(34, 197, 94, 0.1);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      border-radius: 16px;
+      padding: 15px;
+      margin: 20px 0;
+    }
+
+    .project-demo-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #34d399;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .project-demo-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      font-size: 0.9rem;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--indigo-gradient);
+      color: white;
+      padding: 12px 25px;
+      border-radius: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      margin-top: 15px;
+    }
+
+    .project-link:hover {
+      transform: translateX(5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Achievement Badges */
+    .achievement-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+    }
+
+    .achievement-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+    }
+
+    .achievement-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: white;
+    }
+
+    .achievement-year {
+      color: #64748b;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .achievement-badge {
+      display: inline-block;
+      padding: 4px 16px;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-top: 12px;
+    }
+
+    /* Contact Section */
+    .contact-container {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .profile-circle {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background: var(--primary-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 30px;
+      font-size: 48px;
+      font-weight: bold;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .contact-name {
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+      background: linear-gradient(to right, #3b82f6, #0ea5e9);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .contact-title {
+      font-size: 1.3rem;
+      color: #94a3b8;
+      margin-bottom: 40px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      margin-bottom: 40px;
+    }
+
+    .contact-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 25px;
+      transition: all 0.3s ease;
+      text-align: left;
+    }
+
+    .contact-card:hover {
+      border-color: rgba(255, 255, 255, 0.3);
+      transform: translateY(-5px);
+    }
+
+    .contact-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 15px;
+      font-size: 24px;
+    }
+
+    .contact-label {
+      color: #64748b;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .contact-value {
+      color: white;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    .quote-box {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 30px;
+      margin: 30px 0;
+      font-style: italic;
+      line-height: 1.6;
+      position: relative;
+    }
+
+    .quote-box::before {
+      content: '"';
+      position: absolute;
+      top: -20px;
+      left: 20px;
+      font-size: 60px;
+      color: rgba(56, 189, 248, 0.3);
+      font-family: Georgia, serif;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 30px 0;
+    }
+
+    .social-link {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .social-link:hover {
+      transform: translateY(-5px);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .download-btn {
+      background: var(--sky-gradient);
+      color: white;
+      border: none;
+      padding: 16px 40px;
+      font-size: 18px;
+      font-weight: 600;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .download-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Game Character */
+    .game-character {
+      position: fixed;
+      z-index: 50;
+      pointer-events: none;
+      transition: transform 0.1s ease;
+    }
+
+    .character-body {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: var(--primary-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 24px;
+      color: white;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      position: relative;
+    }
+
+    .character-glow {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: #fbbf24;
+      border-radius: 50%;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: glowPulse 1.5s infinite alternate;
+    }
+
+    @keyframes glowPulse {
+      from { opacity: 0.7; transform: translateX(-50%) scale(1); }
+      to { opacity: 1; transform: translateX(-50%) scale(1.2); }
+    }
+
+    /* Mobile Navigation */
+    .mobile-nav {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      right: 20px;
+      z-index: 1000;
+      display: none;
+    }
+
+    .mobile-nav-buttons {
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(10px);
+      border-radius: 24px;
+      padding: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .mobile-nav-btn {
+      width: 60px;
+      height: 60px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: white;
+      font-size: 20px;
+      transition: all 0.2s ease;
+    }
+
+    .mobile-nav-btn:disabled {
+      opacity: 0.5;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .mobile-nav-btn:not(:disabled):active {
+      transform: scale(0.9);
+    }
+
+    .mobile-nav-center {
+      width: 70px;
+      height: 70px;
+      border-radius: 24px;
+      background: var(--primary-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 24px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .level-indicator {
+      text-align: center;
+      color: #94a3b8;
+      font-size: 0.9rem;
+      margin-top: 10px;
+    }
+
+    /* Back to Top */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--primary-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 20px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 999;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 30px 0;
+      color: #64748b;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      margin-top: 50px;
+      font-size: 0.95rem;
+    }
+
+    /* Animations */
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .floating {
+      animation: float 3s ease-in-out infinite;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .level-info {
+        display: block;
+        width: 100%;
+      }
+
+      .hero-title {
+        font-size: 2rem;
+      }
+
+      .level-title-main {
+        font-size: 2rem;
+      }
+
+      .timeline::before {
+        left: 30px;
+      }
+
+      .timeline-item {
+        width: calc(100% - 70px);
+        margin-left: 70px !important;
+      }
+
+      .timeline-content::before {
+        left: -64px !important;
+      }
+
+      .mobile-nav {
+        display: block;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-title {
+        font-size: 1.8rem;
+      }
+
+      .level-title-main {
+        font-size: 1.8rem;
+      }
+
+      .card-grid, .skills-container, .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .project-demo-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-buttons {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <div class="logo-section">
+          <div class="logo-circle">SK</div>
+          <div class="logo-text" id="logoText">Portfolio Quest</div>
+        </div>
+        
+        <div class="level-info" id="levelInfo">
+          <div class="level-title" id="currentLevelTitle">Level 1: The Beginning</div>
+          <div class="level-progress-container">
+            <div class="level-progress" id="levelProgress" style="width: 16.67%"></div>
+          </div>
+        </div>
+        
+        <div class="nav-buttons">
+          <button class="nav-btn" id="prevLevelBtn" disabled>
+            <i class="fas fa-arrow-left"></i>
+          </button>
+          <button class="nav-btn" id="nextLevelBtn">
+            <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Game Character -->
+  <div class="game-character" id="gameCharacter">
+    <div class="character-body">
+      SK
+      <div class="character-glow"></div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section" id="heroSection">
+      <div class="hero-logo floating">SK</div>
+      <h1 class="hero-title">Welcome to My Portfolio Quest</h1>
+      <p class="hero-subtitle">Embark on an interactive adventure through my professional journey. Swipe or use arrow keys to navigate through levels and discover my skills, projects, and achievements.</p>
+      <button class="start-btn" id="startBtn">
+        Start Adventure <i class="fas fa-arrow-down ml-2"></i>
+      </button>
+    </section>
+
+    <!-- Game Sections -->
+    <section class="game-section" id="level1">
+      <div class="container">
+        <div class="level-header">
+          <div class="level-icon-container" style="background: linear-gradient(135deg, #3b82f6, #0ea5e9);">
+            <i class="fas fa-user-graduate level-icon"></i>
+          </div>
+          <h2 class="level-title-main">Welcome, Traveler!</h2>
+          <p class="level-description">Embark on an adventure through Satyam's professional universe. Swipe or use arrow keys to navigate through levels and discover his journey.</p>
+        </div>
+        
+        <div class="level-content">
+          <div class="card-grid">
+            <div class="card">
+              <div class="level-icon-container" style="width: 60px; height: 60px; margin: 0 auto 20px; background: linear-gradient(135deg, #3b82f6, #0ea5e9);">
+                <i class="fas fa-graduation-cap level-icon" style="font-size: 28px;"></i>
+              </div>
+              <h3 class="card-title">CA Finalist</h3>
+              <p class="card-text">Master of finance & analytics with expertise in transforming complex financial data into strategic insights.</p>
+            </div>
+            
+            <div class="card">
+              <div class="level-icon-container" style="width: 60px; height: 60px; margin: 0 auto 20px; background: linear-gradient(135deg, #10b981, #0ea5e9);">
+                <i class="fas fa-chart-line level-icon" style="font-size: 28px;"></i>
+              </div>
+              <h3 class="card-title">Data Wizard</h3>
+              <p class="card-text">Transforming raw numbers into actionable business intelligence through advanced analytics and visualization.</p>
+            </div>
+            
+            <div class="card">
+              <div class="level-icon-container" style="width: 60px; height: 60px; margin: 0 auto 20px; background: linear-gradient(135deg, #8b5cf6, #ec4899);">
+                <i class="fas fa-brain level-icon" style="font-size: 28px;"></i>
+              </div>
+              <h3 class="card-title">AI Enthusiast</h3>
+              <p class="card-text">Leveraging automation and AI-powered solutions to enhance efficiency and drive innovation in financial processes.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="game-section" id="level2">
+      <div class="container">
+        <div class="level-header">
+          <div class="level-icon-container" style="background: linear-gradient(135deg, #8b5cf6, #ec4899);">
+            <i class="fas fa-graduation-cap level-icon"></i>
+          </div>
+          <h2 class="level-title-main">Education Journey</h2>
+          <p class="level-description">From school excellence to CA Finalist with multiple exemptions, Satyam's educational path showcases dedication and academic prowess.</p>
+        </div>
+        
+        <div class="level-content">
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-content">
+                <div class="timeline-date">
+                  <i class="far fa-calendar-alt"></i> 2022 - Present
+                </div>
+                <h3 class="timeline-title">CA Final</h3>
+                <p class="timeline-details"><strong>Institute of Chartered Accountants of India (ICAI)</strong></p>
+                <p class="timeline-details"><strong>Foundation:</strong> 247 | <strong>Group 1:</strong> 213 | <strong>Group 2:</strong> 200</p>
+                <p class="timeline-details">Exemptions in Corporate Law, Financial Management, and Economics</p>
+                <span class="timeline-badge" style="background: linear-gradient(135deg, #f59e0b, #f97316);">Academic Excellence</span>
+              </div>
+            </div>
+            
+            <div class="timeline-item">
+              <div class="timeline-content">
+                <div class="timeline-date">
+                  <i class="far fa-calendar-alt"></i> 2021 - 2024
+                </div>
+                <h3 class="timeline-title">BA Programme (Commerce + Economics)</h3>
+                <p class="timeline-details"><strong>Shaheed Bhagat Singh College, Delhi University</strong></p>
+                <p class="timeline-details"><strong>CGPA:</strong> 7.4/10.0</p>
+                <p class="timeline-details">Specializations in Marketing Management and Data Analytics</p>
+              </div>
+            </div>
+            
+            <div class="timeline-item">
+              <div class="timeline-content">
+                <div class="timeline-date">
+                  <i class="far fa-calendar-alt"></i> 2006 - 2021
+                </div>
+                <h3 class="timeline-title">Schooling</h3>
+                <p class="timeline-details"><strong>Jawahar Navodaya Vidyalaya, Sheikhpura</strong></p>
+                <p class="timeline-details"><strong>Class 12th (CBSE, 2021):</strong> 92.6% | School Topper</p>
+                <p class="timeline-details"><strong>Class 10th (CBSE, 2019):</strong> 92%</p>
+                <span class="timeline-badge" style="background: linear-gradient(135deg, #f59e0b, #f97316);">School Topper</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="game-section" id="level3">
+      <div class="container">
+        <div class="level-header">
+          <div class="level-icon-container" style="background: linear-gradient(135deg, #f59e0b, #f97316);">
+            <i class="fas fa-briefcase level-icon"></i>
+          </div>
+          <h2 class="level-title-main">Professional Quests</h2>
+          <p class="level-description">Satyam's professional journey spans internal audit, risk assessment, and cross-industry exposure at leading organizations.</p>
+        </div>
+        
+        <div class="level-content">
+          <div class="card-grid">
+            <div class="card">
+              <h3 class="card-title">Industrial Trainee</h3>
+              <p class="card-subtitle">Sun Life · Data Analytics & Internal Audit</p>
+              <p class="card-subtitle"><strong>Jun 2025 - Present</strong></p>
+              <ul class="card-text">
+                <li>✧ Enhancing risk assessment through Tableau visualizations</li>
+                <li>✧ Developing Excel VBA automation tools for audit processes</li>
+                <li>✧ Integrating data analytics with traditional audit methodologies</li>
+                <li>✧ Streamlining business processes to improve reporting accuracy</li>
+              </ul>
+              <div class="tags">
+                <span class="tag">Internal Audit</span>
+                <span class="tag">Data Analytics</span>
+                <span class="tag">Risk Assessment</span>
+                <span class="tag">Automation</span>
+              </div>
+            </div>
+            
+            <div class="card">
+              <h3 class="card-title">Article Trainee</h3>
+              <p class="card-subtitle">MGB Advisors Pvt Ltd · Internal Audit</p>
+              <p class="card-subtitle"><strong>May 2024 - Jun 2025</strong></p>
+              <ul class="card-text">
+                <li>✧ Conducted Internal Audit & IFC/ICFR testing for P2P, O2C, H2R processes</li>
+                <li>✧ Managed financial compliance across multiple industries</li>
+                <li>✧ Assisted in Treasury, Fixed Assets, and Statutory compliance audits</li>
+                <li>✧ Developed comprehensive audit documentation and reporting</li>
+              </ul>
+              <div class="tags">
+                <span class="tag">IFC Testing</span>
+                <span class="tag">Risk Assessment</span>
+                <span class="tag">Compliance</span>
+                <span class="tag">Process Auditing</span>
+              </div>
+            </div>
+            
+            <div class="card">
+              <h3 class="card-title">Multi-Industry Audit Exposure</h3>
+              <p class="card-subtitle">Various Client Projects</p>
+              <p class="card-subtitle"><strong>2024 - Present</strong></p>
+              <ul class="card-text">
+                <li>✧ Gained exposure across diverse industries including OLX, Shriram Automall, ZEE Media</li>
+                <li>✧ Worked with Earth Rhythm/Nykaa, Venus Sugar, and Grew Energy</li>
+                <li>✧ Concurrent audit and ratio analysis for operational efficiency</li>
+                <li>✧ Inventory forecasting and process optimization</li>
+              </ul>
+              <div class="tags">
+                <span class="tag">SOP Understanding</span>
+                <span class="tag">Concurrent Audit</span>
+                <span class="tag">Ratio Analysis</span>
+                <span class="tag">Cross-Industry</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="game-section" id="level4">
+      <div class="container">
+        <div class="level-header">
+          <div class="level-icon-container" style="background: linear-gradient(135deg, #10b981, #0ea5e9);">
+            <i class="fas fa-bolt level-icon"></i>
+          </div>
+          <h2 class="level-title-main">Skill Arsenal</h2>
+          <p class="level-description">Satyam's technical toolkit combines finance expertise with modern analytical capabilities and automation solutions.</p>
+        </div>
+        
+        <div class="level-content">
+          <div class="skills-container">
+            <div class="skill-category">
+              <div class="skill-header">
+                <div class="skill-icon" style="background: linear-gradient(135deg, #3b82f6, #0ea5e9);">
+                  <i class="fas fa-database"></i>
+                </div>
+                <h3 class="skill-title">Analytics & Automation</h3>
+              </div>
+              
+              <div class="skill-item">
+                <div class="skill-name">
+                  <span>SQL</span>
+                  <span>90%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 90%"></div>
+                </div>
+              </div>
+              
+              <div class="skill-item">
+                <div class="skill-name">
+                  <span>Python</span>
+                  <span>85%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 85%"></div>
+                </div>
+              </div>
+              
+              <div class="skill-item">
+                <div class="skill-name">
+                  <span>Advanced Excel</span>
+                  <span>95%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 95%"></div>
+                </div>
+              </div>
+              
+              <div class="skill-item">
+                <div class="skill-name">
+                  <span>VBA Automation</span>
+                  <span>85%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 85%"></div>
+                </div>
+              </div>
+              
+              <div class="skill-item">
+                <div class="skill-name">
+                  <span>Tableau</span>
+                  <span>90%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 90%"></div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="skill-category">
+              <div class="skill-header">
+                <div class="skill-icon" style="background: linear-gradient(135deg, #8b5cf6, #ec4899);">
+                  <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3 class="skill-title">Audit, Tax & Governance</h3>
+              </div>
+              
+              <div class="skill-item">
+                <div class="skill-name">
+                  <span>Internal Audit</span>
+                  <span>95%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 95%"></div>
+                </div>
+              </div>
+              
+              <div class="skill-item">
+                <div class="skill-name">
+                  <span>Financial Management</span>
+                  <span>90%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 90%"></div>
+                </div>
+              </div>
+              
+              <div class="skill-item">
+                <div class="skill-name">
+                  <span>Risk & Controls</span>
+                  <span>90%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 90%"></div>
+                </div>
+              </div>
+              
+              <div class="skill-item">
+                <div class="skill-name">
+                  <span>Company Law</span>
+                  <span>85%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 85%"></div>
+                </div>
+              </div>
+              
+              <div class="skill-item">
+                <div class="skill-name">
+                  <span>Taxation</span>
+                  <span>85%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 85%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="card" style="margin-top: 40px;">
+            <div class="skill-header">
+              <div class="skill-icon" style="background: linear-gradient(135deg, #f59e0b, #f97316);">
+                <i class="fas fa-certificate"></i>
+              </div>
+              <h3 class="skill-title">Certifications</h3>
+            </div>
+            
+            <div class="tags" style="gap: 12px; flex-wrap: wrap;">
+              <span class="tag" style="background: rgba(255, 255, 255, 0.1); color: #94a3b8;">AI Security & Governance</span>
+              <span class="tag" style="background: rgba(255, 255, 255, 0.1); color: #94a3b8;">BCG GenAI - Financial Chatbot</span>
+              <span class="tag" style="background: rgba(255, 255, 255, 0.1); color: #94a3b8;">KPMG Audit Certification</span>
+              <span class="tag" style="background: rgba(255, 255, 255, 0.1); color: #94a3b8;">Excel Skills for Business</span>
+              <span class="tag" style="background: rgba(255, 255, 255, 0.1); color: #94a3b8;">NISM Certifications</span>
+              <span class="tag" style="background: rgba(255, 255, 255, 0.1); color: #94a3b8;">ICTSS - IT Course (ICAI)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="game-section" id="level5">
+      <div class="container">
+        <div class="level-header">
+          <div class="level-icon-container" style="background: linear-gradient(135deg, #6366f1, #8b5cf6);">
+            <i class="fas fa-chart-bar level-icon"></i>
+          </div>
+          <h2 class="level-title-main">Project Expeditions</h2>
+          <p class="level-description">Explore Satyam's practical implementations that solve real-world problems through technology and innovation.</p>
+        </div>
+        
+        <div class="level-content">
+          <div class="card-grid">
+            <div class="card project-card">
+              <div class="project-header">
+                <div class="project-icon-container" style="background: linear-gradient(135deg, #6366f1, #8b5cf6);">
+                  <i class="fas fa-chalkboard-teacher"></i>
+                </div>
+                <h3 class="project-title">Coaching Institute PWA</h3>
+              </div>
+              <p class="card-text">A Progressive Web Application for coaching institute management with responsive design and interactive features for student engagement and performance tracking.</p>
+              
+              <div class="project-tech">
+                <span class="project-tech-tag">HTML5</span>
+                <span class="project-tech-tag">CSS3</span>
+                <span class="project-tech-tag">JavaScript</span>
+                <span class="project-tech-tag">PWA</span>
+                <span class="project-tech-tag">Responsive Design</span>
+              </div>
+              
+              <a href="https://satqm.github.io/Mithilesh-/" target="_blank" class="project-link">
+                View Project <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+            
+            <div class="card project-card">
+              <div class="project-header">
+                <div class="project-icon-container" style="background: linear-gradient(135deg, #3b82f6, #0ea5e9);">
+                  <i class="fas fa-calendar-check"></i>
+                </div>
+                <h3 class="project-title">CA Final Smart Study Planner</h3>
+              </div>
+              <p class="card-text">A comprehensive study planning and progress tracking system designed specifically for CA Final students. Features include subject-wise planning, progress visualization, and Resource Library.</p>
+              
+              <div class="project-demo">
+                <div class="project-demo-title">
+                  <i class="fas fa-user-lock"></i> Demo Credentials
+                </div>
+                <div class="project-demo-grid">
+                  <div><strong>Email:</strong> Demo@gmail.com</div>
+                  <div><strong>Password:</strong> Demo12</div>
+                </div>
+              </div>
+              
+              <div class="project-tech">
+                <span class="project-tech-tag">Study Planning</span>
+                <span class="project-tech-tag">Progress Tracking</span>
+                <span class="project-tech-tag">Visual Analytics</span>
+                <span class="project-tech-tag">Milestone System</span>
+                <span class="project-tech-tag">Web App</span>
+              </div>
+              
+              <a href="https://satqm.github.io/CA/" target="_blank" class="project-link">
+                View Project <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="game-section" id="level6">
+      <div class="container">
+        <div class="level-header">
+          <div class="level-icon-container" style="background: linear-gradient(135deg, #f43f5e, #ec4899);">
+            <i class="fas fa-award level-icon"></i>
+          </div>
+          <h2 class="level-title-main">Achievement Badges</h2>
+          <p class="level-description">Satyam's collection of prestigious awards and recognitions from academic excellence to national competitions.</p>
+        </div>
+        
+        <div class="level-content">
+          <div class="card-grid">
+            <div class="card achievement-card" style="border-top: 4px solid #fbbf24;">
+              <h3 class="achievement-title">National Science Exhibition</h3>
+              <div class="achievement-year"><i class="fas fa-trophy"></i> 2013-2018</div>
+              <p class="card-text">Awarded ₹50,000 cash prize for 'Rural Health Project' at National Science Exhibition. Demonstrated innovative problem-solving and social impact through scientific approach.</p>
+              <span class="achievement-badge" style="background: linear-gradient(135deg, #f59e0b, #f97316); color: white;">National Award Winner</span>
+            </div>
+            
+            <div class="card achievement-card" style="border-top: 4px solid #c084fc;">
+              <h3 class="achievement-title">MSME Essay Competition</h3>
+              <div class="achievement-year"><i class="fas fa-award"></i> 2019</div>
+              <p class="card-text">Won 1st prize in national-level MSME Essay Competition on 'Digital Transformation in Indian SMEs'. Analyzed challenges and opportunities for small businesses in digital era.</p>
+              <span class="achievement-badge" style="background: linear-gradient(135deg, #8b5cf6, #ec4899); color: white;">MSME Award Winner</span>
+            </div>
+            
+            <div class="card achievement-card" style="border-top: 4px solid #34d399;">
+              <h3 class="achievement-title">Academic Excellence</h3>
+              <div class="achievement-year"><i class="fas fa-graduation-cap"></i> 2006-2021</div>
+              <p class="card-text">Consistent academic performer with multiple distinctions. School topper in Class 12th CBSE Board with 92.6% marks.</p>
+              <span class="achievement-badge" style="background: linear-gradient(135deg, #10b981, #0ea5e9); color: white;">School Topper</span>
+            </div>
+            
+            <div class="card achievement-card" style="border-top: 4px solid #3b82f6;">
+              <h3 class="achievement-title">CA Journey</h3>
+              <div class="achievement-year"><i class="fas fa-chart-line"></i> 2022-Present</div>
+              <p class="card-text">Achieved multiple exemptions in CA curriculum through exceptional performance. Foundation: 247 marks | Group 1: 213 marks | Group 2: 200 marks.</p>
+              <span class="achievement-badge" style="background: linear-gradient(135deg, #3b82f6, #0ea5e9); color: white;">CA Finalist</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="game-section" id="level7">
+      <div class="container">
+        <div class="level-header">
+          <div class="level-icon-container" style="background: linear-gradient(135deg, #0ea5e9, #3b82f6);">
+            <i class="fas fa-envelope level-icon"></i>
+          </div>
+          <h2 class="level-title-main">Connect & Conquer</h2>
+          <p class="level-description">Complete your journey by connecting with Satyam for collaborations, opportunities, and professional discussions.</p>
+        </div>
+        
+        <div class="level-content">
+          <div class="contact-container">
+            <div class="profile-circle">SK</div>
+            <h2 class="contact-name">Satyam Kumar</h2>
+            <p class="contact-title">CA Finalist & Data Analytics Professional</p>
+            
+            <div class="contact-grid">
+              <div class="contact-card">
+                <div class="contact-icon" style="background: linear-gradient(135deg, #3b82f6, #0ea5e9);">
+                  <i class="fas fa-envelope"></i>
+                </div>
+                <div class="contact-label">Email</div>
+                <div class="contact-value">satqm2991@gmail.com</div>
+              </div>
+              
+              <div class="contact-card">
+                <div class="contact-icon" style="background: linear-gradient(135deg, #22c55e, #0ea5e9);">
+                  <i class="fas fa-phone"></i>
+                </div>
+                <div class="contact-label">Phone</div>
+                <div class="contact-value">+91 91423 00129</div>
+              </div>
+              
+              <div class="contact-card">
+                <div class="contact-icon" style="background: linear-gradient(135deg, #f59e0b, #f97316);">
+                  <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div class="contact-label">Location</div>
+                <div class="contact-value">Sector 55, Gurugram</div>
+                <div class="contact-value" style="font-size: 0.95rem; margin-top: 5px;">Haryana, India</div>
+              </div>
+            </div>
+            
+            <div class="quote-box">
+              "Let's collaborate to solve complex business problems using <span style="color: #3b82f6; font-weight: 600;">data intelligence</span> and <span style="color: #3b82f6; font-weight: 600;">technology-driven solutions</span>."
+            </div>
+            
+            <div class="social-links">
+              <a href="https://www.linkedin.com/in/satyam-kumar5286o" target="_blank" class="social-link" style="background: rgba(255, 255, 255, 0.1);">
+                <i class="fab fa-linkedin-in" style="color: #0ea5e9;"></i>
+              </a>
+              <a href="https://www.instagram.com/satyqm2.o?igsh=bmQ0aThzamRmMHli" target="_blank" class="social-link" style="background: rgba(255, 255, 255, 0.1);">
+                <i class="fab fa-instagram" style="color: #f43f5e;"></i>
+              </a>
+              <a href="https://wa.me/919142300129?text=Hi%20Satyam,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect" target="_blank" class="social-link" style="background: rgba(255, 255, 255, 0.1);">
+                <i class="fab fa-whatsapp" style="color: #22c55e;"></i>
+              </a>
+              <a href="mailto:satqm2991@gmail.com" class="social-link" style="background: rgba(255, 255, 255, 0.1);">
+                <i class="fas fa-envelope" style="color: #f59e0b;"></i>
+              </a>
+            </div>
+            
+            <button class="download-btn" id="downloadResumeBtn">
+              <i class="fas fa-download"></i> Download Full Resume
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Mobile Navigation -->
+  <div class="mobile-nav">
+    <div class="mobile-nav-buttons">
+      <button class="mobile-nav-btn" id="mobilePrevBtn" disabled>
+        <i class="fas fa-arrow-left"></i>
+      </button>
+      <button class="mobile-nav-center" id="jumpBtn">
+        <i class="fas fa-arrow-up"></i>
+      </button>
+      <button class="mobile-nav-btn" id="mobileNextBtn">
+        <i class="fas fa-arrow-right"></i>
+      </button>
+    </div>
+    <div class="level-indicator">
+      Level <span id="currentLevelMobile">1</span> of 7
+    </div>
+  </div>
+
+  <!-- Back to Top Button -->
+  <div class="back-to-top" id="backToTop">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; <span id="currentYear"></span> Satyam Kumar. All Rights Reserved.</p>
+      <p style="margin-top: 8px; font-size: 0.9rem; color: #475569;">Portfolio Quest - An interactive experience built with HTML, CSS & JavaScript</p>
+    </div>
+  </footer>
+
+  <script>
+    // Game state
+    let currentLevel = 0;
+    let gameStarted = false;
+    let characterX = 50;
+    let characterY = 80;
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    // DOM Elements
+    const heroSection = document.getElementById('heroSection');
+    const levelSections = document.querySelectorAll('.game-section');
+    const startBtn = document.getElementById('startBtn');
+    const prevLevelBtn = document.getElementById('prevLevelBtn');
+    const nextLevelBtn = document.getElementById('nextLevelBtn');
+    const mobilePrevBtn = document.getElementById('mobilePrevBtn');
+    const mobileNextBtn = document.getElementById('mobileNextBtn');
+    const backToTopBtn = document.getElementById('backToTop');
+    const gameCharacter = document.getElementById('gameCharacter');
+    const levelProgress = document.getElementById('levelProgress');
+    const currentLevelTitle = document.getElementById('currentLevelTitle');
+    const currentLevelMobile = document.getElementById('currentLevelMobile');
+    const jumpBtn = document.getElementById('jumpBtn');
+    const downloadResumeBtn = document.getElementById('downloadResumeBtn');
+    const logoText = document.getElementById('logoText');
+    
+    // Level titles
+    const levelTitles = [
+      "Level 1: The Beginning",
+      "Level 2: Education Journey",
+      "Level 3: Professional Quests",
+      "Level 4: Skill Arsenal",
+      "Level 5: Project Expeditions",
+      "Level 6: Achievement Badges",
+      "Level 7: Connect & Conquer"
+    ];
+    
+    // Initialize the game
+    function initGame() {
+      // Set current year
+      document.getElementById('currentYear').textContent = new Date().getFullYear();
+      
+      // Start button event
+      startBtn.addEventListener('click', startGame);
+      
+      // Navigation buttons
+      prevLevelBtn.addEventListener('click', () => navigateLevel(-1));
+      nextLevelBtn.addEventListener('click', () => navigateLevel(1));
+      mobilePrevBtn.addEventListener('click', () => navigateLevel(-1));
+      mobileNextBtn.addEventListener('click', () => navigateLevel(1));
+      
+      // Jump button for character
+      jumpBtn.addEventListener('click', () => {
+        gameCharacter.style.transform = 'translate(-50%, -60%) scale(1.1)';
+        setTimeout(() => {
+          gameCharacter.style.transform = 'translate(-50%, -50%) scale(1)';
+        }, 300);
+      });
+      
+      // Download resume button
+      downloadResumeBtn.addEventListener('click', downloadResume);
+      
+      // Back to top button
+      backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+      
+      // Touch events for mobile navigation
+      document.addEventListener('touchstart', handleTouchStart);
+      document.addEventListener('touchend', handleTouchEnd);
+      
+      // Keyboard navigation
+      document.addEventListener('keydown', handleKeyDown);
+      
+      // Scroll event for back to top button
+      window.addEventListener('scroll', handleScroll);
+      
+      // Mouse move for background effect
+      document.addEventListener('mousemove', handleMouseMove);
+      
+      // Character movement timer
+      setInterval(updateCharacterPosition, 50);
+    }
+    
+    // Start the game
+    function startGame() {
+      gameStarted = true;
+      heroSection.style.display = 'none';
+      levelSections[currentLevel].style.display = 'block';
+      document.querySelector('.level-info').style.display = 'block';
+      document.querySelector('.nav-buttons').style.display = 'flex';
+      logoText.textContent = 'Portfolio Quest';
+      
+      updateLevelInfo();
+      updateCharacterPosition();
+      
+      // Show tutorial message
+      setTimeout(() => {
+        alert('🎮 Welcome to Portfolio Quest!\n\nUse arrow keys or swipe gestures to navigate between levels.\nTap the center button to make SK jump!');
+      }, 500);
+    }
+    
+    // Navigate between levels
+    function navigateLevel(direction) {
+      const prevLevel = currentLevel;
+      currentLevel = Math.max(0, Math.min(6, currentLevel + direction));
+      
+      if (prevLevel !== currentLevel) {
+        levelSections[prevLevel].style.display = 'none';
+        levelSections[currentLevel].style.display = 'block';
+        updateLevelInfo();
+        window.scrollTo(0, 0);
+        
+        // Character jump animation
+        gameCharacter.style.transform = 'translate(-50%, -60%) scale(1.1)';
+        setTimeout(() => {
+          gameCharacter.style.transform = 'translate(-50%, -50%) scale(1)';
+        }, 300);
+      }
+    }
+    
+    // Update level information
+    function updateLevelInfo() {
+      const progress = ((currentLevel + 1) / 7) * 100;
+      levelProgress.style.width = `${progress}%`;
+      currentLevelTitle.textContent = levelTitles[currentLevel];
+      currentLevelMobile.textContent = currentLevel + 1;
+      
+      // Update navigation buttons
+      prevLevelBtn.disabled = currentLevel === 0;
+      nextLevelBtn.disabled = currentLevel === 6;
+      mobilePrevBtn.disabled = currentLevel === 0;
+      mobileNextBtn.disabled = currentLevel === 6;
+    }
+    
+    // Handle touch events
+    function handleTouchStart(e) {
+      touchStartX = e.changedTouches[0].screenX;
+    }
+    
+    function handleTouchEnd(e) {
+      if (!gameStarted) return;
+      
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }
+    
+    function handleSwipe() {
+      if (!touchStartX || !touchEndX) return;
+      
+      const diff = touchStartX - touchEndX;
+      
+      if (diff > 50) {
+        // Swipe left - next level
+        navigateLevel(1);
+      } else if (diff < -50) {
+        // Swipe right - previous level
+        navigateLevel(-1);
+      }
+      
+      touchStartX = null;
+      touchEndX = null;
+    }
+    
+    // Handle keyboard navigation
+    function handleKeyDown(e) {
+      if (!gameStarted) return;
+      
+      switch(e.key) {
+        case 'ArrowLeft':
+          navigateLevel(-1);
+          break;
+        case 'ArrowRight':
+          navigateLevel(1);
+          break;
+        case 'ArrowUp':
+          characterY = Math.max(20, characterY - 5);
+          break;
+        case 'ArrowDown':
+          characterY = Math.min(80, characterY + 5);
+          break;
+        case 'ArrowLeft':
+          characterX = Math.max(10, characterX - 5);
+          break;
+        case 'ArrowRight':
+          characterX = Math.min(90, characterX + 5);
+          break;
+      }
+    }
+    
+    // Handle scroll event
+    function handleScroll() {
+      if (window.scrollY > 300) {
+        backToTopBtn.classList.add('visible');
+      } else {
+        backToTopBtn.classList.remove('visible');
+      }
+    }
+    
+    // Handle mouse move for background effect
+    function handleMouseMove(e) {
+      const x = (e.clientX / window.innerWidth) * 100;
+      const y = (e.clientY / window.innerHeight) * 100;
+      
+      document.documentElement.style.setProperty('--mouse-x', `${x}%`);
+      document.documentElement.style.setProperty('--mouse-y', `${y}%`);
+    }
+    
+    // Update character position
+    function updateCharacterPosition() {
+      if (gameStarted) {
+        const x = Math.max(10, Math.min(90, characterX));
+        const y = Math.max(20, Math.min(80, characterY));
+        
+        gameCharacter.style.left = `${x}%`;
+        gameCharacter.style.bottom = `${y}%`;
+        gameCharacter.style.transform = 'translate(-50%, -50%)';
+      }
+    }
+    
+    // Download resume function
+    function downloadResume() {
+      // Create a temporary anchor element
+      const link = document.createElement('a');
+      link.href = 'SATYAM (1) (1).pdf';
+      link.download = 'Satyam_Kumar_Resume.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      
+      // Show success message
+      alert('✅ Resume downloaded successfully!\n\nThank you for exploring my portfolio. Feel free to connect with me for opportunities!');
+    }
+    
+    // Initialize the game when the page loads
+    window.addEventListener('DOMContentLoaded', initGame);
+  </script>
+</body>
+</html>
+```
