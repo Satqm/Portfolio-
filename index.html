@@ -11,11 +11,9 @@
       --secondary-gradient: linear-gradient(135deg, #8b5cf6, #ec4899);
       --success-gradient: linear-gradient(135deg, #10b981, #0ea5e9);
       --warning-gradient: linear-gradient(135deg, #f59e0b, #ef4444);
-      --indigo-gradient: linear-gradient(135deg, #6366f1, #8b5cf6);
-      --rose-gradient: linear-gradient(135deg, #f43f5e, #ec4899);
-      --sky-gradient: linear-gradient(135deg, #0ea5e9, #3b82f6);
       --game-accent: #00f0ff;
       --card-bg: rgba(15, 23, 42, 0.6);
+      --neon-glow: 0 0 10px rgba(0, 240, 255, 0.5), 0 0 20px rgba(0, 240, 255, 0.3);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -43,10 +41,11 @@
     /* --- Header --- */
     header {
       position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-      background: rgba(2, 6, 23, 0.7);
+      background: rgba(2, 6, 23, 0.85);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(56, 189, 248, 0.1);
       padding: 12px 0;
+      transform: translateY(-100%); /* Hidden initially */
     }
 
     .header-content { display: flex; justify-content: space-between; align-items: center; }
@@ -57,7 +56,10 @@
       background: var(--primary-gradient);
       display: flex; align-items: center; justify-content: center;
       font-weight: bold; font-size: 18px; box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+      overflow: hidden;
     }
+    
+    .logo-img-small { width: 100%; height: 100%; object-fit: cover; }
 
     .level-info { text-align: center; }
     .level-title {
@@ -99,30 +101,54 @@
     .hero-section {
       display: flex; flex-direction: column; align-items: center; justify-content: center;
       text-align: center; min-height: calc(100vh - 150px);
+      padding: 20px;
     }
-    .hero-logo {
-      width: 140px; height: 140px; border-radius: 50%;
+    .hero-avatar-container {
+      width: 160px; height: 160px; 
+      border-radius: 50%;
+      padding: 5px;
       background: linear-gradient(135deg, #2563EB, #00f0ff);
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 30px; font-size: 50px; font-weight: bold;
       box-shadow: 0 0 50px rgba(0, 240, 255, 0.3);
       animation: pulse 3s infinite;
+      margin-bottom: 30px;
+      position: relative;
     }
+    .hero-avatar {
+      width: 100%; height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #020617;
+      background-color: #0f172a;
+    }
+    
     @keyframes pulse {
       0% { box-shadow: 0 0 0 0 rgba(0, 240, 255, 0.4); }
       70% { box-shadow: 0 0 0 20px rgba(0, 240, 255, 0); }
       100% { box-shadow: 0 0 0 0 rgba(0, 240, 255, 0); }
     }
+    
     .hero-title {
-      font-size: 3rem; font-weight: 800; margin-bottom: 20px;
+      font-size: 3.5rem; font-weight: 800; margin-bottom: 15px;
       background: linear-gradient(to right, #ffffff, #94a3b8);
       -webkit-background-clip: text; color: transparent;
+      letter-spacing: -2px;
     }
+    
+    .hero-badges {
+      display: flex; gap: 10px; margin-bottom: 30px; flex-wrap: wrap; justify-content: center;
+    }
+    .hero-badge {
+      background: rgba(0, 240, 255, 0.1); border: 1px solid rgba(0, 240, 255, 0.3);
+      color: var(--game-accent); padding: 5px 15px; border-radius: 20px; font-size: 0.85rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 1px;
+    }
+
     .start-btn {
       background: var(--game-accent); color: #020617;
       border: none; padding: 16px 45px; font-size: 18px; font-weight: 800;
       border-radius: 50px; cursor: pointer; transition: all 0.3s ease;
       box-shadow: 0 0 20px rgba(0, 240, 255, 0.4); text-transform: uppercase;
+      position: relative; overflow: hidden;
     }
     .start-btn:hover { transform: scale(1.05); box-shadow: 0 0 40px rgba(0, 240, 255, 0.6); }
 
@@ -145,17 +171,23 @@
     .card {
       background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 20px; padding: 30px; transition: all 0.3s ease;
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px); position: relative; overflow: hidden;
+    }
+    .card::before {
+      content: ''; position: absolute; top:0; left:0; width: 4px; height: 100%;
+      background: linear-gradient(to bottom, var(--game-accent), transparent);
+      opacity: 0.5;
     }
     .card:hover {
       border-color: var(--game-accent); transform: translateY(-5px);
       box-shadow: 0 10px 30px -10px rgba(0, 240, 255, 0.15);
     }
-    .card-title { font-size: 1.5rem; font-weight: 700; margin-bottom: 10px; color: white; }
+    .card-title { font-size: 1.4rem; font-weight: 700; margin-bottom: 10px; color: white; display: flex; align-items: center; gap: 10px; }
     .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px; }
     .tag {
       background: rgba(255, 255, 255, 0.05); padding: 5px 12px;
       border-radius: 20px; font-size: 0.8rem; border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #cbd5e1;
     }
 
     /* --- TIMELINE --- */
@@ -168,10 +200,18 @@
     .timeline-item::before {
       content: ''; position: absolute; left: 11px; top: 5px; width: 20px; height: 20px;
       background: #0f172a; border: 2px solid #3b82f6; border-radius: 50%; z-index: 2;
+      box-shadow: 0 0 10px var(--game-accent);
     }
     .timeline-date { color: var(--game-accent); font-weight: 600; font-size: 0.9rem; margin-bottom: 5px; }
 
-    /* --- MEMORY GAME STYLES --- */
+    /* --- SKILL BARS --- */
+    .skill-category-title { color: var(--game-accent); font-weight: bold; margin-bottom: 15px; display: block; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; }
+    .skill-item { margin-bottom: 15px; }
+    .skill-name { display: flex; justify-content: space-between; font-size: 0.9rem; margin-bottom: 5px; color: #cbd5e1; }
+    .skill-track { width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 10px; overflow: hidden; }
+    .skill-fill { height: 100%; border-radius: 10px; box-shadow: 0 0 10px currentColor; }
+
+    /* --- MEMORY GAME --- */
     .memory-wrapper {
       background: rgba(15, 23, 42, 0.8);
       padding: 20px; border-radius: 24px;
@@ -187,7 +227,6 @@
       padding: 10px; border-radius: 12px;
     }
     .mem-stat-val { color: var(--game-accent); font-weight: bold; }
-    
     .memory-grid {
       display: grid; grid-template-columns: repeat(4, 1fr);
       gap: 10px; perspective: 1000px;
@@ -195,34 +234,21 @@
     .memory-card {
       background-color: transparent; aspect-ratio: 1;
       cursor: pointer; position: relative;
-      transform-style: preserve-3d; transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transform-style: preserve-3d; transition: transform 0.4s;
     }
     .memory-card.flip { transform: rotateY(180deg); }
-    .memory-card.matched .front-face {
-      border-color: #10B981; box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
-      background: rgba(16, 185, 129, 0.1);
-    }
-    
     .front-face, .back-face {
       width: 100%; height: 100%; position: absolute;
       border-radius: 12px; display: flex; justify-content: center; align-items: center;
       backface-visibility: hidden; font-size: 1.8rem;
     }
-    .front-face {
-      background: #1e293b; color: white; transform: rotateY(180deg);
-      border: 2px solid var(--game-accent);
-    }
-    .back-face {
-      background: linear-gradient(135deg, #334155, #1e293b);
-      border: 1px solid #475569; color: rgba(255,255,255,0.1);
-    }
+    .front-face { background: #1e293b; color: white; transform: rotateY(180deg); border: 2px solid var(--game-accent); }
+    .back-face { background: linear-gradient(135deg, #334155, #1e293b); border: 1px solid #475569; }
     .mem-overlay {
       position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(15, 23, 42, 0.95);
-      backdrop-filter: blur(5px);
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      border-radius: 20px; z-index: 20; display: none;
-      padding: 20px; text-align: center;
+      background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(5px);
+      flex-direction: column; align-items: center; justify-content: center;
+      border-radius: 20px; z-index: 20; display: none; padding: 20px; text-align: center;
     }
 
     /* --- CONTACT GRID --- */
@@ -233,15 +259,16 @@
       border-radius: 16px; text-decoration: none; color: white;
       transition: all 0.3s; border: 1px solid rgba(255,255,255,0.05);
     }
-    .social-btn:hover { background: rgba(255,255,255,0.1); transform: translateY(-3px); }
-    .yt-btn:hover { background: rgba(255, 0, 0, 0.1); border-color: rgba(255,0,0,0.5); }
-    .yt-icon { color: #ff0000; }
+    .social-btn:hover { background: rgba(255,255,255,0.1); transform: translateY(-3px); border-color: var(--game-accent); }
     
-    /* --- SKILL BARS --- */
-    .skill-item { margin-bottom: 15px; }
-    .skill-name { display: flex; justify-content: space-between; font-size: 0.9rem; margin-bottom: 5px; color: #cbd5e1; }
-    .skill-track { width: 100%; height: 8px; background: rgba(255,255,255,0.1); border-radius: 10px; overflow: hidden; }
-    .skill-fill { height: 100%; border-radius: 10px; }
+    .loot-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 12px 25px; background: rgba(16, 185, 129, 0.1);
+      border: 1px solid #10b981; color: #10b981;
+      border-radius: 30px; text-decoration: none; font-weight: bold;
+      transition: all 0.3s; margin-top: 20px; cursor: pointer;
+    }
+    .loot-btn:hover { background: #10b981; color: black; box-shadow: 0 0 20px rgba(16, 185, 129, 0.4); }
 
     /* Mobile Nav */
     .mobile-nav { position: fixed; bottom: 20px; left: 20px; right: 20px; z-index: 1000; display: none; }
@@ -253,11 +280,10 @@
     @media (max-width: 768px) {
       .mobile-nav { display: block; }
       .nav-buttons { display: none; }
-      .hero-title { font-size: 2rem; }
+      .hero-title { font-size: 2.2rem; }
       .level-title-main { font-size: 1.8rem; }
-      .timeline::before { left: 10px; }
       .timeline-item { padding-left: 35px; }
-      .timeline-item::before { left: 2px; }
+      .timeline::before { left: 10px; }
     }
   </style>
 </head>
@@ -267,8 +293,10 @@
     <div class="container">
       <div class="header-content">
         <div class="logo-section">
-          <div class="logo-circle">SK</div>
-          <div class="logo-text" id="logoText" style="font-weight: 700;">Quest Mode</div>
+          <div class="logo-circle">
+            <img src="Satyam.jpg" alt="SK" class="logo-img-small" onerror="this.src='https://drive.google.com/uc?export=view&id=1UvRz5HZPPLKaFX0540lmo9q1vhg9Z6bG'">
+          </div>
+          <div class="logo-text" style="font-weight: 700;">Quest Mode</div>
         </div>
         
         <div class="level-info">
@@ -288,33 +316,51 @@
 
   <main>
     <section class="hero-section" id="heroSection">
-      <div class="hero-logo"><i class="fas fa-fingerprint" style="color:white;"></i></div>
-      <h1 class="hero-title">PORTFOLIO QUEST</h1>
-      <p style="color: #94a3b8; max-width: 500px; margin-bottom: 40px; line-height: 1.6;">
-        Welcome to the simulation. Navigate through my career data, test your neural capacity in the Game Module, and unlock the final contact layer.
+      <div class="hero-avatar-container">
+        <img src="Satyam.jpg" alt="Satyam Kumar" class="hero-avatar" onerror="this.src='https://drive.google.com/uc?export=view&id=1UvRz5HZPPLKaFX0540lmo9q1vhg9Z6bG'">
+      </div>
+      
+      <div class="hero-badges">
+        <span class="hero-badge">CA Finalist</span>
+        <span class="hero-badge">Data Mage</span>
+        <span class="hero-badge">Prompt Engineer</span>
+      </div>
+
+      <h1 class="hero-title">SATYAM KUMAR</h1>
+      <p style="color: #94a3b8; max-width: 600px; margin-bottom: 40px; line-height: 1.6; font-size: 1.1rem;">
+        <i class="fas fa-terminal" style="color:var(--game-accent); margin-right:8px;"></i>
+        Character Class: <b>Techno-Financial Auditor</b>.<br>
+        Special Ability: Bridging the analogue realm of Traditional Accounting with the digital frontier of Agentic AI & Data Analytics.
       </p>
-      <button class="start-btn" id="startBtn">Initialize <i class="fas fa-power-off ml-2"></i></button>
+      
+      <button class="start-btn" id="startBtn">Initialize Quest <i class="fas fa-power-off ml-2"></i></button>
+      
+      <div style="margin-top: 20px; display: flex; gap: 15px;">
+        <button onclick="downloadResume()" style="background: transparent; border: 1px solid #94a3b8; color: #94a3b8; padding: 10px 20px; border-radius: 30px; cursor: pointer; transition: 0.3s;">
+            <i class="fas fa-download"></i> Quick Resume
+        </button>
+      </div>
     </section>
 
     <section class="game-section" id="level1">
       <div class="container">
         <div class="level-header">
-          <div class="level-icon-container"><i class="fas fa-rocket" style="color: #0ea5e9;"></i></div>
+          <div class="level-icon-container"><i class="fas fa-user-astronaut" style="color: #0ea5e9;"></i></div>
           <h2 class="level-title-main">PLAYER PROFILE</h2>
-          <p class="level-description">Satyam Kumar: A multi-class character combining Financial Audit precision with Data Sorcery.</p>
+          <p class="level-description">Stats & Attributes loaded from server. Analyzing core competencies...</p>
         </div>
         <div class="card-grid">
           <div class="card">
-            <h3 class="card-title"><i class="fas fa-scroll" style="color: #F59E0B;"></i> CA Finalist</h3>
-            <p style="color: #94a3b8; font-size: 0.9rem;">High-level financial strategist. Specialized in unearthing value from complex data structures.</p>
+            <h3 class="card-title"><i class="fas fa-shield-alt" style="color: #F59E0B;"></i> Audit Specialist</h3>
+            <p style="color: #94a3b8; font-size: 0.9rem;">High-level financial strategist. Specialized in Internal Audit, IFC/ICFR testing, and Risk Governance.</p>
           </div>
           <div class="card">
-            <h3 class="card-title"><i class="fas fa-database" style="color: #10B981;"></i> Data Mage</h3>
-            <p style="color: #94a3b8; font-size: 0.9rem;">Wielding SQL and Python to transform raw chaos into structured business intelligence.</p>
+            <h3 class="card-title"><i class="fas fa-magic" style="color: #10B981;"></i> Data Sorcery</h3>
+            <p style="color: #94a3b8; font-size: 0.9rem;">Transforming raw chaos into intelligence using Python, SQL, and Advanced Tableau Visualizations.</p>
           </div>
           <div class="card">
-            <h3 class="card-title"><i class="fas fa-microchip" style="color: #8b5cf6;"></i> Tech Hybrid</h3>
-            <p style="color: #94a3b8; font-size: 0.9rem;">Building PWAs and Automation tools. Bridging the gap between Audit and Code.</p>
+            <h3 class="card-title"><i class="fas fa-robot" style="color: #8b5cf6;"></i> AI Integration</h3>
+            <p style="color: #94a3b8; font-size: 0.9rem;">Deploying Agentic AI and Prompt Engineering to automate the mundane and elevate decision-making.</p>
           </div>
         </div>
       </div>
@@ -323,7 +369,7 @@
     <section class="game-section" id="level2">
       <div class="container">
         <div class="level-header">
-          <div class="level-icon-container"><i class="fas fa-book-journal-whills" style="color: #ec4899;"></i></div>
+          <div class="level-icon-container"><i class="fas fa-scroll" style="color: #ec4899;"></i></div>
           <h2 class="level-title-main">KNOWLEDGE TREE</h2>
         </div>
         <div class="timeline">
@@ -337,12 +383,13 @@
             <div class="timeline-date">2021 - 2024</div>
             <h3 style="font-size: 1.2rem; color: white;">BA Program</h3>
             <p style="color: #94a3b8;">Shaheed Bhagat Singh College, DU</p>
-            <p style="color: #64748B; font-size: 0.9rem;">Marketing & Data Analytics Specialization</p>
+            <p style="color: #64748B; font-size: 0.9rem;">Marketing & Data Analytics Specialization (CGPA: 7.4)</p>
           </div>
           <div class="timeline-item">
             <div class="timeline-date">CLASS 12 (2021)</div>
             <h3 style="font-size: 1.2rem; color: white;">School Topper</h3>
-            <p style="color: #94a3b8;">Score: 92.6%</p>
+            <p style="color: #94a3b8;">Jawahar Navodaya Vidyalaya</p>
+            <p style="color: #64748B; font-size: 0.9rem;">Score: 92.6%</p>
           </div>
         </div>
       </div>
@@ -358,12 +405,12 @@
           <div class="card">
             <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
               <h3 class="card-title" style="margin:0;">Sun Life</h3>
-              <span class="tag">Current</span>
+              <span class="tag" style="background:rgba(16, 185, 129, 0.2); color:#10b981;">Current Mission</span>
             </div>
-            <p style="color: #0ea5e9; font-size: 0.9rem; margin-bottom: 10px;">Industrial Trainee</p>
+            <p style="color: #0ea5e9; font-size: 0.9rem; margin-bottom: 10px;">Industrial Trainee (Jun 2025 - Present)</p>
             <ul style="color: #94a3b8; font-size: 0.9rem; list-style-position: inside; line-height: 1.6;">
-              <li>Risk assessment via Tableau</li>
-              <li>VBA Automation development</li>
+              <li>Risk assessment via Tableau visualizations</li>
+              <li>VBA Automation development for audit</li>
               <li>Data-driven audit methodology</li>
             </ul>
           </div>
@@ -372,10 +419,11 @@
               <h3 class="card-title" style="margin:0;">MGB Advisors</h3>
               <span class="tag">XP Gained</span>
             </div>
-            <p style="color: #0ea5e9; font-size: 0.9rem; margin-bottom: 10px;">Article Trainee</p>
+            <p style="color: #0ea5e9; font-size: 0.9rem; margin-bottom: 10px;">Article Trainee (May 2024 - Jun 2025)</p>
             <ul style="color: #94a3b8; font-size: 0.9rem; list-style-position: inside; line-height: 1.6;">
               <li>IFC/ICFR testing (P2P, O2C)</li>
               <li>Treasury & Fixed Assets Audit</li>
+              <li>Clients: OLX, ZEE Media, Nykaa (Earth Rhythm)</li>
             </ul>
           </div>
         </div>
@@ -385,38 +433,57 @@
     <section class="game-section" id="level4">
       <div class="container">
         <div class="level-header">
-          <div class="level-icon-container"><i class="fas fa-bolt" style="color: #eab308;"></i></div>
+          <div class="level-icon-container"><i class="fas fa-microchip" style="color: #eab308;"></i></div>
           <h2 class="level-title-main">SKILL ARSENAL</h2>
         </div>
         <div class="card-grid">
           <div class="card">
-            <h3 class="card-title" style="font-size: 1.2rem; margin-bottom: 20px;">Code & Data</h3>
+            <h3 class="card-title" style="margin-bottom: 20px;"><i class="fas fa-brain"></i> AI & Construct</h3>
+            <span class="skill-category-title">Next-Gen Tech</span>
+            
             <div class="skill-item">
-              <div class="skill-name"><span>SQL / Database</span><span>90%</span></div>
-              <div class="skill-track"><div class="skill-fill" style="width: 90%; background: #3b82f6;"></div></div>
+              <div class="skill-name"><span>Agentic AI Workflows</span><span>LVL 5</span></div>
+              <div class="skill-track"><div class="skill-fill" style="width: 85%; background: #ec4899; color:#ec4899;"></div></div>
             </div>
             <div class="skill-item">
-              <div class="skill-name"><span>Python</span><span>85%</span></div>
-              <div class="skill-track"><div class="skill-fill" style="width: 85%; background: #0ea5e9;"></div></div>
+              <div class="skill-name"><span>Prompt Engineering</span><span>LVL 8</span></div>
+              <div class="skill-track"><div class="skill-fill" style="width: 92%; background: #d946ef; color:#d946ef;"></div></div>
             </div>
-            <div class="skill-item">
-              <div class="skill-name"><span>VBA Automation</span><span>85%</span></div>
-              <div class="skill-track"><div class="skill-fill" style="width: 85%; background: #6366f1;"></div></div>
+             <div class="skill-item">
+              <div class="skill-name"><span>Web Dev (Full Stack)</span><span>LVL 6</span></div>
+              <div class="skill-track"><div class="skill-fill" style="width: 75%; background: #a855f7; color:#a855f7;"></div></div>
             </div>
           </div>
+
           <div class="card">
-            <h3 class="card-title" style="font-size: 1.2rem; margin-bottom: 20px;">Finance Core</h3>
+            <h3 class="card-title" style="margin-bottom: 20px;"><i class="fas fa-database"></i> Code & Data</h3>
+            <span class="skill-category-title">Core Processing</span>
+            
             <div class="skill-item">
-              <div class="skill-name"><span>Internal Audit</span><span>95%</span></div>
-              <div class="skill-track"><div class="skill-fill" style="width: 95%; background: #10b981;"></div></div>
+              <div class="skill-name"><span>SQL / Database</span><span>LVL 8</span></div>
+              <div class="skill-track"><div class="skill-fill" style="width: 85%; background: #3b82f6; color:#3b82f6;"></div></div>
             </div>
             <div class="skill-item">
-              <div class="skill-name"><span>Risk & Controls</span><span>90%</span></div>
-              <div class="skill-track"><div class="skill-fill" style="width: 90%; background: #059669;"></div></div>
+              <div class="skill-name"><span>Python Automation</span><span>LVL 7</span></div>
+              <div class="skill-track"><div class="skill-fill" style="width: 80%; background: #0ea5e9; color:#0ea5e9;"></div></div>
             </div>
             <div class="skill-item">
-              <div class="skill-name"><span>Taxation</span><span>85%</span></div>
-              <div class="skill-track"><div class="skill-fill" style="width: 85%; background: #34d399;"></div></div>
+              <div class="skill-name"><span>VBA & Power Query</span><span>LVL 9</span></div>
+              <div class="skill-track"><div class="skill-fill" style="width: 90%; background: #6366f1; color:#6366f1;"></div></div>
+            </div>
+          </div>
+          
+          <div class="card">
+            <h3 class="card-title" style="margin-bottom: 20px;"><i class="fas fa-balance-scale"></i> Finance Class</h3>
+            <span class="skill-category-title">Guild Skills</span>
+            
+            <div class="skill-item">
+              <div class="skill-name"><span>Internal Audit</span><span>MAX</span></div>
+              <div class="skill-track"><div class="skill-fill" style="width: 95%; background: #10b981; color:#10b981;"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-name"><span>Risk & Controls</span><span>LVL 9</span></div>
+              <div class="skill-track"><div class="skill-fill" style="width: 90%; background: #059669; color:#059669;"></div></div>
             </div>
           </div>
         </div>
@@ -440,9 +507,9 @@
           </div>
           <div class="card">
             <h3 class="card-title">Coaching PWA</h3>
-            <p style="color: #94a3b8; margin-bottom: 15px;">Management system for institutes with student tracking.</p>
+            <p style="color: #94a3b8; margin-bottom: 15px;">Management system for institutes with student tracking and offline capabilities.</p>
             <div class="tags">
-               <span class="tag">JS</span><span class="tag">Interactive</span>
+               <span class="tag">JS</span><span class="tag">Interactive</span><span class="tag">Automation</span>
             </div>
             <a href="https://satqm.github.io/Mithilesh-/" target="_blank" style="display: inline-block; margin-top: 15px; color: var(--game-accent); text-decoration: none; font-weight: 600;">Launch <i class="fas fa-external-link-alt"></i></a>
           </div>
@@ -485,21 +552,44 @@
         <div class="level-header">
           <div class="level-icon-container"><i class="fas fa-trophy" style="color: #f43f5e;"></i></div>
           <h2 class="level-title-main">TROPHY ROOM</h2>
+          <p class="level-description">Awards and Certified Loot acquired during the campaign.</p>
         </div>
-        <div class="card-grid">
+        
+        <h3 style="color: white; margin-bottom: 20px; border-left: 3px solid var(--game-accent); padding-left: 10px;">Major Achievements</h3>
+        <div class="card-grid" style="margin-bottom: 50px;">
           <div class="card" style="border-left: 4px solid #f43f5e;">
             <h3 class="card-title">National Science Award</h3>
             <p style="color: #94a3b8;">₹50,000 Cash Prize for Rural Health Innovation.</p>
           </div>
           <div class="card" style="border-left: 4px solid #8b5cf6;">
             <h3 class="card-title">MSME Winner</h3>
-            <p style="color: #94a3b8;">1st Prize - Essay on Digital Transformation.</p>
+            <p style="color: #94a3b8;">1st Prize - Essay on Digital Transformation in SMEs.</p>
           </div>
           <div class="card" style="border-left: 4px solid #10b981;">
             <h3 class="card-title">School Topper</h3>
             <p style="color: #94a3b8;">Class 12th CBSE (92.6%)</p>
           </div>
         </div>
+
+        <h3 style="color: white; margin-bottom: 20px; border-left: 3px solid #eab308; padding-left: 10px;">Certified Loot</h3>
+        <div class="card" style="border-color: #eab308;">
+            <div class="tags" style="margin-top: 0; gap: 12px;">
+                <span class="tag"><i class="fas fa-check-circle" style="color:#eab308; margin-right:5px;"></i> AI Security & Governance</span>
+                <span class="tag"><i class="fas fa-check-circle" style="color:#eab308; margin-right:5px;"></i> BCG GenAI - Financial Chatbot</span>
+                <span class="tag"><i class="fas fa-check-circle" style="color:#eab308; margin-right:5px;"></i> KPMG Audit Certification</span>
+                <span class="tag"><i class="fas fa-check-circle" style="color:#eab308; margin-right:5px;"></i> Excel Skills for Business</span>
+                <span class="tag"><i class="fas fa-check-circle" style="color:#eab308; margin-right:5px;"></i> NISM Certifications</span>
+                <span class="tag"><i class="fas fa-check-circle" style="color:#eab308; margin-right:5px;"></i> ICTSS - IT Course (ICAI)</span>
+            </div>
+            
+            <div style="text-align: center; margin-top: 25px;">
+                <button onclick="downloadCerts()" class="loot-btn">
+                    <i class="fas fa-file-archive"></i> Download All Certificates
+                </button>
+                <div style="font-size: 0.8rem; color: #64748b; margin-top: 5px;">*No password required for access</div>
+            </div>
+        </div>
+
       </div>
     </section>
 
@@ -508,11 +598,13 @@
         <div class="level-header">
           <div class="level-icon-container"><i class="fas fa-satellite-dish" style="color: #22c55e;"></i></div>
           <h2 class="level-title-main">ESTABLISH UPLINK</h2>
-          <p class="level-description">Transmission lines are open.</p>
+          <p class="level-description">Transmission lines are open. Connect with the player.</p>
         </div>
         
         <div style="max-width: 600px; margin: 0 auto; text-align: center;">
-          <div class="logo-circle" style="width: 100px; height: 100px; margin: 0 auto 20px; font-size: 2rem;">SK</div>
+          <div class="logo-circle" style="width: 120px; height: 120px; margin: 0 auto 20px; border: 3px solid var(--game-accent);">
+              <img src="Satyam.jpg" alt="SK" class="logo-img-small" onerror="this.src='https://drive.google.com/uc?export=view&id=1UvRz5HZPPLKaFX0540lmo9q1vhg9Z6bG'">
+          </div>
           <h2 style="margin-bottom: 5px;">Satyam Kumar</h2>
           <p style="color: #94a3b8; margin-bottom: 30px;">Sector 55, Gurugram | +91 91423 00129</p>
 
@@ -550,7 +642,7 @@
             </a>
           </div>
           
-          <button id="downloadResumeBtn" style="margin-top: 40px; background: transparent; border: 1px solid var(--game-accent); color: var(--game-accent); padding: 15px 30px; border-radius: 50px; font-weight: 600; cursor: pointer; transition: 0.3s;">
+          <button onclick="downloadResume()" style="margin-top: 40px; background: transparent; border: 1px solid var(--game-accent); color: var(--game-accent); padding: 15px 30px; border-radius: 50px; font-weight: 600; cursor: pointer; transition: 0.3s;">
             <i class="fas fa-download"></i> Download Data Log (Resume)
           </button>
         </div>
@@ -568,19 +660,29 @@
   </div>
 
   <script>
+    // --- DOWNLOAD FUNCTIONS (No Password) ---
+    function downloadResume() {
+        const link = document.createElement('a');
+        link.href = 'SATYAM (1) (1).pdf'; // File name from your reference
+        link.download = 'Satyam_Kumar_Resume.pdf';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        alert("Downloading Resume... (Access Granted)");
+    }
+
+    function downloadCerts() {
+        const link = document.createElement('a');
+        link.href = 'Certificates.pdf'; // File name from your reference
+        link.download = 'Satyam_Certificates.pdf';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        alert("Downloading Loot Crate... (Certificates)");
+    }
+
     // --- STATE ---
-    let currentLevel = 0; // 0=Hero, 1..7=Levels
-    // Levels mapping:
-    // 0: Hero (Hidden from nav array essentially)
-    // 1: Intro
-    // 2: Education
-    // 3: Work
-    // 4: Skills
-    // 5: Projects
-    // 6: GAME (Neural Link)
-    // 7: Achievements
-    // 8: Connect
-    
+    let currentLevel = 0; 
     const totalLevels = 8;
     const sectionIds = ['level1', 'level2', 'level3', 'level4', 'level5', 'level6', 'level7', 'level8'];
     const titles = [
@@ -595,10 +697,7 @@
     
     // --- INIT ---
     function init() {
-      // Hide all game sections initially
       sections.forEach(s => s.style.display = 'none');
-      header.style.transform = 'translateY(-100%)'; // Hide header on hero
-      header.style.transition = 'transform 0.5s ease';
 
       startBtn.addEventListener('click', () => {
         hero.style.display = 'none';
@@ -611,15 +710,6 @@
       document.getElementById('nextLevelBtn').addEventListener('click', () => changeLevel(1));
       document.getElementById('mobilePrevBtn').addEventListener('click', () => changeLevel(-1));
       document.getElementById('mobileNextBtn').addEventListener('click', () => changeLevel(1));
-      
-      // Resume
-      document.getElementById('downloadResumeBtn').addEventListener('click', () => {
-        alert("Downloading Satyam_Kumar_Resume.pdf...");
-        const link = document.createElement('a');
-        link.href = '#'; // Add actual link
-        link.download = 'Satyam_Resume.pdf';
-        link.click();
-      });
       
       // Mouse move effect
       document.addEventListener('mousemove', (e) => {
@@ -651,9 +741,7 @@
       document.getElementById('nextLevelBtn').disabled = (index === totalLevels - 1);
 
       // Initialize game if on Level 6 (Index 5)
-      if (index === 5) {
-        if (!gameInitialized) initMemoryGame();
-      }
+      if (index === 5 && !gameInitialized) initMemoryGame();
     }
 
     // --- MEMORY GAME LOGIC ---
@@ -674,7 +762,6 @@
       document.getElementById('mem-timer').innerText = '0s';
       if(timer) clearInterval(timer);
       
-      // Create Deck
       const deck = [...icons, ...icons].sort(() => Math.random() - 0.5);
       
       deck.forEach(icon => {
@@ -748,7 +835,6 @@
       const title = document.getElementById('mem-rating-title');
       const desc = document.getElementById('mem-rating-desc');
       
-      // 10-Tier Ranking Logic
       let rank = "";
       let flavor = "";
       
@@ -756,12 +842,8 @@
       else if (time < 18) { rank = "AI SINGULARITY 🤖"; flavor = "Processing speed exceeds human limits."; }
       else if (time < 21) { rank = "CYBER GOD ⚡"; flavor = "Your focus is terrifying."; }
       else if (time < 25) { rank = "NEURAL ARCHITECT 🧠"; flavor = "Extremely efficient memory allocation."; }
-      else if (time < 30) { rank = "MEMORY MAESTER 🎓"; flavor = "Solid performance. Above average."; }
       else if (time < 35) { rank = "SILICON SAGE 🧘"; flavor = "Good, but the system needs more RAM."; }
-      else if (time < 40) { rank = "BYTE WARRIOR ⚔️"; flavor = "You fought well, but latency is high."; }
-      else if (time < 50) { rank = "DATA NOVICE 👶"; flavor = "Training wheels required."; }
-      else if (time < 60) { rank = "SYSTEM LAG 🐌"; flavor = "Packet loss detected."; }
-      else { rank = "404 BRAIN NOT FOUND 🚫"; flavor = "Please restart your hippocampus."; }
+      else { rank = "SYSTEM LAG 🐌"; flavor = "Packet loss detected. Try again."; }
 
       title.innerText = rank;
       desc.innerText = `${flavor} (Time: ${time}s | Moves: ${moves})`;
@@ -770,9 +852,6 @@
 
     // Run
     init();
-
   </script>
 </body>
 </html>
-
-
