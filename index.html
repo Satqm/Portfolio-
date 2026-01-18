@@ -11,10 +11,7 @@
       --secondary-gradient: linear-gradient(135deg, #8b5cf6, #ec4899);
       --game-accent: #00f0ff;
       --card-bg: rgba(15, 23, 42, 0.6);
-      --youtube-red: #ff0000;
-      --linkedin-blue: #0077b5;
-      --telegram-blue: #0088cc;
-      --insta-gradient: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+      --neon-glow: 0 0 10px rgba(0, 240, 255, 0.5), 0 0 20px rgba(0, 240, 255, 0.3);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -37,7 +34,7 @@
       pointer-events: none;
     }
 
-    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; position: relative; }
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
     /* --- Header --- */
     header {
@@ -60,7 +57,6 @@
       font-weight: bold; font-size: 18px; box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
       overflow: hidden;
     }
-    
     .logo-img-small { width: 100%; height: 100%; object-fit: cover; }
 
     .level-info { text-align: center; }
@@ -116,11 +112,8 @@
       position: relative;
     }
     .hero-avatar {
-      width: 100%; height: 100%;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 4px solid #020617;
-      background-color: #0f172a;
+      width: 100%; height: 100%; border-radius: 50%; object-fit: cover;
+      border: 4px solid #020617; background-color: #0f172a;
     }
     
     @keyframes pulse {
@@ -141,8 +134,8 @@
     }
     .hero-badge {
       background: rgba(0, 240, 255, 0.1); border: 1px solid rgba(0, 240, 255, 0.3);
-      color: var(--game-accent); padding: 5px 15px; border-radius: 20px; font-size: 0.85rem; font-weight: 600;
-      text-transform: uppercase; letter-spacing: 1px;
+      color: var(--game-accent); padding: 5px 15px; border-radius: 20px;
+      font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;
     }
 
     .start-btn {
@@ -150,12 +143,20 @@
       border: none; padding: 16px 45px; font-size: 18px; font-weight: 800;
       border-radius: 50px; cursor: pointer; transition: all 0.3s ease;
       box-shadow: 0 0 20px rgba(0, 240, 255, 0.4); text-transform: uppercase;
-      position: relative; overflow: hidden;
+      position: relative; overflow: hidden; margin-bottom: 20px;
     }
     .start-btn:hover { transform: scale(1.05); box-shadow: 0 0 40px rgba(0, 240, 255, 0.6); }
 
+    .game-direct-btn {
+        background: transparent; border: 2px solid #f43f5e; color: #f43f5e;
+        padding: 12px 30px; border-radius: 50px; font-weight: bold; cursor: pointer;
+        transition: 0.3s; display: flex; align-items: center; gap: 10px;
+        margin-bottom: 20px;
+    }
+    .game-direct-btn:hover { background: #f43f5e; color: white; box-shadow: 0 0 20px rgba(244, 63, 94, 0.4); }
+
     /* --- Game Sections Common --- */
-    .game-section { display: none; animation: fadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1); padding-bottom: 40px; }
+    .game-section { display: none; animation: fadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1); padding-bottom: 60px; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
     .level-header { text-align: center; max-width: 800px; margin: 0 auto 50px; }
@@ -168,25 +169,6 @@
     .level-title-main { font-size: 2.5rem; font-weight: 800; margin-bottom: 15px; color: white; }
     .level-description { font-size: 1.1rem; color: #94a3b8; line-height: 1.6; }
 
-    /* --- Mini Footer --- */
-    .mini-footer {
-        display: flex; justify-content: center; gap: 20px;
-        margin-top: 60px; padding-top: 20px;
-        border-top: 1px solid rgba(255,255,255,0.05);
-    }
-    .footer-icon {
-        font-size: 1.5rem; color: #64748b; transition: all 0.3s ease;
-        display: flex; align-items: center; justify-content: center;
-        width: 40px; height: 40px; border-radius: 50%;
-        background: rgba(255,255,255,0.03);
-        text-decoration: none;
-    }
-    .footer-icon:hover { transform: translateY(-3px); background: rgba(255,255,255,0.1); }
-    .footer-icon.yt:hover { color: var(--youtube-red); }
-    .footer-icon.li:hover { color: var(--linkedin-blue); }
-    .footer-icon.tg:hover { color: var(--telegram-blue); }
-    .footer-icon.ig:hover { background: var(--insta-gradient); color: white; }
-
     /* --- Cards & Grid --- */
     .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
     .card {
@@ -196,8 +178,7 @@
     }
     .card::before {
       content: ''; position: absolute; top:0; left:0; width: 4px; height: 100%;
-      background: linear-gradient(to bottom, var(--game-accent), transparent);
-      opacity: 0.5;
+      background: linear-gradient(to bottom, var(--game-accent), transparent); opacity: 0.5;
     }
     .card:hover {
       border-color: var(--game-accent); transform: translateY(-5px);
@@ -211,13 +192,30 @@
       color: #cbd5e1;
     }
 
+    /* --- SECTION FOOTER (NEW) --- */
+    .section-footer {
+        margin-top: 50px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);
+        display: flex; justify-content: center; gap: 20px; opacity: 0.8;
+    }
+    .sf-icon {
+        color: #94a3b8; font-size: 1.2rem; transition: 0.3s;
+        width: 35px; height: 35px; display: flex; align-items: center; justify-content: center;
+        border-radius: 50%; background: rgba(0,0,0,0.3); text-decoration: none;
+    }
+    .sf-icon:hover { transform: translateY(-3px); color: white; background: var(--game-accent); }
+    .sf-icon.yt:hover { background: #ff0000; }
+    .sf-icon.li:hover { background: #0077b5; }
+    .sf-icon.tg:hover { background: #0088cc; }
+    .sf-icon.ig:hover { background: #e1306c; }
+
     /* --- TIMELINE --- */
     .timeline { position: relative; max-width: 800px; margin: 0 auto; }
     .timeline::before {
       content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 2px;
       background: linear-gradient(to bottom, #3b82f6, #ec4899);
     }
-    .timeline-item { padding-left: 50px; margin-bottom: 40px; position: relative; }
+    .timeline-item { padding-left: 50px; margin-bottom: 40px; position: relative; transition: 0.3s; }
+    .timeline-item:hover { transform: translateX(5px); }
     .timeline-item::before {
       content: ''; position: absolute; left: 11px; top: 5px; width: 20px; height: 20px;
       background: #0f172a; border: 2px solid #3b82f6; border-radius: 50%; z-index: 2;
@@ -238,83 +236,68 @@
     }
     
     .mission-brief {
-        background: rgba(16, 185, 129, 0.1);
-        border: 1px solid rgba(16, 185, 129, 0.3);
+        background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3);
         padding: 20px; border-radius: 16px; width: 100%; max-width: 450px;
         backdrop-filter: blur(5px);
     }
-
+    
     .memory-wrapper {
-      background: rgba(15, 23, 42, 0.8);
-      padding: 20px; border-radius: 24px;
-      border: 1px solid rgba(0, 240, 255, 0.2);
-      box-shadow: 0 0 50px rgba(0,0,0,0.5);
-      width: 100%; max-width: 450px;
-      position: relative;
+      background: rgba(15, 23, 42, 0.8); padding: 20px; border-radius: 24px;
+      border: 1px solid rgba(0, 240, 255, 0.2); box-shadow: 0 0 50px rgba(0,0,0,0.5);
+      width: 100%; max-width: 450px; position: relative; min-height: 400px;
     }
+    
+    /* Pre-Game Start Screen inside Wrapper */
+    .game-start-screen {
+        position: absolute; top:0; left:0; width:100%; height:100%;
+        background: rgba(15, 23, 42, 0.95); z-index: 10; border-radius: 24px;
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        text-align: center; padding: 20px;
+    }
+    
     .mem-stats {
-      display: flex; justify-content: space-between;
-      margin-bottom: 15px; font-family: 'Courier New', monospace;
-      font-size: 0.9rem; color: #94a3b8; background: rgba(0,0,0,0.3);
-      padding: 10px; border-radius: 12px;
+      display: flex; justify-content: space-between; margin-bottom: 15px;
+      font-family: 'Courier New', monospace; font-size: 0.9rem;
+      color: #94a3b8; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 12px;
     }
     .mem-stat-val { color: var(--game-accent); font-weight: bold; }
     .memory-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr);
-      gap: 10px; perspective: 1000px;
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; perspective: 1000px;
     }
     .memory-card {
-      background-color: transparent; aspect-ratio: 1;
-      cursor: pointer; position: relative;
+      background-color: transparent; aspect-ratio: 1; cursor: pointer; position: relative;
       transform-style: preserve-3d; transition: transform 0.4s;
     }
     .memory-card.flip { transform: rotateY(180deg); }
     .front-face, .back-face {
-      width: 100%; height: 100%; position: absolute;
-      border-radius: 12px; display: flex; justify-content: center; align-items: center;
-      backface-visibility: hidden; font-size: 1.8rem;
+      width: 100%; height: 100%; position: absolute; border-radius: 12px;
+      display: flex; justify-content: center; align-items: center;
+      backface-visibility: hidden; font-size: 1.5rem; /* Adjusted for more cards */
     }
-    .front-face { background: #1e293b; color: white; transform: rotateY(180deg); border: 2px solid var(--game-accent); box-shadow: 0 0 10px rgba(0,240,255,0.3); }
+    .front-face { background: #1e293b; color: white; transform: rotateY(180deg); border: 2px solid var(--game-accent); }
     .back-face { background: linear-gradient(135deg, #334155, #1e293b); border: 1px solid #475569; }
     
-    /* Start Overlay */
-    .mem-start-overlay, .mem-overlay {
+    .mem-overlay {
       position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(15, 23, 42, 0.98); backdrop-filter: blur(8px);
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      border-radius: 20px; z-index: 20; padding: 20px; text-align: center;
-    }
-    .mem-overlay { display: none; }
-
-    .pulse-btn {
-        background: var(--game-accent); color: #000; 
-        border: none; padding: 12px 30px; 
-        font-weight: 800; border-radius: 50px; 
-        font-size: 1rem; cursor: pointer;
-        box-shadow: 0 0 20px rgba(0,240,255,0.5);
-        animation: btnPulse 1.5s infinite;
-    }
-    @keyframes btnPulse {
-        0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 240, 255, 0.7); }
-        70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(0, 240, 255, 0); }
-        100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 240, 255, 0); }
+      background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(5px);
+      flex-direction: column; align-items: center; justify-content: center;
+      border-radius: 20px; z-index: 20; display: none; padding: 20px; text-align: center;
     }
 
     /* --- CONTACT GRID --- */
     .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 30px; }
     .social-btn {
-      display: flex; align-items: center; gap: 10px;
-      padding: 15px; background: rgba(255,255,255,0.05);
-      border-radius: 16px; text-decoration: none; color: white;
-      transition: all 0.3s; border: 1px solid rgba(255,255,255,0.05);
+      display: flex; align-items: center; gap: 10px; padding: 15px; background: rgba(255,255,255,0.05);
+      border-radius: 16px; text-decoration: none; color: white; transition: all 0.3s;
+      border: 1px solid rgba(255,255,255,0.05);
     }
     .social-btn:hover { background: rgba(255,255,255,0.1); transform: translateY(-3px); border-color: var(--game-accent); }
-    .social-btn:hover .yt-icon { color: var(--youtube-red); }
-
+    /* Red YouTube Icon */
+    .fa-youtube { color: #ff0000 !important; }
+    
     .loot-btn {
-      display: inline-flex; align-items: center; gap: 10px;
-      padding: 12px 25px; background: rgba(16, 185, 129, 0.1);
-      border: 1px solid #10b981; color: #10b981;
+      display: inline-flex; align-items: center; gap: 10px; padding: 12px 25px;
+      background: rgba(16, 185, 129, 0.1); border: 1px solid #10b981; color: #10b981;
       border-radius: 30px; text-decoration: none; font-weight: bold;
       transition: all 0.3s; margin-top: 20px; cursor: pointer;
     }
@@ -378,7 +361,7 @@
       </div>
 
       <h1 class="hero-title">SATYAM KUMAR</h1>
-      <p style="color: #94a3b8; max-width: 600px; margin-bottom: 40px; line-height: 1.6; font-size: 1.1rem;">
+      <p style="color: #94a3b8; max-width: 600px; margin-bottom: 30px; line-height: 1.6; font-size: 1.1rem;">
         <i class="fas fa-terminal" style="color:var(--game-accent); margin-right:8px;"></i>
         Character Class: <b>Techno-Financial Auditor</b>.<br>
         Special Ability: Bridging the analogue realm of Traditional Accounting with the digital frontier of Agentic AI & Data Analytics.
@@ -386,7 +369,11 @@
       
       <button class="start-btn" id="startBtn">Initialize Quest <i class="fas fa-power-off ml-2"></i></button>
       
-      <div style="margin-top: 20px; display: flex; gap: 15px; justify-content: center;">
+      <button onclick="jumpToGame()" class="game-direct-btn">
+          <i class="fas fa-gamepad"></i> ⚔️ Direct Challenge: Memory Test
+      </button>
+
+      <div style="margin-top: 10px; display: flex; gap: 15px;">
         <button onclick="downloadResume()" style="background: transparent; border: 1px solid #94a3b8; color: #94a3b8; padding: 10px 20px; border-radius: 30px; cursor: pointer; transition: 0.3s;">
             <i class="fas fa-download"></i> Quick Resume
         </button>
@@ -414,11 +401,12 @@
             <p style="color: #94a3b8; font-size: 0.9rem;">Deploying Agentic AI and Prompt Engineering to automate the mundane and elevate decision-making.</p>
           </div>
         </div>
-        <div class="mini-footer">
-            <a href="https://www.linkedin.com/in/satyam-kumar5286o" target="_blank" class="footer-icon li"><i class="fab fa-linkedin-in"></i></a>
-            <a href="https://youtube.com/@__satyamkumar" target="_blank" class="footer-icon yt"><i class="fab fa-youtube"></i></a>
-            <a href="https://t.me/CA_Protracker" target="_blank" class="footer-icon tg"><i class="fab fa-telegram-plane"></i></a>
-            <a href="#" class="footer-icon ig"><i class="fab fa-instagram"></i></a>
+        
+        <div class="section-footer">
+             <a href="https://www.instagram.com/" target="_blank" class="sf-icon ig"><i class="fab fa-instagram"></i></a>
+             <a href="https://www.linkedin.com/in/satyam-kumar5286o" target="_blank" class="sf-icon li"><i class="fab fa-linkedin-in"></i></a>
+             <a href="https://youtube.com/@__satyamkumar" target="_blank" class="sf-icon yt"><i class="fab fa-youtube"></i></a>
+             <a href="https://t.me/CA_Protracker" target="_blank" class="sf-icon tg"><i class="fab fa-telegram-plane"></i></a>
         </div>
       </div>
     </section>
@@ -448,12 +436,19 @@
             <p style="color: #94a3b8;">Jawahar Navodaya Vidyalaya</p>
             <p style="color: #64748B; font-size: 0.9rem;">Score: 92.6%</p>
           </div>
+           <div class="timeline-item">
+            <div class="timeline-date">CLASS 10 (2019)</div>
+            <h3 style="font-size: 1.2rem; color: white;">Academic Foundation</h3>
+            <p style="color: #94a3b8;">Jawahar Navodaya Vidyalaya (JNV)</p>
+            <p style="color: #64748B; font-size: 0.9rem;">Score: 92% | Distinction</p>
+          </div>
         </div>
-        <div class="mini-footer">
-            <a href="https://www.linkedin.com/in/satyam-kumar5286o" target="_blank" class="footer-icon li"><i class="fab fa-linkedin-in"></i></a>
-            <a href="https://youtube.com/@__satyamkumar" target="_blank" class="footer-icon yt"><i class="fab fa-youtube"></i></a>
-            <a href="https://t.me/CA_Protracker" target="_blank" class="footer-icon tg"><i class="fab fa-telegram-plane"></i></a>
-            <a href="#" class="footer-icon ig"><i class="fab fa-instagram"></i></a>
+
+        <div class="section-footer">
+             <a href="https://www.instagram.com/" target="_blank" class="sf-icon ig"><i class="fab fa-instagram"></i></a>
+             <a href="https://www.linkedin.com/in/satyam-kumar5286o" target="_blank" class="sf-icon li"><i class="fab fa-linkedin-in"></i></a>
+             <a href="https://youtube.com/@__satyamkumar" target="_blank" class="sf-icon yt"><i class="fab fa-youtube"></i></a>
+             <a href="https://t.me/CA_Protracker" target="_blank" class="sf-icon tg"><i class="fab fa-telegram-plane"></i></a>
         </div>
       </div>
     </section>
@@ -490,11 +485,12 @@
             </ul>
           </div>
         </div>
-        <div class="mini-footer">
-            <a href="https://www.linkedin.com/in/satyam-kumar5286o" target="_blank" class="footer-icon li"><i class="fab fa-linkedin-in"></i></a>
-            <a href="https://youtube.com/@__satyamkumar" target="_blank" class="footer-icon yt"><i class="fab fa-youtube"></i></a>
-            <a href="https://t.me/CA_Protracker" target="_blank" class="footer-icon tg"><i class="fab fa-telegram-plane"></i></a>
-            <a href="#" class="footer-icon ig"><i class="fab fa-instagram"></i></a>
+
+        <div class="section-footer">
+             <a href="https://www.instagram.com/" target="_blank" class="sf-icon ig"><i class="fab fa-instagram"></i></a>
+             <a href="https://www.linkedin.com/in/satyam-kumar5286o" target="_blank" class="sf-icon li"><i class="fab fa-linkedin-in"></i></a>
+             <a href="https://youtube.com/@__satyamkumar" target="_blank" class="sf-icon yt"><i class="fab fa-youtube"></i></a>
+             <a href="https://t.me/CA_Protracker" target="_blank" class="sf-icon tg"><i class="fab fa-telegram-plane"></i></a>
         </div>
       </div>
     </section>
@@ -509,7 +505,6 @@
           <div class="card">
             <h3 class="card-title" style="margin-bottom: 20px;"><i class="fas fa-brain"></i> AI & Construct</h3>
             <span class="skill-category-title">Next-Gen Tech</span>
-            
             <div class="skill-item">
               <div class="skill-name"><span>Agentic AI Workflows</span><span>LVL 5</span></div>
               <div class="skill-track"><div class="skill-fill" style="width: 85%; background: #ec4899; color:#ec4899;"></div></div>
@@ -527,7 +522,6 @@
           <div class="card">
             <h3 class="card-title" style="margin-bottom: 20px;"><i class="fas fa-database"></i> Code & Data</h3>
             <span class="skill-category-title">Core Processing</span>
-            
             <div class="skill-item">
               <div class="skill-name"><span>SQL / Database</span><span>LVL 8</span></div>
               <div class="skill-track"><div class="skill-fill" style="width: 85%; background: #3b82f6; color:#3b82f6;"></div></div>
@@ -545,7 +539,6 @@
           <div class="card">
             <h3 class="card-title" style="margin-bottom: 20px;"><i class="fas fa-balance-scale"></i> Finance Class</h3>
             <span class="skill-category-title">Guild Skills</span>
-            
             <div class="skill-item">
               <div class="skill-name"><span>Internal Audit</span><span>MAX</span></div>
               <div class="skill-track"><div class="skill-fill" style="width: 95%; background: #10b981; color:#10b981;"></div></div>
@@ -555,12 +548,35 @@
               <div class="skill-track"><div class="skill-fill" style="width: 90%; background: #059669; color:#059669;"></div></div>
             </div>
           </div>
+
+          <div class="card">
+            <h3 class="card-title" style="margin-bottom: 20px;"><i class="fas fa-running"></i> Athletics & Strategy</h3>
+            <span class="skill-category-title">Physical & Mental Sport</span>
+            
+            <div class="skill-item">
+              <div class="skill-name"><span>Basketball</span><span>MAX (10)</span></div>
+              <div class="skill-track"><div class="skill-fill" style="width: 100%; background: #f97316; color:#f97316;"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-name"><span>Ludo (Strategy)</span><span>MAX (10)</span></div>
+              <div class="skill-track"><div class="skill-fill" style="width: 100%; background: #ef4444; color:#ef4444;"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-name"><span>Cricket</span><span>LVL 7</span></div>
+              <div class="skill-track"><div class="skill-fill" style="width: 70%; background: #facc15; color:#facc15;"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-name"><span>Table Tennis</span><span>LVL 7</span></div>
+              <div class="skill-track"><div class="skill-fill" style="width: 70%; background: #34d399; color:#34d399;"></div></div>
+            </div>
+          </div>
         </div>
-        <div class="mini-footer">
-            <a href="https://www.linkedin.com/in/satyam-kumar5286o" target="_blank" class="footer-icon li"><i class="fab fa-linkedin-in"></i></a>
-            <a href="https://youtube.com/@__satyamkumar" target="_blank" class="footer-icon yt"><i class="fab fa-youtube"></i></a>
-            <a href="https://t.me/CA_Protracker" target="_blank" class="footer-icon tg"><i class="fab fa-telegram-plane"></i></a>
-            <a href="#" class="footer-icon ig"><i class="fab fa-instagram"></i></a>
+
+        <div class="section-footer">
+             <a href="https://www.instagram.com/" target="_blank" class="sf-icon ig"><i class="fab fa-instagram"></i></a>
+             <a href="https://www.linkedin.com/in/satyam-kumar5286o" target="_blank" class="sf-icon li"><i class="fab fa-linkedin-in"></i></a>
+             <a href="https://youtube.com/@__satyamkumar" target="_blank" class="sf-icon yt"><i class="fab fa-youtube"></i></a>
+             <a href="https://t.me/CA_Protracker" target="_blank" class="sf-icon tg"><i class="fab fa-telegram-plane"></i></a>
         </div>
       </div>
     </section>
@@ -589,11 +605,12 @@
             <a href="https://satqm.github.io/Mithilesh-/" target="_blank" style="display: inline-block; margin-top: 15px; color: var(--game-accent); text-decoration: none; font-weight: 600;">Launch <i class="fas fa-external-link-alt"></i></a>
           </div>
         </div>
-        <div class="mini-footer">
-            <a href="https://www.linkedin.com/in/satyam-kumar5286o" target="_blank" class="footer-icon li"><i class="fab fa-linkedin-in"></i></a>
-            <a href="https://youtube.com/@__satyamkumar" target="_blank" class="footer-icon yt"><i class="fab fa-youtube"></i></a>
-            <a href="https://t.me/CA_Protracker" target="_blank" class="footer-icon tg"><i class="fab fa-telegram-plane"></i></a>
-            <a href="#" class="footer-icon ig"><i class="fab fa-instagram"></i></a>
+
+        <div class="section-footer">
+             <a href="https://www.instagram.com/" target="_blank" class="sf-icon ig"><i class="fab fa-instagram"></i></a>
+             <a href="https://www.linkedin.com/in/satyam-kumar5286o" target="_blank" class="sf-icon li"><i class="fab fa-linkedin-in"></i></a>
+             <a href="https://youtube.com/@__satyamkumar" target="_blank" class="sf-icon yt"><i class="fab fa-youtube"></i></a>
+             <a href="https://t.me/CA_Protracker" target="_blank" class="sf-icon tg"><i class="fab fa-telegram-plane"></i></a>
         </div>
       </div>
     </section>
@@ -610,30 +627,31 @@
             <div class="mission-brief">
                 <h4 style="color: #10b981; margin-bottom: 10px;"><i class="fas fa-clipboard-list"></i> MISSION BRIEFING</h4>
                 <p style="font-size: 0.9rem; color: #d1fae5; line-height: 1.5;">
-                    1. Tap cards to reveal hidden neural icons.<br>
-                    2. Find matching pairs to stabilize the link.<br>
-                    3. Complete in under 25s to achieve 'Cyber Monk' status.<br>
+                    1. Tap cards to reveal hidden symbols.<br>
+                    2. Icons include: Gaming, Love, Friendship, Tech & Luck.<br>
+                    3. Match all pairs to stabilize the link.<br>
                     <span style="font-style:italic; opacity:0.8; display:block; margin-top:8px;">"Speed is irrelevant if accuracy is compromised."</span>
                 </p>
             </div>
 
             <div class="memory-wrapper">
+              
+              <div id="gameStartScreen" class="game-start-screen">
+                  <div style="font-size: 3rem; margin-bottom: 15px;">🎮 🧠 🧩</div>
+                  <h2 style="color: white; margin-bottom: 10px;">SYSTEM READY</h2>
+                  <p style="color: #94a3b8; margin-bottom: 30px;">Timer starts when you click the button below.</p>
+                  <button onclick="startGame()" style="background: var(--game-accent); color: #020617; border:none; padding:15px 40px; border-radius:50px; font-weight:800; font-size: 1.1rem; cursor:pointer; box-shadow: 0 0 20px rgba(0,240,255,0.5);">
+                      START MISSION
+                  </button>
+              </div>
+
               <div class="mem-stats">
                 <span>MOVES: <span id="mem-moves" class="mem-stat-val">0</span></span>
                 <span>TIME: <span id="mem-timer" class="mem-stat-val">0s</span></span>
               </div>
 
-              <div id="game-start-overlay" class="mem-start-overlay">
-                  <div style="font-size: 3rem; margin-bottom: 15px;">🔒</div>
-                  <h3 style="margin-bottom: 10px; color: var(--game-accent);">READY PLAYER ONE?</h3>
-                  <p style="color: #94a3b8; margin-bottom: 25px; max-width: 300px;">
-                      Timer starts when you click the button. 
-                      Match icons like <span style="color:white">❤️</span>, <span style="color:white">🎮</span>, and <span style="color:white">🚀</span>.
-                  </p>
-                  <button class="pulse-btn" onclick="startGameAction()">START MISSION</button>
-              </div>
-
-              <div class="memory-grid" id="memory-board"></div>
+              <div class="memory-grid" id="memory-board">
+                  </div>
               
               <div class="mem-overlay" id="mem-overlay">
                 <div style="font-size: 4rem; margin-bottom: 10px;">🧩</div>
@@ -643,11 +661,12 @@
               </div>
             </div>
         </div>
-        <div class="mini-footer">
-            <a href="https://www.linkedin.com/in/satyam-kumar5286o" target="_blank" class="footer-icon li"><i class="fab fa-linkedin-in"></i></a>
-            <a href="https://youtube.com/@__satyamkumar" target="_blank" class="footer-icon yt"><i class="fab fa-youtube"></i></a>
-            <a href="https://t.me/CA_Protracker" target="_blank" class="footer-icon tg"><i class="fab fa-telegram-plane"></i></a>
-            <a href="#" class="footer-icon ig"><i class="fab fa-instagram"></i></a>
+
+        <div class="section-footer">
+             <a href="https://www.instagram.com/" target="_blank" class="sf-icon ig"><i class="fab fa-instagram"></i></a>
+             <a href="https://www.linkedin.com/in/satyam-kumar5286o" target="_blank" class="sf-icon li"><i class="fab fa-linkedin-in"></i></a>
+             <a href="https://youtube.com/@__satyamkumar" target="_blank" class="sf-icon yt"><i class="fab fa-youtube"></i></a>
+             <a href="https://t.me/CA_Protracker" target="_blank" class="sf-icon tg"><i class="fab fa-telegram-plane"></i></a>
         </div>
       </div>
     </section>
@@ -695,11 +714,11 @@
             </div>
         </div>
 
-        <div class="mini-footer">
-            <a href="https://www.linkedin.com/in/satyam-kumar5286o" target="_blank" class="footer-icon li"><i class="fab fa-linkedin-in"></i></a>
-            <a href="https://youtube.com/@__satyamkumar" target="_blank" class="footer-icon yt"><i class="fab fa-youtube"></i></a>
-            <a href="https://t.me/CA_Protracker" target="_blank" class="footer-icon tg"><i class="fab fa-telegram-plane"></i></a>
-            <a href="#" class="footer-icon ig"><i class="fab fa-instagram"></i></a>
+        <div class="section-footer">
+             <a href="https://www.instagram.com/" target="_blank" class="sf-icon ig"><i class="fab fa-instagram"></i></a>
+             <a href="https://www.linkedin.com/in/satyam-kumar5286o" target="_blank" class="sf-icon li"><i class="fab fa-linkedin-in"></i></a>
+             <a href="https://youtube.com/@__satyamkumar" target="_blank" class="sf-icon yt"><i class="fab fa-youtube"></i></a>
+             <a href="https://t.me/CA_Protracker" target="_blank" class="sf-icon tg"><i class="fab fa-telegram-plane"></i></a>
         </div>
       </div>
     </section>
@@ -721,7 +740,7 @@
 
           <div class="contact-grid">
             <a href="https://youtube.com/@__satyamkumar" target="_blank" class="social-btn yt-btn">
-              <i class="fab fa-youtube yt-icon" style="font-size: 1.5rem;"></i>
+              <i class="fab fa-youtube yt-icon" style="font-size: 1.5rem; color: #ff0000 !important;"></i>
               <div style="text-align: left;">
                 <div style="font-size: 0.8rem; opacity: 0.7;">Subscribe</div>
                 <div style="font-weight: 600;">YouTube</div>
@@ -757,12 +776,12 @@
             <i class="fas fa-download"></i> Download Data Log (Resume)
           </button>
         </div>
-        
-        <div class="mini-footer">
-            <a href="https://www.linkedin.com/in/satyam-kumar5286o" target="_blank" class="footer-icon li"><i class="fab fa-linkedin-in"></i></a>
-            <a href="https://youtube.com/@__satyamkumar" target="_blank" class="footer-icon yt"><i class="fab fa-youtube"></i></a>
-            <a href="https://t.me/CA_Protracker" target="_blank" class="footer-icon tg"><i class="fab fa-telegram-plane"></i></a>
-            <a href="#" class="footer-icon ig"><i class="fab fa-instagram"></i></a>
+
+        <div class="section-footer">
+             <a href="https://www.instagram.com/" target="_blank" class="sf-icon ig"><i class="fab fa-instagram"></i></a>
+             <a href="https://www.linkedin.com/in/satyam-kumar5286o" target="_blank" class="sf-icon li"><i class="fab fa-linkedin-in"></i></a>
+             <a href="https://youtube.com/@__satyamkumar" target="_blank" class="sf-icon yt"><i class="fab fa-youtube"></i></a>
+             <a href="https://t.me/CA_Protracker" target="_blank" class="sf-icon tg"><i class="fab fa-telegram-plane"></i></a>
         </div>
       </div>
     </section>
@@ -781,7 +800,7 @@
   </div>
 
   <script>
-    // --- DOWNLOAD FUNCTIONS (No Password) ---
+    // --- DOWNLOAD FUNCTIONS ---
     function downloadResume() {
         const link = document.createElement('a');
         link.href = 'SATYAM (1) (1).pdf'; 
@@ -789,17 +808,15 @@
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
-        alert("Downloading Resume... (Access Granted)");
     }
 
     function downloadCerts() {
         const link = document.createElement('a');
-        link.href = 'Certificates.pdf'; 
+        link.href = 'Certificates.pdf';
         link.download = 'Satyam_Certificates.pdf';
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
-        alert("Downloading Loot Crate... (Certificates)");
     }
 
     // --- STATE ---
@@ -821,16 +838,16 @@
       sections.forEach(s => s.style.display = 'none');
 
       startBtn.addEventListener('click', () => {
-        hero.style.display = 'none';
-        header.style.transform = 'translateY(0)';
-        goToLevel(0);
+        enterQuest(0);
       });
 
+      // Nav Listeners
       document.getElementById('prevLevelBtn').addEventListener('click', () => changeLevel(-1));
       document.getElementById('nextLevelBtn').addEventListener('click', () => changeLevel(1));
       document.getElementById('mobilePrevBtn').addEventListener('click', () => changeLevel(-1));
       document.getElementById('mobileNextBtn').addEventListener('click', () => changeLevel(1));
       
+      // Mouse move effect
       document.addEventListener('mousemove', (e) => {
         const x = (e.clientX / window.innerWidth) * 100;
         const y = (e.clientY / window.innerHeight) * 100;
@@ -838,7 +855,7 @@
         document.documentElement.style.setProperty('--mouse-y', `${y}%`);
       });
 
-      // Swipe Logic
+      // --- SWIPE LOGIC ---
       let touchStartX = 0;
       let touchStartY = 0;
       document.addEventListener('touchstart', e => {
@@ -855,13 +872,21 @@
           const xDiff = startX - endX;
           const yDiff = startY - endY;
           const threshold = 50;
-          if (Math.abs(xDiff) > Math.abs(yDiff)) { 
-              if (Math.abs(xDiff) > threshold) {
-                  if (xDiff > 0) changeLevel(1);
-                  else changeLevel(-1);
-              }
+          if (Math.abs(xDiff) > Math.abs(yDiff) && Math.abs(xDiff) > threshold) {
+              if (xDiff > 0) changeLevel(1);
+              else changeLevel(-1);
           }
       }
+    }
+
+    function enterQuest(levelIndex) {
+        hero.style.display = 'none';
+        header.style.transform = 'translateY(0)';
+        goToLevel(levelIndex);
+    }
+
+    function jumpToGame() {
+        enterQuest(5); // Index 5 is Level 6 (Game)
     }
 
     function changeLevel(dir) {
@@ -877,37 +902,53 @@
       sections[currentLevel].style.display = 'block';
       window.scrollTo(0, 0);
       
+      // Update HUD
       document.getElementById('currentLevelTitle').innerText = `LVL ${index + 1}: ${titles[index]}`;
       document.getElementById('levelProgress').style.width = `${((index + 1) / totalLevels) * 100}%`;
-      
       document.getElementById('prevLevelBtn').disabled = (index === 0);
       document.getElementById('nextLevelBtn').disabled = (index === totalLevels - 1);
-
-      if (index === 5 && !gameInitialized) setupBoardOnly();
     }
 
-    // --- MEMORY GAME LOGIC ---
-    let gameInitialized = false;
-    let gameActive = false;
-    // New Creative Icon Set:
-    const allIcons = ['👾','🚀','❤️','🎮','🤝','💡','🔥','🍕','🏆','🎵','💸','🎲'];
+    // --- MEMORY GAME LOGIC (UPDATED) ---
+    const icons = ['👾','🚀','🤖','💎','🎮','❤️','🤝','🎲','🍕','💻']; // 10 Pairs (20 cards)
     const grid = document.getElementById('memory-board');
-    let cards = [];
-    let [hasFlipped, lockBoard] = [false, false];
+    let hasFlipped = false, lockBoard = false;
     let firstCard, secondCard;
     let moves = 0, matches = 0, time = 0, timer;
-    
-    function setupBoardOnly() {
-      // Just visually set up the board, but cover it with overlay
-      gameInitialized = true;
-      document.getElementById('game-start-overlay').style.display = 'flex';
-      
-      // Select 8 random icons from our larger pool
-      let shuffledPool = allIcons.sort(() => 0.5 - Math.random());
-      let selectedIcons = shuffledPool.slice(0, 8);
-      const deck = [...selectedIcons, ...selectedIcons].sort(() => Math.random() - 0.5);
-      
+
+    // Triggered by the "START MISSION" button
+    function startGame() {
+        document.getElementById('gameStartScreen').style.display = 'none';
+        initBoard();
+        
+        // Start Timer
+        time = 0;
+        document.getElementById('mem-timer').innerText = '0s';
+        if(timer) clearInterval(timer);
+        timer = setInterval(() => {
+            time++;
+            document.getElementById('mem-timer').innerText = time + 's';
+        }, 1000);
+    }
+
+    function resetGame() {
+        document.getElementById('mem-overlay').style.display = 'none';
+        document.getElementById('gameStartScreen').style.display = 'flex'; // Show start screen again
+        grid.innerHTML = '';
+        moves = 0; matches = 0;
+        document.getElementById('mem-moves').innerText = '0';
+        document.getElementById('mem-timer').innerText = '0s';
+        if(timer) clearInterval(timer);
+    }
+
+    function initBoard() {
       grid.innerHTML = '';
+      const deck = [...icons, ...icons].sort(() => Math.random() - 0.5);
+      
+      // Adjust grid columns based on icon count (5 columns for 20 cards looks good)
+      grid.style.gridTemplateColumns = 'repeat(5, 1fr)'; 
+      if(window.innerWidth < 600) grid.style.gridTemplateColumns = 'repeat(4, 1fr)';
+
       deck.forEach(icon => {
         const card = document.createElement('div');
         card.classList.add('memory-card');
@@ -921,31 +962,7 @@
       });
     }
 
-    function startGameAction() {
-        document.getElementById('game-start-overlay').style.display = 'none';
-        gameActive = true;
-        
-        // Start Timer
-        time = 0;
-        moves = 0;
-        matches = 0;
-        document.getElementById('mem-timer').innerText = '0s';
-        document.getElementById('mem-moves').innerText = '0';
-        
-        if(timer) clearInterval(timer);
-        timer = setInterval(() => {
-            time++;
-            document.getElementById('mem-timer').innerText = time + 's';
-        }, 1000);
-    }
-
-    function resetGame() {
-        document.getElementById('mem-overlay').style.display = 'none';
-        setupBoardOnly();
-    }
-
     function flipCard() {
-      if (!gameActive) return; // Can't flip if game hasn't started
       if (lockBoard) return;
       if (this === firstCard) return;
 
@@ -974,7 +991,7 @@
       firstCard.classList.add('matched');
       secondCard.classList.add('matched');
       matches++;
-      if (matches === 8) endGame();
+      if (matches === icons.length) endGame();
       resetBoard();
     }
 
@@ -994,21 +1011,19 @@
 
     function endGame() {
       clearInterval(timer);
-      gameActive = false;
       const overlay = document.getElementById('mem-overlay');
       const title = document.getElementById('mem-rating-title');
       const desc = document.getElementById('mem-rating-desc');
       
       let rank = "";
-      let flavor = "";
       
-      if (time < 15) { rank = "GOD TIER ⏳"; flavor = "You bent space-time. Are you an AI?"; }
-      else if (time < 25) { rank = "CYBER MONK 🤖"; flavor = "Processing speed exceeds human limits."; }
-      else if (time < 35) { rank = "SILICON SAGE 🧘"; flavor = "Good, but the system needs more RAM."; }
-      else { rank = "SYSTEM LAG 🐌"; flavor = "Packet loss detected. Try again."; }
+      if (time < 20) { rank = "GOD TIER ⏳"; }
+      else if (time < 40) { rank = "CYBER MONK 🤖"; }
+      else if (time < 60) { rank = "SILICON SAGE 🧘"; }
+      else { rank = "SYSTEM LAG 🐌"; }
 
       title.innerText = rank;
-      desc.innerText = `${flavor} (Time: ${time}s | Moves: ${moves})`;
+      desc.innerText = `System Synchronized.\nTime: ${time}s | Moves: ${moves}`;
       overlay.style.display = 'flex';
     }
 
