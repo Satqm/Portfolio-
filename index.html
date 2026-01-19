@@ -472,6 +472,7 @@
       background: rgba(15, 23, 42, 0.8); padding: 25px; border-radius: 24px;
       border: 1px solid rgba(0, 240, 255, 0.2); box-shadow: 0 0 50px rgba(0,0,0,0.5);
       width: 100%; max-width: 900px; position: relative; min-height: 500px;
+      overflow: hidden;
     }
     
     /* Pre-Game Start Screen inside Wrapper */
@@ -480,27 +481,47 @@
         background: rgba(15, 23, 42, 0.95); z-index: 10; border-radius: 24px;
         display: flex; flex-direction: column; align-items: center; justify-content: center;
         text-align: center; padding: 20px;
+        transition: opacity 0.3s ease;
     }
     
     .mem-stats {
       display: flex; justify-content: space-between; margin-bottom: 15px;
       font-family: 'Courier New', monospace; font-size: 0.9rem;
       color: #94a3b8; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 12px;
+      flex-wrap: wrap;
     }
     .mem-stat-val { color: var(--game-accent); font-weight: bold; }
     
     .memory-grid {
       display: grid; gap: 10px; perspective: 1000px;
       margin: 0 auto;
+      opacity: 1;
+      transition: opacity 0.3s ease, transform 0.3s ease;
     }
     
-    .memory-grid.beginner { grid-template-columns: repeat(4, 1fr); }
-    .memory-grid.intermediate { grid-template-columns: repeat(5, 1fr); }
-    .memory-grid.advanced { grid-template-columns: repeat(6, 1fr); }
+    .memory-grid.beginner { 
+        grid-template-columns: repeat(4, 1fr); 
+        max-width: 500px;
+    }
+    .memory-grid.intermediate { 
+        grid-template-columns: repeat(5, 1fr); 
+        max-width: 600px;
+    }
+    .memory-grid.advanced { 
+        grid-template-columns: repeat(6, 1fr); 
+        max-width: 700px;
+    }
     
     .memory-card {
       background-color: transparent; aspect-ratio: 1; cursor: pointer;
       position: relative; transform-style: preserve-3d; transition: transform 0.4s;
+      opacity: 1;
+      animation: cardAppear 0.3s ease forwards;
+    }
+    
+    @keyframes cardAppear {
+        from { opacity: 0; transform: scale(0.8); }
+        to { opacity: 1; transform: scale(1); }
     }
     
     .memory-card.flip { transform: rotateY(180deg); }
@@ -513,6 +534,7 @@
       width: 100%; height: 100%; position: absolute; border-radius: 12px;
       display: flex; justify-content: center; align-items: center;
       backface-visibility: hidden; font-size: 1.8rem;
+      transition: all 0.3s ease;
     }
     
     .front-face {
@@ -532,6 +554,7 @@
       background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(5px);
       flex-direction: column; align-items: center; justify-content: center;
       border-radius: 20px; z-index: 20; display: none; padding: 30px; text-align: center;
+      animation: fadeIn 0.5s ease;
     }
 
     .player-input {
@@ -539,6 +562,20 @@
         color: white; padding: 12px 20px; border-radius: 30px;
         width: 100%; max-width: 300px; margin: 15px 0;
         font-size: 1rem;
+    }
+
+    .transitioning {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    .grid-loading {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 300px;
+        font-size: 2rem;
+        color: var(--game-accent);
     }
 
     /* --- CONTACT GRID --- */
@@ -576,13 +613,24 @@
       .level-title-main { font-size: 1.8rem; }
       .timeline-item { padding-left: 35px; }
       .timeline::before { left: 10px; }
-      .memory-grid.beginner { grid-template-columns: repeat(3, 1fr); }
-      .memory-grid.intermediate { grid-template-columns: repeat(4, 1fr); }
-      .memory-grid.advanced { grid-template-columns: repeat(5, 1fr); }
+      .memory-grid.beginner { 
+          grid-template-columns: repeat(3, 1fr); 
+          max-width: 350px;
+      }
+      .memory-grid.intermediate { 
+          grid-template-columns: repeat(4, 1fr); 
+          max-width: 400px;
+      }
+      .memory-grid.advanced { 
+          grid-template-columns: repeat(5, 1fr); 
+          max-width: 450px;
+      }
       .game-controls-panel { flex-direction: column; align-items: center; }
       .difficulty-selector { flex-direction: column; align-items: center; }
       .difficulty-btn { width: 100%; max-width: 250px; }
       .rating-tiers { grid-template-columns: 1fr; }
+      .mem-stats { flex-direction: column; gap: 10px; }
+      .mission-brief { padding: 15px; }
     }
   </style>
 </head>
@@ -916,7 +964,7 @@
                 <button class="control-btn" id="settingsBtn"><i class="fas fa-cog"></i> Settings</button>
             </div>
 
-            <!-- Difficulty Selector -->
+            <!-- SINGLE Difficulty Selector -->
             <div class="difficulty-selector">
                 <button class="difficulty-btn beginner" data-level="beginner">
                     <i class="fas fa-seedling"></i> Beginner (12 cards)
@@ -961,19 +1009,7 @@
               <div id="gameStartScreen" class="game-start-screen">
                   <div style="font-size: 3rem; margin-bottom: 15px;">🧠 🎮 ⚡</div>
                   <h2 style="color: white; margin-bottom: 10px;">NEURAL LINK READY</h2>
-                  <p style="color: #94a3b8; margin-bottom: 20px;">Select difficulty and begin cognitive training</p>
-                  
-                  <div class="difficulty-selector" style="margin: 30px 0;">
-                      <button class="difficulty-btn beginner" onclick="selectDifficulty('beginner')">
-                          <i class="fas fa-seedling"></i> Beginner
-                      </button>
-                      <button class="difficulty-btn intermediate" onclick="selectDifficulty('intermediate')">
-                          <i class="fas fa-mountain"></i> Intermediate
-                      </button>
-                      <button class="difficulty-btn advanced" onclick="selectDifficulty('advanced')">
-                          <i class="fas fa-fire"></i> Advanced
-                      </button>
-                  </div>
+                  <p style="color: #94a3b8; margin-bottom: 20px;">Press start to begin cognitive training</p>
                   
                   <button onclick="startGame()" style="background: var(--game-accent); color: #020617; border:none; padding:15px 40px; border-radius:50px; font-weight:800; font-size: 1.1rem; cursor:pointer; box-shadow: 0 0 20px rgba(0,240,255,0.5); margin-top: 20px;">
                       <i class="fas fa-play"></i> START TRAINING
@@ -993,6 +1029,11 @@
                 <span>MOVES: <span id="mem-moves" class="mem-stat-val">0</span></span>
                 <span>TIME: <span id="mem-timer" class="mem-stat-val">0s</span></span>
                 <span>MATCHES: <span id="mem-matches" class="mem-stat-val">0/6</span></span>
+              </div>
+
+              <!-- Loading Placeholder -->
+              <div id="gridLoading" class="grid-loading" style="display: none;">
+                  <i class="fas fa-spinner fa-spin"></i> Loading...
               </div>
 
               <!-- Game Board -->
@@ -1348,6 +1389,18 @@
   <script>
     // ========== ENHANCED MEMORY GAME ==========
     
+    // Expanded Icon Set (50+ icons)
+    const ALL_ICONS = [
+      '🤖', '💻', '📱', '🔧', '⚙️', '🔌', '📡', '🛰️', '🎮', '👾', 
+      '🕹️', '🎲', '♟️', '🎯', '❤️', '🤝', '✨', '🌟', '💎', '🔥', 
+      '⚡', '🌀', '♻️', '🔄', '💡', '🔐', '🌿', '🍃', '🌙', '⭐', 
+      '🌈', '📦', '🗝️', '🎁', '🔔', '🏆', '🎨', '🎭', '🎪', '🎤', 
+      '🎧', '🎸', '🎷', '🎺', '🥁', '🎬', '📷', '🎥', '📺', '📻',
+      '📚', '✏️', '📝', '📌', '📍', '📎', '🖇️', '✂️', '📏', '📐',
+      '🧭', '⏰', '⏳', '⌛', '📅', '📊', '📈', '📉', '🧮', '🛡️',
+      '⚔️', '🏹', '🪃', '🔫', '💣', '🧨', '🎇', '🎆', '🧿', '🪬'
+    ];
+
     // Game State
     const gameState = {
       difficulty: 'beginner',
@@ -1360,11 +1413,6 @@
       
       // Memory Game State
       memoryGame: {
-        icons: {
-          beginner: ['🤖', '💻', '📱', '🔧', '⚙️', '🎮', '❤️', '✨', '🌟', '💎', '🔥', '⚡'],
-          intermediate: ['🤖', '💻', '📱', '🔧', '⚙️', '🔌', '📡', '🎮', '👾', '🕹️', '❤️', '🤝', '✨', '🌟', '💎', '🔥', '⚡', '🌀', '♻️', '💡'],
-          advanced: ['🤖', '💻', '📱', '🔧', '⚙️', '🔌', '📡', '🛰️', '🎮', '👾', '🕹️', '🎲', '❤️', '🤝', '✨', '🌟', '💎', '🔥', '⚡', '🌀', '♻️', '🔄', '💡', '🔐', '🌿', '🍃', '🌙', '⭐', '🌈', '📦']
-        },
         difficultySettings: {
           beginner: { pairs: 6, gridCols: 4, gridClass: 'beginner' },
           intermediate: { pairs: 10, gridCols: 5, gridClass: 'intermediate' },
@@ -1379,7 +1427,8 @@
         time: 0,
         timer: null,
         totalPairs: 6,
-        gameActive: false
+        gameActive: false,
+        isTransitioning: false
       },
       
       // Player Stats
@@ -1409,6 +1458,7 @@
     
     // Memory Game Elements
     const memoryGrid = document.getElementById('memory-board');
+    const gridLoading = document.getElementById('gridLoading');
     const memMoves = document.getElementById('mem-moves');
     const memTimer = document.getElementById('mem-timer');
     const memMatches = document.getElementById('mem-matches');
@@ -1456,8 +1506,8 @@
       document.getElementById('settingsBtn').addEventListener('click', () => openModal('settingsModal'));
       document.getElementById('leaderboardFilter').addEventListener('change', updateLeaderboard);
       
-      // Difficulty buttons
-      document.querySelectorAll('.difficulty-btn').forEach(btn => {
+      // Difficulty buttons - SINGLE SET
+      document.querySelectorAll('.difficulty-selector .difficulty-btn').forEach(btn => {
         btn.addEventListener('click', function() {
           selectDifficulty(this.dataset.level);
         });
@@ -1485,6 +1535,11 @@
       
       // Update stats display
       updateStatsDisplay();
+      
+      // Initialize the grid with default difficulty
+      setTimeout(() => {
+        createGridForDifficulty('beginner');
+      }, 100);
     }
 
     // ========== GAME DATA MANAGEMENT ==========
@@ -1576,7 +1631,9 @@
     }
 
     // ========== MEMORY GAME FUNCTIONS ==========
-    function selectDifficulty(level) {
+    async function selectDifficulty(level) {
+      if (gameState.memoryGame.isTransitioning) return;
+      
       gameState.difficulty = level;
       gameState.memoryGame.totalPairs = gameState.memoryGame.difficultySettings[level].pairs;
       
@@ -1594,17 +1651,107 @@
       
       // Update start screen streak
       startStreak.textContent = gameState.playerStats.currentStreak;
+      
+      // Create new grid for the selected difficulty
+      await createGridForDifficulty(level);
     }
 
-    function startGame() {
-      gameStartScreen.style.display = 'none';
-      initBoard();
+    async function createGridForDifficulty(level) {
+      if (gameState.memoryGame.isTransitioning) return;
+      
+      gameState.memoryGame.isTransitioning = true;
+      
+      // Show loading and hide current grid
+      if (memoryGrid.children.length > 0) {
+        memoryGrid.classList.add('transitioning');
+        await sleep(200);
+      }
+      
+      gridLoading.style.display = 'flex';
+      memoryGrid.style.display = 'none';
+      
+      // Clear existing grid
+      memoryGrid.innerHTML = '';
+      
+      // Set grid class for the new difficulty
+      memoryGrid.className = 'memory-grid ' + gameState.memoryGame.difficultySettings[level].gridClass;
+      
+      // Get icons for current difficulty
+      const pairsNeeded = gameState.memoryGame.difficultySettings[level].pairs;
+      const selectedIcons = getRandomIcons(pairsNeeded);
+      
+      // Create deck with pairs
+      let deck = [...selectedIcons, ...selectedIcons];
+      
+      // Shuffle
+      deck = shuffleArray(deck);
+      
+      // Brief pause for smooth transition
+      await sleep(300);
+      
+      // Create cards
+      deck.forEach(icon => {
+        const card = document.createElement('div');
+        card.className = 'memory-card';
+        card.dataset.icon = icon;
+        
+        card.innerHTML = `
+          <div class="front-face">${icon}</div>
+          <div class="back-face"><i class="fas fa-fingerprint"></i></div>
+        `;
+        
+        card.addEventListener('click', flipCard);
+        memoryGrid.appendChild(card);
+      });
+      
+      // Show the new grid
+      gridLoading.style.display = 'none';
+      memoryGrid.style.display = 'grid';
+      memoryGrid.classList.remove('transitioning');
       
       // Reset game state
       gameState.memoryGame.moves = 0;
       gameState.memoryGame.matches = 0;
       gameState.memoryGame.time = 0;
+      gameState.memoryGame.gameActive = false;
+      
+      // Update UI
+      memMoves.textContent = '0';
+      memTimer.textContent = '0s';
+      memMatches.textContent = `0/${gameState.memoryGame.totalPairs}`;
+      gameProgress.style.width = '0%';
+      
+      gameState.memoryGame.isTransitioning = false;
+    }
+
+    function getRandomIcons(count) {
+      // Shuffle all icons and take the first 'count' ones
+      const shuffled = [...ALL_ICONS].sort(() => Math.random() - 0.5);
+      return shuffled.slice(0, count);
+    }
+
+    function shuffleArray(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    function startGame() {
+      if (gameState.memoryGame.gameActive || gameState.memoryGame.isTransitioning) return;
+      
+      gameStartScreen.style.display = 'none';
       gameState.memoryGame.gameActive = true;
+      
+      // Reset game state
+      gameState.memoryGame.moves = 0;
+      gameState.memoryGame.matches = 0;
+      gameState.memoryGame.time = 0;
       
       // Update UI
       memMoves.textContent = '0';
@@ -1621,37 +1768,6 @@
         gameState.memoryGame.time++;
         memTimer.textContent = gameState.memoryGame.time + 's';
       }, 1000);
-    }
-
-    function initBoard() {
-      memoryGrid.innerHTML = '';
-      memoryGrid.className = 'memory-grid ' + gameState.memoryGame.difficultySettings[gameState.difficulty].gridClass;
-      
-      // Get icons for current difficulty
-      const icons = gameState.memoryGame.icons[gameState.difficulty];
-      const pairsNeeded = gameState.memoryGame.totalPairs;
-      const selectedIcons = icons.slice(0, pairsNeeded);
-      
-      // Create deck with pairs
-      let deck = [...selectedIcons, ...selectedIcons];
-      
-      // Shuffle
-      deck = deck.sort(() => Math.random() - 0.5);
-      
-      // Create cards
-      deck.forEach(icon => {
-        const card = document.createElement('div');
-        card.className = 'memory-card';
-        card.dataset.icon = icon;
-        
-        card.innerHTML = `
-          <div class="front-face">${icon}</div>
-          <div class="back-face"><i class="fas fa-fingerprint"></i></div>
-        `;
-        
-        card.addEventListener('click', flipCard);
-        memoryGrid.appendChild(card);
-      });
     }
 
     function flipCard() {
@@ -1804,11 +1920,13 @@
       clearInterval(gameState.memoryGame.timer);
       memOverlay.style.display = 'none';
       gameStartScreen.style.display = 'flex';
-      memoryGrid.innerHTML = '';
       gameState.memoryGame.gameActive = false;
       
       // Update streak display
       startStreak.textContent = gameState.playerStats.currentStreak;
+      
+      // Reset the grid for current difficulty
+      createGridForDifficulty(gameState.difficulty);
     }
 
     function returnToMenu() {
@@ -2119,7 +2237,7 @@
       }
     }
 
-    // ========== DOWNLOAD FUNCTIONS (unchanged) ==========
+    // ========== DOWNLOAD FUNCTIONS ==========
     function downloadResume() {
         const link = document.createElement('a');
         link.href = 'SATYAM (1) (1).pdf'; 
@@ -2145,7 +2263,7 @@
     // Run initialization
     init();
     
-    // Add CSS for notifications
+    // Add CSS for notifications and animations
     const style = document.createElement('style');
     style.textContent = `
       @keyframes slideIn {
@@ -2155,6 +2273,17 @@
       @keyframes slideOut {
         from { transform: translateX(0); opacity: 1; }
         to { transform: translateX(100%); opacity: 0; }
+      }
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      .fa-spin {
+        animation: fa-spin 1s infinite linear;
+      }
+      @keyframes fa-spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
       }
     `;
     document.head.appendChild(style);
