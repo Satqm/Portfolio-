@@ -517,6 +517,8 @@
       position: relative; transform-style: preserve-3d; transition: transform 0.4s;
       opacity: 1;
       animation: cardAppear 0.3s ease forwards;
+      -webkit-transform-style: preserve-3d;
+      -webkit-backface-visibility: hidden;
     }
     
     @keyframes cardAppear {
@@ -524,7 +526,10 @@
         to { opacity: 1; transform: scale(1); }
     }
     
-    .memory-card.flip { transform: rotateY(180deg); }
+    .memory-card.flip { 
+        transform: rotateY(180deg);
+        -webkit-transform: rotateY(180deg);
+    }
     .memory-card.matched .front-face {
         background: linear-gradient(135deg, #10b981, #059669);
         box-shadow: 0 0 15px rgba(16, 185, 129, 0.5);
@@ -535,16 +540,22 @@
       display: flex; justify-content: center; align-items: center;
       backface-visibility: hidden; font-size: 1.8rem;
       transition: all 0.3s ease;
+      -webkit-backface-visibility: hidden;
+      top: 0;
+      left: 0;
     }
     
     .front-face {
         background: #1e293b; color: white; transform: rotateY(180deg);
         border: 2px solid var(--game-accent);
+        -webkit-transform: rotateY(180deg);
     }
     
     .back-face {
         background: linear-gradient(135deg, #334155, #1e293b);
         border: 1px solid #475569;
+        transform: rotateY(0deg);
+        -webkit-transform: rotateY(0deg);
     }
     
     .back-face i { color: rgba(255,255,255,0.5); font-size: 1.5rem; }
@@ -1700,7 +1711,7 @@
           <div class="back-face"><i class="fas fa-fingerprint"></i></div>
         `;
         
-        card.addEventListener('click', flipCard);
+        card.addEventListener('click', () => flipCard(card));
         memoryGrid.appendChild(card);
       });
       
@@ -1779,21 +1790,21 @@
       }, 1000);
     }
 
-    function flipCard() {
+    function flipCard(card) {
       if (!gameState.memoryGame.gameActive) return;
       if (gameState.memoryGame.lockBoard) return;
-      if (this === gameState.memoryGame.firstCard) return;
-      if (this.classList.contains('matched')) return;
+      if (card === gameState.memoryGame.firstCard) return;
+      if (card.classList.contains('matched')) return;
       
-      this.classList.add('flip');
+      card.classList.add('flip');
       
       if (!gameState.memoryGame.hasFlipped) {
         gameState.memoryGame.hasFlipped = true;
-        gameState.memoryGame.firstCard = this;
+        gameState.memoryGame.firstCard = card;
         return;
       }
       
-      gameState.memoryGame.secondCard = this;
+      gameState.memoryGame.secondCard = card;
       gameState.memoryGame.moves++;
       memMoves.textContent = gameState.memoryGame.moves;
       
@@ -1814,8 +1825,8 @@
       gameState.memoryGame.firstCard.classList.add('matched');
       gameState.memoryGame.secondCard.classList.add('matched');
       
-      gameState.memoryGame.firstCard.removeEventListener('click', flipCard);
-      gameState.memoryGame.secondCard.removeEventListener('click', flipCard);
+      gameState.memoryGame.firstCard.removeEventListener('click', () => flipCard(gameState.memoryGame.firstCard));
+      gameState.memoryGame.secondCard.removeEventListener('click', () => flipCard(gameState.memoryGame.secondCard));
       
       gameState.memoryGame.matches++;
       memMatches.textContent = `${gameState.memoryGame.matches}/${gameState.memoryGame.totalPairs}`;
@@ -2298,4 +2309,4 @@
     document.head.appendChild(style);
   </script>
 </body>
-            </html>
+                                                                                                  </html>
