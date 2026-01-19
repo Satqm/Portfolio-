@@ -1704,16 +1704,21 @@
         memoryGrid.appendChild(card);
       });
       
-      // Show the new grid
+      // Show the new grid and start screen
       gridLoading.style.display = 'none';
       memoryGrid.style.display = 'grid';
       memoryGrid.classList.remove('transitioning');
+      gameStartScreen.style.display = 'flex'; // Show the start screen
       
       // Reset game state
       gameState.memoryGame.moves = 0;
       gameState.memoryGame.matches = 0;
       gameState.memoryGame.time = 0;
       gameState.memoryGame.gameActive = false;
+      gameState.memoryGame.hasFlipped = false;
+      gameState.memoryGame.lockBoard = false;
+      gameState.memoryGame.firstCard = null;
+      gameState.memoryGame.secondCard = null;
       
       // Update UI
       memMoves.textContent = '0';
@@ -1752,6 +1757,10 @@
       gameState.memoryGame.moves = 0;
       gameState.memoryGame.matches = 0;
       gameState.memoryGame.time = 0;
+      gameState.memoryGame.hasFlipped = false;
+      gameState.memoryGame.lockBoard = false;
+      gameState.memoryGame.firstCard = null;
+      gameState.memoryGame.secondCard = null;
       
       // Update UI
       memMoves.textContent = '0';
@@ -2289,4 +2298,4 @@
     document.head.appendChild(style);
   </script>
 </body>
-  </html>
+            </html>
