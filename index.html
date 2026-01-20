@@ -48,7 +48,6 @@
     }
 
     .header-content { display: flex; justify-content: space-between; align-items: center; }
-
     .logo-section { display: flex; align-items: center; gap: 12px; }
     .logo-circle {
       width: 40px; height: 40px; border-radius: 50%;
@@ -97,8 +96,7 @@
 
     /* --- Hero Section --- */
     .hero-section {
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      text-align: center; min-height: calc(100vh - 150px);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;      text-align: center; min-height: calc(100vh - 150px);
       padding: 20px;
     }
     .hero-avatar-container {
@@ -147,8 +145,7 @@
     }
     .start-btn:hover { transform: scale(1.05); box-shadow: 0 0 40px rgba(0, 240, 255, 0.6); }
 
-    .game-direct-btn {
-        background: transparent; border: 2px solid #f43f5e; color: #f43f5e;
+    .game-direct-btn {        background: transparent; border: 2px solid #f43f5e; color: #f43f5e;
         padding: 12px 30px; border-radius: 50px; font-weight: bold; cursor: pointer;
         transition: 0.3s; display: flex; align-items: center; gap: 10px;
         margin-bottom: 20px;
@@ -197,8 +194,7 @@
         margin-top: 50px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);
         display: flex; justify-content: center; gap: 20px; opacity: 0.8;
     }
-    .sf-icon {
-        color: #94a3b8; font-size: 1.2rem; transition: 0.3s;
+    .sf-icon {        color: #94a3b8; font-size: 1.2rem; transition: 0.3s;
         width: 35px; height: 35px; display: flex; align-items: center; justify-content: center;
         border-radius: 50%; background: rgba(0,0,0,0.3); text-decoration: none;
     }
@@ -247,8 +243,7 @@
 
     .control-btn:hover {
         background: rgba(0, 240, 255, 0.2); transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(0, 240, 255, 0.2);
-    }
+        box-shadow: 0 5px 15px rgba(0, 240, 255, 0.2);    }
 
     .control-btn.active {
         background: var(--game-accent); color: #020617;
@@ -297,8 +292,7 @@
 
     .difficulty-btn.intermediate.selected { 
         background: #f59e0b; color: white;
-        box-shadow: 0 0 20px rgba(245, 158, 11, 0.5);
-    }
+        box-shadow: 0 0 20px rgba(245, 158, 11, 0.5);    }
 
     .difficulty-btn.advanced.selected { 
         background: #ef4444; color: white;
@@ -347,7 +341,6 @@
         display: flex; justify-content: space-between;
         align-items: center; margin-bottom: 20px;
     }
-
     .leaderboard-table {
         width: 100%; border-collapse: collapse;
     }
@@ -398,7 +391,6 @@
         display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
         gap: 15px; margin: 20px 0;
     }
-
     .achievement-card {
         background: rgba(30, 41, 59, 0.6); padding: 15px;
         border-radius: 12px; text-align: center;
@@ -447,8 +439,7 @@
         text-align: center; padding: 20px;
         background: rgba(0, 240, 255, 0.1); border-radius: 12px;
         margin: 20px 0; border-left: 4px solid var(--game-accent);
-        font-style: italic;
-    }
+        font-style: italic;    }
 
     .streak-counter {
         display: inline-flex; align-items: center; gap: 5px;
@@ -497,8 +488,7 @@
       margin: 0 auto;
       opacity: 1;
       transition: opacity 0.3s ease, transform 0.3s ease;
-    }
-    
+    }    
     .memory-grid.beginner { 
         grid-template-columns: repeat(4, 1fr); 
         max-width: 500px;
@@ -533,6 +523,7 @@
     .memory-card.matched .front-face {
         background: linear-gradient(135deg, #10b981, #059669);
         box-shadow: 0 0 15px rgba(16, 185, 129, 0.5);
+        transform: rotateY(180deg);
     }
     
     .front-face, .back-face {
@@ -546,9 +537,13 @@
     }
     
     .front-face {
-        background: #1e293b; color: white; transform: rotateY(180deg);
-        border: 2px solid var(--game-accent);
+        background: #1e293b; color: white; transform: rotateY(180deg);        border: 2px solid var(--game-accent);
         -webkit-transform: rotateY(180deg);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2.5rem;
+        transition: all 0.4s ease;
     }
     
     .back-face {
@@ -556,6 +551,9 @@
         border: 1px solid #475569;
         transform: rotateY(0deg);
         -webkit-transform: rotateY(0deg);
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     
     .back-face i { color: rgba(255,255,255,0.5); font-size: 1.5rem; }
@@ -587,6 +585,15 @@
         min-height: 300px;
         font-size: 2rem;
         color: var(--game-accent);
+    }
+    /* Match Animation */
+    @keyframes matchPulse {
+        0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+        70% { box-shadow: 0 0 0 15px rgba(16, 185, 129, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+    }
+    .matched {
+        animation: matchPulse 0.8s ease;
     }
 
     /* --- CONTACT GRID --- */
@@ -628,8 +635,7 @@
           grid-template-columns: repeat(3, 1fr); 
           max-width: 350px;
       }
-      .memory-grid.intermediate { 
-          grid-template-columns: repeat(4, 1fr); 
+      .memory-grid.intermediate {           grid-template-columns: repeat(4, 1fr); 
           max-width: 400px;
       }
       .memory-grid.advanced { 
@@ -678,8 +684,7 @@
       <div class="hero-avatar-container">
         <img src="Satyam.jpg" alt="Satyam Kumar" class="hero-avatar" onerror="this.src='https://drive.google.com/uc?export=view&id=1UvRz5HZPPLKaFX0540lmo9q1vhg9Z6bG'">
       </div>
-      
-      <div class="hero-badges">
+            <div class="hero-badges">
         <span class="hero-badge">CA Finalist</span>
         <span class="hero-badge">Data Mage</span>
         <span class="hero-badge">Prompt Engineer</span>
@@ -728,8 +733,7 @@
           </div>
         </div>
         
-        <div class="section-footer">
-             <a href="https://www.instagram.com/" target="_blank" class="sf-icon ig"><i class="fab fa-instagram"></i></a>
+        <div class="section-footer">             <a href="https://www.instagram.com/" target="_blank" class="sf-icon ig"><i class="fab fa-instagram"></i></a>
              <a href="https://www.linkedin.com/in/satyam-kumar5286o" target="_blank" class="sf-icon li"><i class="fab fa-linkedin-in"></i></a>
              <a href="https://youtube.com/@__satyamkumar" target="_blank" class="sf-icon yt"><i class="fab fa-youtube"></i></a>
              <a href="https://t.me/CA_Protracker" target="_blank" class="sf-icon tg"><i class="fab fa-telegram-plane"></i></a>
@@ -779,7 +783,6 @@
         </div>
       </div>
     </section>
-
     <!-- LEVEL 3 - QUEST LOG (unchanged) -->
     <section class="game-section" id="level3">
       <div class="container">
@@ -828,8 +831,7 @@
       <div class="container">
         <div class="level-header">
           <div class="level-icon-container"><i class="fas fa-microchip" style="color: #eab308;"></i></div>
-          <h2 class="level-title-main">SKILL ARSENAL</h2>
-        </div>
+          <h2 class="level-title-main">SKILL ARSENAL</h2>        </div>
         <div class="card-grid">
           <div class="card">
             <h3 class="card-title" style="margin-bottom: 20px;"><i class="fas fa-brain"></i> AI & Construct</h3>
@@ -878,8 +880,7 @@
             </div>
           </div>
 
-          <div class="card">
-            <h3 class="card-title" style="margin-bottom: 20px;"><i class="fas fa-running"></i> Athletics & Strategy</h3>
+          <div class="card">            <h3 class="card-title" style="margin-bottom: 20px;"><i class="fas fa-running"></i> Athletics & Strategy</h3>
             <span class="skill-category-title">Physical & Mental Sport</span>
             
             <div class="skill-item">
@@ -928,8 +929,7 @@
           </div>
           <div class="card">
             <h3 class="card-title">Coaching PWA</h3>
-            <p style="color: #94a3b8; margin-bottom: 15px;">Management system for institutes with student tracking and offline capabilities.</p>
-            <div class="tags">
+            <p style="color: #94a3b8; margin-bottom: 15px;">Management system for institutes with student tracking and offline capabilities.</p>            <div class="tags">
                <span class="tag">JS</span><span class="tag">Interactive</span><span class="tag">Automation</span>
             </div>
             <a href="https://satqm.github.io/Mithilesh-/" target="_blank" style="display: inline-block; margin-top: 15px; color: var(--game-accent); text-decoration: none; font-weight: 600;">Launch <i class="fas fa-external-link-alt"></i></a>
@@ -977,9 +977,8 @@
 
             <!-- SINGLE Difficulty Selector -->
             <div class="difficulty-selector">
-                <button class="difficulty-btn beginner" data-level="beginner">
-                    <i class="fas fa-seedling"></i> Beginner (12 cards)
-                </button>
+                <button class="difficulty-btn beginner selected" data-level="beginner">
+                    <i class="fas fa-seedling"></i> Beginner (12 cards)                </button>
                 <button class="difficulty-btn intermediate" data-level="intermediate">
                     <i class="fas fa-mountain"></i> Intermediate (20 cards)
                 </button>
@@ -1028,8 +1027,7 @@
                   
                   <div style="margin-top: 30px; font-size: 0.9rem; color: #64748b;">
                       <div class="streak-counter">
-                          <i class="fas fa-bolt" style="color: #fbbf24;"></i>
-                          Current Streak: <span id="startStreak">0</span> days
+                          <i class="fas fa-bolt" style="color: #fbbf24;"></i>                          Current Streak: <span id="startStreak">0</span> days
                       </div>
                   </div>
               </div>
@@ -1078,8 +1076,7 @@
                 <button onclick="returnToMenu()" style="background: transparent; border:1px solid #94a3b8; color:#94a3b8; padding:10px 25px; border-radius:50px; font-weight:bold; cursor:pointer;">
                     Return to Menu
                 </button>
-              </div>
-            </div>
+              </div>            </div>
 
             <!-- Leaderboard Section -->
             <div class="leaderboard-container" id="leaderboardSection" style="display: none;">
@@ -1117,32 +1114,31 @@
             <div class="rating-tiers" id="ratingTiersSection" style="display: none;">
                 <div class="tier-item god">
                     <strong>GOD TIER ⚡</strong><br>
-                    <small>&lt; 30 seconds</small><br>
+                    <small>< 30 seconds</small><br>
                     <span style="font-size:0.8rem; color:#cbd5e1;">Quantum speed processing</span>
                 </div>
                 <div class="tier-item monk">
                     <strong>CYBER MONK 🧘</strong><br>
-                    <small>&lt; 45 seconds</small><br>
+                    <small>< 45 seconds</small><br>
                     <span style="font-size:0.8rem; color:#cbd5e1;">Unparalleled focus</span>
                 </div>
                 <div class="tier-item ninja">
                     <strong>NEURAL NINJA 🥷</strong><br>
-                    <small>&lt; 60 seconds</small><br>
-                    <span style="font-size:0.8rem; color:#cbd5e1;">Precision & speed</span>
-                </div>
+                    <small>< 60 seconds</small><br>
+                    <span style="font-size:0.8rem; color:#cbd5e1;">Precision & speed</span>                </div>
                 <div class="tier-item sage">
                     <strong>SILICON SAGE 🤖</strong><br>
-                    <small>&lt; 70 seconds</small><br>
+                    <small>< 70 seconds</small><br>
                     <span style="font-size:0.8rem; color:#cbd5e1;">Steady progress</span>
                 </div>
                 <div class="tier-item drifter">
                     <strong>DATA DRIFTER 🌊</strong><br>
-                    <small>&lt; 80 seconds</small><br>
+                    <small>< 80 seconds</small><br>
                     <span style="font-size:0.8rem; color:#cbd5e1;">Finding rhythm</span>
                 </div>
                 <div class="tier-item learner">
                     <strong>LINK LEARNER 📚</strong><br>
-                    <small>&lt; 100 seconds</small><br>
+                    <small>< 100 seconds</small><br>
                     <span style="font-size:0.8rem; color:#cbd5e1;">Building pathways</span>
                 </div>
                 <div class="tier-item initiate">
@@ -1178,8 +1174,7 @@
         </div>
 
         <div class="section-footer">
-             <a href="https://www.instagram.com/" target="_blank" class="sf-icon ig"><i class="fab fa-instagram"></i></a>
-             <a href="https://www.linkedin.com/in/satyam-kumar5286o" target="_blank" class="sf-icon li"><i class="fab fa-linkedin-in"></i></a>
+             <a href="https://www.instagram.com/" target="_blank" class="sf-icon ig"><i class="fab fa-instagram"></i></a>             <a href="https://www.linkedin.com/in/satyam-kumar5286o" target="_blank" class="sf-icon li"><i class="fab fa-linkedin-in"></i></a>
              <a href="https://youtube.com/@__satyamkumar" target="_blank" class="sf-icon yt"><i class="fab fa-youtube"></i></a>
              <a href="https://t.me/CA_Protracker" target="_blank" class="sf-icon tg"><i class="fab fa-telegram-plane"></i></a>
         </div>
@@ -1229,7 +1224,6 @@
                 <div style="font-size: 0.8rem; color: #64748b; margin-top: 5px;">*No password required for access</div>
             </div>
         </div>
-
         <div class="section-footer">
              <a href="https://www.instagram.com/" target="_blank" class="sf-icon ig"><i class="fab fa-instagram"></i></a>
              <a href="https://www.linkedin.com/in/satyam-kumar5286o" target="_blank" class="sf-icon li"><i class="fab fa-linkedin-in"></i></a>
@@ -1279,7 +1273,6 @@
                 <div style="font-weight: 600;">Email</div>
               </div>
             </a>
-
             <a href="https://wa.me/919142300129" target="_blank" class="social-btn">
               <i class="fab fa-whatsapp" style="color: #22c55e; font-size: 1.5rem;"></i>
               <div style="text-align: left;">
@@ -1321,22 +1314,21 @@
       <h4 style="color: var(--game-accent); margin-top: 20px;">Performance Tiers:</h4>
       <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px; margin-bottom: 20px;">
         <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-          <span>GOD TIER ⚡</span><span>&lt; 30 seconds</span>
+          <span>GOD TIER ⚡</span><span>< 30 seconds</span>
         </div>
         <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-          <span>CYBER MONK 🧘</span><span>&lt; 45 seconds</span>
+          <span>CYBER MONK 🧘</span><span>< 45 seconds</span>
         </div>
         <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-          <span>NEURAL NINJA 🥷</span><span>&lt; 60 seconds</span>
+          <span>NEURAL NINJA 🥷</span><span>< 60 seconds</span>
+        </div>        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+          <span>SILICON SAGE 🤖</span><span>< 70 seconds</span>
         </div>
         <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-          <span>SILICON SAGE 🤖</span><span>&lt; 70 seconds</span>
+          <span>DATA DRIFTER 🌊</span><span>< 80 seconds</span>
         </div>
         <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-          <span>DATA DRIFTER 🌊</span><span>&lt; 80 seconds</span>
-        </div>
-        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-          <span>LINK LEARNER 📚</span><span>&lt; 100 seconds</span>
+          <span>LINK LEARNER 📚</span><span>< 100 seconds</span>
         </div>
         <div style="display: flex; justify-content: space-between;">
           <span>SYSTEM INITIATE 🔄</span><span>100+ seconds</span>
@@ -1378,8 +1370,7 @@
       <div style="margin-top: 30px;">
         <button class="control-btn" onclick="resetAllProgress()" style="background: rgba(239, 68, 68, 0.2); border-color: #ef4444; color: #ef4444;">
           <i class="fas fa-trash"></i> Reset All Progress
-        </button>
-        <button class="control-btn" onclick="closeModal('settingsModal')" style="margin-left: 10px;">
+        </button>        <button class="control-btn" onclick="closeModal('settingsModal')" style="margin-left: 10px;">
           <i class="fas fa-check"></i> Save Settings
         </button>
       </div>
@@ -1422,14 +1413,13 @@
         "PLAYER PROFILE", "KNOWLEDGE TREE", "QUEST LOG", "SKILL ARSENAL", "BUILDS", "NEURAL LINK", "TROPHY ROOM", "UPLINK"
       ],
       
-      // Memory Game State - FIXED: Using approach from index (42).html
+      // Memory Game State
       memoryGame: {
         difficultySettings: {
           beginner: { pairs: 6, gridCols: 4, gridClass: 'beginner' },
           intermediate: { pairs: 10, gridCols: 5, gridClass: 'intermediate' },
           advanced: { pairs: 15, gridCols: 6, gridClass: 'advanced' }
-        },
-        hasFlipped: false,
+        },        hasFlipped: false,
         lockBoard: false,
         firstCard: null,
         secondCard: null,
@@ -1439,7 +1429,8 @@
         timer: null,
         totalPairs: 6,
         gameActive: false,
-        isTransitioning: false
+        isTransitioning: false,
+        deck: []
       },
       
       // Player Stats
@@ -1477,8 +1468,7 @@
     const gameProgress = document.getElementById('gameProgress');
     const gameStartScreen = document.getElementById('gameStartScreen');
     const memOverlay = document.getElementById('mem-overlay');
-    const memRatingTitle = document.getElementById('mem-rating-title');
-    const memRatingDesc = document.getElementById('mem-rating-desc');
+    const memRatingTitle = document.getElementById('mem-rating-title');    const memRatingDesc = document.getElementById('mem-rating-desc');
     const motivationMessage = document.getElementById('motivationMessage');
     const playerNameInput = document.getElementById('playerName');
     const leaderboardBody = document.getElementById('leaderboardBody');
@@ -1517,7 +1507,7 @@
       document.getElementById('settingsBtn').addEventListener('click', () => openModal('settingsModal'));
       document.getElementById('leaderboardFilter').addEventListener('change', updateLeaderboard);
       
-      // Difficulty buttons - SINGLE SET
+      // Difficulty buttons
       document.querySelectorAll('.difficulty-selector .difficulty-btn').forEach(btn => {
         btn.addEventListener('click', function() {
           selectDifficulty(this.dataset.level);
@@ -1527,8 +1517,7 @@
       // Mouse move effect
       document.addEventListener('mousemove', (e) => {
         const x = (e.clientX / window.innerWidth) * 100;
-        const y = (e.clientY / window.innerHeight) * 100;
-        document.documentElement.style.setProperty('--mouse-x', `${x}%`);
+        const y = (e.clientY / window.innerHeight) * 100;        document.documentElement.style.setProperty('--mouse-x', `${x}%`);
         document.documentElement.style.setProperty('--mouse-y', `${y}%`);
       });
       
@@ -1577,8 +1566,7 @@
           gameState.playerStats.currentStreak = 0;
           saveGameData();
         }
-      }
-    }
+      }    }
 
     // ========== PORTFOLIO NAVIGATION ==========
     function enterQuest(levelIndex) {
@@ -1627,23 +1615,22 @@
     function hideAllGameSections() {
       leaderboardSection.style.display = 'none';
       ratingTiersSection.style.display = 'none';
-      achievementsSection.style.display = 'none';
-    }
+      achievementsSection.style.display = 'none';    }
 
     // ========== MEMORY GAME FUNCTIONS ==========
-    async function selectDifficulty(level) {
+    function selectDifficulty(level) {
       if (gameState.memoryGame.isTransitioning) return;
       
-      gameState.difficulty = level;
-      gameState.memoryGame.totalPairs = gameState.memoryGame.difficultySettings[level].pairs;
-      
-      // Update UI
+      // Update selected button UI
       document.querySelectorAll('.difficulty-btn').forEach(btn => {
         btn.classList.remove('selected');
         if (btn.dataset.level === level) {
           btn.classList.add('selected');
         }
       });
+      
+      gameState.difficulty = level;
+      gameState.memoryGame.totalPairs = gameState.memoryGame.difficultySettings[level].pairs;
       
       // Update display
       memDifficulty.textContent = level.toUpperCase();
@@ -1653,10 +1640,10 @@
       startStreak.textContent = gameState.playerStats.currentStreak;
       
       // Create new grid for the selected difficulty
-      await createGridForDifficulty(level);
+      createGridForDifficulty(level);
     }
 
-    async function createGridForDifficulty(level) {
+    function createGridForDifficulty(level) {
       if (gameState.memoryGame.isTransitioning) return;
       
       gameState.memoryGame.isTransitioning = true;
@@ -1664,7 +1651,6 @@
       // Show loading and hide current grid
       if (memoryGrid.children.length > 0) {
         memoryGrid.classList.add('transitioning');
-        await sleep(200);
       }
       
       gridLoading.style.display = 'flex';
@@ -1678,43 +1664,45 @@
       
       // Get icons for current difficulty
       const pairsNeeded = gameState.memoryGame.difficultySettings[level].pairs;
-      const selectedIcons = getRandomIcons(pairsNeeded);
-      
+      const selectedIcons = getRandomIcons(pairsNeeded);      
       // Create deck with pairs
       let deck = [...selectedIcons, ...selectedIcons];
       
       // Shuffle
       deck = shuffleArray(deck);
       
+      // Store deck in game state
+      gameState.memoryGame.deck = deck;
+      
       // Brief pause for smooth transition
-      await sleep(300);
-      
-      // Create cards - USING THE CORRECT APPROACH FROM index (42).html
-      deck.forEach(icon => {
-        const card = document.createElement('div');
-        card.className = 'memory-card';
-        card.dataset.icon = icon;
+      setTimeout(() => {
+        // Create cards with proper flipping
+        deck.forEach(icon => {
+          const card = document.createElement('div');
+          card.className = 'memory-card';
+          card.dataset.icon = icon;
+          
+          card.innerHTML = `
+            <div class="front-face">${icon}</div>
+            <div class="back-face"><i class="fas fa-fingerprint"></i></div>
+          `;
+          
+          // Add click event listener with proper binding
+          card.addEventListener('click', flipCard.bind(null, card));
+          memoryGrid.appendChild(card);
+        });
         
-        card.innerHTML = `
-          <div class="front-face">${icon}</div>
-          <div class="back-face"><i class="fas fa-fingerprint"></i></div>
-        `;
+        // Show the new grid and start screen
+        gridLoading.style.display = 'none';
+        memoryGrid.style.display = 'grid';
+        memoryGrid.classList.remove('transitioning');
+        gameStartScreen.style.display = 'flex'; // Show the start screen
         
-        // FIXED: Using the correct event listener from index (42).html
-        card.addEventListener('click', flipCard);
-        memoryGrid.appendChild(card);
-      });
-      
-      // Show the new grid and start screen
-      gridLoading.style.display = 'none';
-      memoryGrid.style.display = 'grid';
-      memoryGrid.classList.remove('transitioning');
-      gameStartScreen.style.display = 'flex'; // Show the start screen
-      
-      // Reset game state
-      resetMemoryGameState();
-      
-      gameState.memoryGame.isTransitioning = false;
+        // Reset game state
+        resetMemoryGameState();
+        
+        gameState.memoryGame.isTransitioning = false;
+      }, 300);
     }
 
     function getRandomIcons(count) {
@@ -1725,32 +1713,28 @@
 
     function shuffleArray(array) {
       for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
+        const j = Math.floor(Math.random() * (i + 1));        [array[i], array[j]] = [array[j], array[i]];
       }
       return array;
     }
 
-    function sleep(ms) {
-      return new Promise(resolve => setTimeout(resolve, ms));
-    }
-
-    // FIXED: Using the flipCard function from index (42).html
-    function flipCard() {
-      if (!gameState.memoryGame.gameActive) return;
-      if (gameState.memoryGame.lockBoard) return;
-      if (this === gameState.memoryGame.firstCard) return;
-      if (this.classList.contains('matched')) return;
-      
-      this.classList.add('flip');
-      
-      if (!gameState.memoryGame.hasFlipped) {
-        gameState.memoryGame.hasFlipped = true;
-        gameState.memoryGame.firstCard = this;
+    function flipCard(card) {
+      if (!gameState.memoryGame.gameActive || 
+          gameState.memoryGame.lockBoard || 
+          card.classList.contains('flip') || 
+          card.classList.contains('matched')) {
         return;
       }
       
-      gameState.memoryGame.secondCard = this;
+      card.classList.add('flip');
+      
+      if (!gameState.memoryGame.hasFlipped) {
+        gameState.memoryGame.hasFlipped = true;
+        gameState.memoryGame.firstCard = card;
+        return;
+      }
+      
+      gameState.memoryGame.secondCard = card;
       gameState.memoryGame.moves++;
       memMoves.textContent = gameState.memoryGame.moves;
       
@@ -1758,12 +1742,32 @@
     }
 
     function checkForMatch() {
-      const isMatch = gameState.memoryGame.firstCard.dataset.icon === gameState.memoryGame.secondCard.dataset.icon;
+      gameState.memoryGame.lockBoard = true;
+      
+      const firstIcon = gameState.memoryGame.firstCard.dataset.icon;
+      const secondIcon = gameState.memoryGame.secondCard.dataset.icon;
+      const isMatch = firstIcon === secondIcon;
       
       if (isMatch) {
-        disableCards();
+        setTimeout(() => {
+          disableCards();
+          gameState.memoryGame.matches++;
+          memMatches.textContent = `${gameState.memoryGame.matches}/${gameState.memoryGame.totalPairs}`;
+          
+          // Update progress
+          const progress = (gameState.memoryGame.matches / gameState.memoryGame.totalPairs) * 100;
+          gameProgress.style.width = `${progress}%`;
+          
+          resetBoard();
+          
+          // Check for win
+          if (gameState.memoryGame.matches === gameState.memoryGame.totalPairs) {
+            endGame();          }
+        }, 300);
       } else {
-        unflipCards();
+        setTimeout(() => {
+          unflipCards();
+        }, 1000);
       }
     }
 
@@ -1771,32 +1775,19 @@
       gameState.memoryGame.firstCard.classList.add('matched');
       gameState.memoryGame.secondCard.classList.add('matched');
       
+      // Add match animation
+      gameState.memoryGame.firstCard.classList.add('matched-animation');
+      gameState.memoryGame.secondCard.classList.add('matched-animation');
+      
+      // Remove event listeners for matched cards
       gameState.memoryGame.firstCard.removeEventListener('click', flipCard);
       gameState.memoryGame.secondCard.removeEventListener('click', flipCard);
-      
-      gameState.memoryGame.matches++;
-      memMatches.textContent = `${gameState.memoryGame.matches}/${gameState.memoryGame.totalPairs}`;
-      
-      // Update progress
-      const progress = (gameState.memoryGame.matches / gameState.memoryGame.totalPairs) * 100;
-      gameProgress.style.width = `${progress}%`;
-      
-      resetBoard();
-      
-      // Check for win
-      if (gameState.memoryGame.matches === gameState.memoryGame.totalPairs) {
-        endGame();
-      }
     }
 
     function unflipCards() {
-      gameState.memoryGame.lockBoard = true;
-      
-      setTimeout(() => {
-        gameState.memoryGame.firstCard.classList.remove('flip');
-        gameState.memoryGame.secondCard.classList.remove('flip');
-        resetBoard();
-      }, 1000);
+      gameState.memoryGame.firstCard.classList.remove('flip');
+      gameState.memoryGame.secondCard.classList.remove('flip');
+      resetBoard();
     }
 
     function resetBoard() {
@@ -1814,9 +1805,13 @@
       gameState.memoryGame.firstCard = null;
       gameState.memoryGame.secondCard = null;
       
+      // Clear all card flips
+      document.querySelectorAll('.memory-card').forEach(card => {
+        card.classList.remove('flip', 'matched', 'matched-animation');
+      });
+      
       // Update UI
-      memMoves.textContent = '0';
-      memTimer.textContent = '0s';
+      memMoves.textContent = '0';      memTimer.textContent = '0s';
       memMatches.textContent = `0/${gameState.memoryGame.totalPairs}`;
       gameProgress.style.width = '0%';
     }
@@ -1849,7 +1844,7 @@
       
       gameState.memoryGame.timer = setInterval(() => {
         gameState.memoryGame.time++;
-        memTimer.textContent = gameState.memoryGame.time + 's';
+        memTimer.textContent = `${gameState.memoryGame.time}s`;
       }, 1000);
     }
 
@@ -1859,16 +1854,13 @@
       
       // Update player stats
       gameState.playerStats.gamesPlayed++;
-      gameState.playerStats.totalWins++;
-      gameState.playerStats.lastPlayDate = new Date().toDateString();
       
       // Update streak
       const today = new Date().toDateString();
       const lastPlayed = gameState.playerStats.lastPlayDate;
       
       if (!lastPlayed || lastPlayed === today) {
-        gameState.playerStats.currentStreak++;
-      } else {
+        gameState.playerStats.currentStreak++;      } else {
         const yesterday = new Date();
         yesterday.setDate(yesterday.getDate() - 1);
         if (lastPlayed === yesterday.toDateString()) {
@@ -1877,6 +1869,8 @@
           gameState.playerStats.currentStreak = 1;
         }
       }
+      
+      gameState.playerStats.lastPlayDate = today;
       
       // Check for personal best
       const currentBest = gameState.playerStats.bestTime[gameState.difficulty];
@@ -1915,8 +1909,7 @@
       if (time < 70) return { tier: 'sage', title: 'SILICON SAGE 🤖', color: '#10b981' };
       if (time < 80) return { tier: 'drifter', title: 'DATA DRIFTER 🌊', color: '#0ea5e9' };
       if (time < 100) return { tier: 'learner', title: 'LINK LEARNER 📚', color: '#f59e0b' };
-      return { tier: 'initiate', title: 'SYSTEM INITIATE 🔄', color: '#64748b' };
-    }
+      return { tier: 'initiate', title: 'SYSTEM INITIATE 🔄', color: '#64748b' };    }
 
     function getMotivationMessage(tier) {
       const messages = {
@@ -1934,11 +1927,7 @@
     function resetGame() {
       clearInterval(gameState.memoryGame.timer);
       memOverlay.style.display = 'none';
-      gameStartScreen.style.display = 'flex';
       gameState.memoryGame.gameActive = false;
-      
-      // Update streak display
-      startStreak.textContent = gameState.playerStats.currentStreak;
       
       // Reset the grid for current difficulty
       createGridForDifficulty(gameState.difficulty);
@@ -1969,8 +1958,7 @@
       gameState.leaderboard.push(score);
       
       // Sort by time (ascending) and moves (ascending)
-      gameState.leaderboard.sort((a, b) => {
-        if (a.time === b.time) {
+      gameState.leaderboard.sort((a, b) => {        if (a.time === b.time) {
           return a.moves - b.moves;
         }
         return a.time - b.time;
@@ -2019,8 +2007,7 @@
       
       filteredScores.forEach((score, index) => {
         const row = document.createElement('tr');
-        const rank = index + 1;
-        
+        const rank = index + 1;        
         let rankBadge = '';
         if (rank === 1) rankBadge = '<span class="rank-badge rank-1">🥇</span>';
         else if (rank === 2) rankBadge = '<span class="rank-badge rank-2">🥈</span>';
@@ -2069,8 +2056,7 @@
     function checkAchievements() {
       const stats = gameState.playerStats;
       const game = gameState.memoryGame;
-      
-      // First Link
+            // First Link
       if (!stats.achievements.firstLink) {
         stats.achievements.firstLink = true;
         document.getElementById('achievement1').classList.add('unlocked');
@@ -2119,8 +2105,7 @@
         max-width: 300px;
         box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         animation: slideIn 0.5s ease;
-      `;
-      
+      `;      
       notification.innerHTML = `
         <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
           <div style="font-size: 2rem;">🏆</div>
@@ -2169,8 +2154,7 @@
       startStreak.textContent = stats.currentStreak;
       
       // Update achievement displays
-      if (stats.achievements.firstLink) {
-        document.getElementById('achievement1').classList.add('unlocked');
+      if (stats.achievements.firstLink) {        document.getElementById('achievement1').classList.add('unlocked');
       }
       if (stats.achievements.speedDemon) {
         document.getElementById('achievement2').classList.add('unlocked');
@@ -2219,8 +2203,7 @@
         updateStatsDisplay();
         updateLeaderboard();
         
-        closeModal('settingsModal');
-        alert('All progress has been reset.');
+        closeModal('settingsModal');        alert('All progress has been reset.');
       }
     }
 
@@ -2270,11 +2253,7 @@
         link.click();
         document.body.removeChild(link);
     }
-
     // ========== INITIALIZE ==========
-    // Set default difficulty
-    selectDifficulty('beginner');
-    
     // Run initialization
     init();
     
@@ -2293,6 +2272,11 @@
         from { opacity: 0; }
         to { opacity: 1; }
       }
+      @keyframes matchPulse {
+        0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+        70% { box-shadow: 0 0 0 15px rgba(16, 185, 129, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+      }
       .fa-spin {
         animation: fa-spin 1s infinite linear;
       }
@@ -2300,8 +2284,11 @@
         0% { transform: rotate(0deg); }
         100% { transform: rotate(360deg); }
       }
+      .matched-animation {
+        animation: matchPulse 0.8s ease;
+      }
     `;
     document.head.appendChild(style);
   </script>
 </body>
-               </html>
+  </html>
