@@ -48,6 +48,7 @@
     }
 
     .header-content { display: flex; justify-content: space-between; align-items: center; }
+
     .logo-section { display: flex; align-items: center; gap: 12px; }
     .logo-circle {
       width: 40px; height: 40px; border-radius: 50%;
@@ -96,7 +97,8 @@
 
     /* --- Hero Section --- */
     .hero-section {
-      display: flex; flex-direction: column; align-items: center; justify-content: center;      text-align: center; min-height: calc(100vh - 150px);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; min-height: calc(100vh - 150px);
       padding: 20px;
     }
     .hero-avatar-container {
@@ -145,7 +147,8 @@
     }
     .start-btn:hover { transform: scale(1.05); box-shadow: 0 0 40px rgba(0, 240, 255, 0.6); }
 
-    .game-direct-btn {        background: transparent; border: 2px solid #f43f5e; color: #f43f5e;
+    .game-direct-btn {
+        background: transparent; border: 2px solid #f43f5e; color: #f43f5e;
         padding: 12px 30px; border-radius: 50px; font-weight: bold; cursor: pointer;
         transition: 0.3s; display: flex; align-items: center; gap: 10px;
         margin-bottom: 20px;
@@ -194,7 +197,8 @@
         margin-top: 50px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);
         display: flex; justify-content: center; gap: 20px; opacity: 0.8;
     }
-    .sf-icon {        color: #94a3b8; font-size: 1.2rem; transition: 0.3s;
+    .sf-icon {
+        color: #94a3b8; font-size: 1.2rem; transition: 0.3s;
         width: 35px; height: 35px; display: flex; align-items: center; justify-content: center;
         border-radius: 50%; background: rgba(0,0,0,0.3); text-decoration: none;
     }
@@ -243,7 +247,8 @@
 
     .control-btn:hover {
         background: rgba(0, 240, 255, 0.2); transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(0, 240, 255, 0.2);    }
+        box-shadow: 0 5px 15px rgba(0, 240, 255, 0.2);
+    }
 
     .control-btn.active {
         background: var(--game-accent); color: #020617;
@@ -292,7 +297,8 @@
 
     .difficulty-btn.intermediate.selected { 
         background: #f59e0b; color: white;
-        box-shadow: 0 0 20px rgba(245, 158, 11, 0.5);    }
+        box-shadow: 0 0 20px rgba(245, 158, 11, 0.5);
+    }
 
     .difficulty-btn.advanced.selected { 
         background: #ef4444; color: white;
@@ -341,6 +347,7 @@
         display: flex; justify-content: space-between;
         align-items: center; margin-bottom: 20px;
     }
+
     .leaderboard-table {
         width: 100%; border-collapse: collapse;
     }
@@ -391,6 +398,7 @@
         display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
         gap: 15px; margin: 20px 0;
     }
+
     .achievement-card {
         background: rgba(30, 41, 59, 0.6); padding: 15px;
         border-radius: 12px; text-align: center;
@@ -439,7 +447,8 @@
         text-align: center; padding: 20px;
         background: rgba(0, 240, 255, 0.1); border-radius: 12px;
         margin: 20px 0; border-left: 4px solid var(--game-accent);
-        font-style: italic;    }
+        font-style: italic;
+    }
 
     .streak-counter {
         display: inline-flex; align-items: center; gap: 5px;
@@ -488,7 +497,8 @@
       margin: 0 auto;
       opacity: 1;
       transition: opacity 0.3s ease, transform 0.3s ease;
-    }    
+    }
+    
     .memory-grid.beginner { 
         grid-template-columns: repeat(4, 1fr); 
         max-width: 500px;
@@ -523,7 +533,6 @@
     .memory-card.matched .front-face {
         background: linear-gradient(135deg, #10b981, #059669);
         box-shadow: 0 0 15px rgba(16, 185, 129, 0.5);
-        transform: rotateY(180deg);
     }
     
     .front-face, .back-face {
@@ -537,13 +546,9 @@
     }
     
     .front-face {
-        background: #1e293b; color: white; transform: rotateY(180deg);        border: 2px solid var(--game-accent);
+        background: #1e293b; color: white; transform: rotateY(180deg);
+        border: 2px solid var(--game-accent);
         -webkit-transform: rotateY(180deg);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 2.5rem;
-        transition: all 0.4s ease;
     }
     
     .back-face {
@@ -551,9 +556,6 @@
         border: 1px solid #475569;
         transform: rotateY(0deg);
         -webkit-transform: rotateY(0deg);
-        display: flex;
-        justify-content: center;
-        align-items: center;
     }
     
     .back-face i { color: rgba(255,255,255,0.5); font-size: 1.5rem; }
@@ -585,15 +587,6 @@
         min-height: 300px;
         font-size: 2rem;
         color: var(--game-accent);
-    }
-    /* Match Animation */
-    @keyframes matchPulse {
-        0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
-        70% { box-shadow: 0 0 0 15px rgba(16, 185, 129, 0); }
-        100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
-    }
-    .matched {
-        animation: matchPulse 0.8s ease;
     }
 
     /* --- CONTACT GRID --- */
@@ -635,7 +628,8 @@
           grid-template-columns: repeat(3, 1fr); 
           max-width: 350px;
       }
-      .memory-grid.intermediate {           grid-template-columns: repeat(4, 1fr); 
+      .memory-grid.intermediate { 
+          grid-template-columns: repeat(4, 1fr); 
           max-width: 400px;
       }
       .memory-grid.advanced { 
@@ -684,7 +678,8 @@
       <div class="hero-avatar-container">
         <img src="Satyam.jpg" alt="Satyam Kumar" class="hero-avatar" onerror="this.src='https://drive.google.com/uc?export=view&id=1UvRz5HZPPLKaFX0540lmo9q1vhg9Z6bG'">
       </div>
-            <div class="hero-badges">
+      
+      <div class="hero-badges">
         <span class="hero-badge">CA Finalist</span>
         <span class="hero-badge">Data Mage</span>
         <span class="hero-badge">Prompt Engineer</span>
@@ -733,7 +728,8 @@
           </div>
         </div>
         
-        <div class="section-footer">             <a href="https://www.instagram.com/" target="_blank" class="sf-icon ig"><i class="fab fa-instagram"></i></a>
+        <div class="section-footer">
+             <a href="https://www.instagram.com/" target="_blank" class="sf-icon ig"><i class="fab fa-instagram"></i></a>
              <a href="https://www.linkedin.com/in/satyam-kumar5286o" target="_blank" class="sf-icon li"><i class="fab fa-linkedin-in"></i></a>
              <a href="https://youtube.com/@__satyamkumar" target="_blank" class="sf-icon yt"><i class="fab fa-youtube"></i></a>
              <a href="https://t.me/CA_Protracker" target="_blank" class="sf-icon tg"><i class="fab fa-telegram-plane"></i></a>
@@ -783,6 +779,7 @@
         </div>
       </div>
     </section>
+
     <!-- LEVEL 3 - QUEST LOG (unchanged) -->
     <section class="game-section" id="level3">
       <div class="container">
@@ -831,7 +828,8 @@
       <div class="container">
         <div class="level-header">
           <div class="level-icon-container"><i class="fas fa-microchip" style="color: #eab308;"></i></div>
-          <h2 class="level-title-main">SKILL ARSENAL</h2>        </div>
+          <h2 class="level-title-main">SKILL ARSENAL</h2>
+        </div>
         <div class="card-grid">
           <div class="card">
             <h3 class="card-title" style="margin-bottom: 20px;"><i class="fas fa-brain"></i> AI & Construct</h3>
@@ -880,7 +878,8 @@
             </div>
           </div>
 
-          <div class="card">            <h3 class="card-title" style="margin-bottom: 20px;"><i class="fas fa-running"></i> Athletics & Strategy</h3>
+          <div class="card">
+            <h3 class="card-title" style="margin-bottom: 20px;"><i class="fas fa-running"></i> Athletics & Strategy</h3>
             <span class="skill-category-title">Physical & Mental Sport</span>
             
             <div class="skill-item">
@@ -929,7 +928,8 @@
           </div>
           <div class="card">
             <h3 class="card-title">Coaching PWA</h3>
-            <p style="color: #94a3b8; margin-bottom: 15px;">Management system for institutes with student tracking and offline capabilities.</p>            <div class="tags">
+            <p style="color: #94a3b8; margin-bottom: 15px;">Management system for institutes with student tracking and offline capabilities.</p>
+            <div class="tags">
                <span class="tag">JS</span><span class="tag">Interactive</span><span class="tag">Automation</span>
             </div>
             <a href="https://satqm.github.io/Mithilesh-/" target="_blank" style="display: inline-block; margin-top: 15px; color: var(--game-accent); text-decoration: none; font-weight: 600;">Launch <i class="fas fa-external-link-alt"></i></a>
@@ -977,8 +977,9 @@
 
             <!-- SINGLE Difficulty Selector -->
             <div class="difficulty-selector">
-                <button class="difficulty-btn beginner selected" data-level="beginner">
-                    <i class="fas fa-seedling"></i> Beginner (12 cards)                </button>
+                <button class="difficulty-btn beginner" data-level="beginner">
+                    <i class="fas fa-seedling"></i> Beginner (12 cards)
+                </button>
                 <button class="difficulty-btn intermediate" data-level="intermediate">
                     <i class="fas fa-mountain"></i> Intermediate (20 cards)
                 </button>
@@ -1021,13 +1022,14 @@
                   <h2 style="color: white; margin-bottom: 10px;">NEURAL LINK READY</h2>
                   <p style="color: #94a3b8; margin-bottom: 20px;">Press start to begin cognitive training</p>
                   
-                  <button onclick="startGame()" style="background: var(--game-accent); color: #020617; border:none; padding:15px 40px; border-radius:50px; font-weight:800; font-size: 1.1rem; cursor:pointer; box-shadow: 0 0 20px rgba(0,240,255,0.5); margin-top: 20px;">
+                  <button onclick="startMemoryGame()" style="background: var(--game-accent); color: #020617; border:none; padding:15px 40px; border-radius:50px; font-weight:800; font-size: 1.1rem; cursor:pointer; box-shadow: 0 0 20px rgba(0,240,255,0.5); margin-top: 20px;">
                       <i class="fas fa-play"></i> START TRAINING
                   </button>
                   
                   <div style="margin-top: 30px; font-size: 0.9rem; color: #64748b;">
                       <div class="streak-counter">
-                          <i class="fas fa-bolt" style="color: #fbbf24;"></i>                          Current Streak: <span id="startStreak">0</span> days
+                          <i class="fas fa-bolt" style="color: #fbbf24;"></i>
+                          Current Streak: <span id="startStreak">0</span> days
                       </div>
                   </div>
               </div>
@@ -1068,113 +1070,21 @@
                     <button onclick="saveScore()" style="background: #10b981; border:none; padding:12px 30px; border-radius:50px; font-weight:bold; cursor:pointer; color: white;">
                         <i class="fas fa-save"></i> Save Score
                     </button>
-                    <button onclick="resetGame()" style="background: var(--game-accent); border:none; padding:12px 30px; border-radius:50px; font-weight:bold; cursor:pointer; color: #020617;">
+                    <button onclick="resetMemoryGame()" style="background: var(--game-accent); border:none; padding:12px 30px; border-radius:50px; font-weight:bold; cursor:pointer; color: #020617;">
                         <i class="fas fa-redo"></i> Play Again
                     </button>
                 </div>
                 
-                <button onclick="returnToMenu()" style="background: transparent; border:1px solid #94a3b8; color:#94a3b8; padding:10px 25px; border-radius:50px; font-weight:bold; cursor:pointer;">
+                <button onclick="returnToMemoryMenu()" style="background: transparent; border:1px solid #94a3b8; color:#94a3b8; padding:10px 25px; border-radius:50px; font-weight:bold; cursor:pointer;">
                     Return to Menu
                 </button>
-              </div>            </div>
-
-            <!-- Leaderboard Section -->
-            <div class="leaderboard-container" id="leaderboardSection" style="display: none;">
-                <div class="leaderboard-header">
-                    <h3 style="color: white;"><i class="fas fa-trophy"></i> NEURAL LINK LEADERBOARD</h3>
-                    <div style="display: flex; gap: 10px;">
-                        <select id="leaderboardFilter" style="background: rgba(255,255,255,0.05); color: white; border: 1px solid rgba(255,255,255,0.1); padding: 8px; border-radius: 8px;">
-                            <option value="all">All Difficulties</option>
-                            <option value="beginner">Beginner</option>
-                            <option value="intermediate">Intermediate</option>
-                            <option value="advanced">Advanced</option>
-                        </select>
-                        <button class="control-btn" onclick="resetLeaderboard()"><i class="fas fa-trash"></i> Reset</button>
-                    </div>
-                </div>
-                <table class="leaderboard-table">
-                    <thead>
-                        <tr>
-                            <th>Rank</th>
-                            <th>Player</th>
-                            <th>Difficulty</th>
-                            <th>Time</th>
-                            <th>Moves</th>
-                            <th>Rating</th>
-                            <th>Date</th>
-                        </tr>
-                    </thead>
-                    <tbody id="leaderboardBody">
-                        <!-- Leaderboard rows will be inserted here -->
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- Rating Tiers Info -->
-            <div class="rating-tiers" id="ratingTiersSection" style="display: none;">
-                <div class="tier-item god">
-                    <strong>GOD TIER ⚡</strong><br>
-                    <small>< 30 seconds</small><br>
-                    <span style="font-size:0.8rem; color:#cbd5e1;">Quantum speed processing</span>
-                </div>
-                <div class="tier-item monk">
-                    <strong>CYBER MONK 🧘</strong><br>
-                    <small>< 45 seconds</small><br>
-                    <span style="font-size:0.8rem; color:#cbd5e1;">Unparalleled focus</span>
-                </div>
-                <div class="tier-item ninja">
-                    <strong>NEURAL NINJA 🥷</strong><br>
-                    <small>< 60 seconds</small><br>
-                    <span style="font-size:0.8rem; color:#cbd5e1;">Precision & speed</span>                </div>
-                <div class="tier-item sage">
-                    <strong>SILICON SAGE 🤖</strong><br>
-                    <small>< 70 seconds</small><br>
-                    <span style="font-size:0.8rem; color:#cbd5e1;">Steady progress</span>
-                </div>
-                <div class="tier-item drifter">
-                    <strong>DATA DRIFTER 🌊</strong><br>
-                    <small>< 80 seconds</small><br>
-                    <span style="font-size:0.8rem; color:#cbd5e1;">Finding rhythm</span>
-                </div>
-                <div class="tier-item learner">
-                    <strong>LINK LEARNER 📚</strong><br>
-                    <small>< 100 seconds</small><br>
-                    <span style="font-size:0.8rem; color:#cbd5e1;">Building pathways</span>
-                </div>
-                <div class="tier-item initiate">
-                    <strong>SYSTEM INITIATE 🔄</strong><br>
-                    <small>100+ seconds</small><br>
-                    <span style="font-size:0.8rem; color:#cbd5e1;">Journey begins</span>
-                </div>
-            </div>
-
-            <!-- Achievements Section -->
-            <div class="achievements-grid" id="achievementsSection" style="display: none;">
-                <div class="achievement-card unlocked" id="achievement1">
-                    <div class="icon">🎮</div>
-                    <strong>First Link</strong>
-                    <p>Complete your first game</p>
-                </div>
-                <div class="achievement-card" id="achievement2">
-                    <div class="icon">⚡</div>
-                    <strong>Speed Demon</strong>
-                    <p>Complete under 30 seconds</p>
-                </div>
-                <div class="achievement-card" id="achievement3">
-                    <div class="icon">👑</div>
-                    <strong>Flawless Victory</strong>
-                    <p>0 mismatches in a game</p>
-                </div>
-                <div class="achievement-card" id="achievement4">
-                    <div class="icon">🏆</div>
-                    <strong>Master Strategist</strong>
-                    <p>Complete all difficulty levels</p>
-                </div>
+              </div>
             </div>
         </div>
 
         <div class="section-footer">
-             <a href="https://www.instagram.com/" target="_blank" class="sf-icon ig"><i class="fab fa-instagram"></i></a>             <a href="https://www.linkedin.com/in/satyam-kumar5286o" target="_blank" class="sf-icon li"><i class="fab fa-linkedin-in"></i></a>
+             <a href="https://www.instagram.com/" target="_blank" class="sf-icon ig"><i class="fab fa-instagram"></i></a>
+             <a href="https://www.linkedin.com/in/satyam-kumar5286o" target="_blank" class="sf-icon li"><i class="fab fa-linkedin-in"></i></a>
              <a href="https://youtube.com/@__satyamkumar" target="_blank" class="sf-icon yt"><i class="fab fa-youtube"></i></a>
              <a href="https://t.me/CA_Protracker" target="_blank" class="sf-icon tg"><i class="fab fa-telegram-plane"></i></a>
         </div>
@@ -1224,6 +1134,7 @@
                 <div style="font-size: 0.8rem; color: #64748b; margin-top: 5px;">*No password required for access</div>
             </div>
         </div>
+
         <div class="section-footer">
              <a href="https://www.instagram.com/" target="_blank" class="sf-icon ig"><i class="fab fa-instagram"></i></a>
              <a href="https://www.linkedin.com/in/satyam-kumar5286o" target="_blank" class="sf-icon li"><i class="fab fa-linkedin-in"></i></a>
@@ -1273,6 +1184,7 @@
                 <div style="font-weight: 600;">Email</div>
               </div>
             </a>
+
             <a href="https://wa.me/919142300129" target="_blank" class="social-btn">
               <i class="fab fa-whatsapp" style="color: #22c55e; font-size: 1.5rem;"></i>
               <div style="text-align: left;">
@@ -1298,85 +1210,6 @@
 
   </main>
 
-  <!-- Modals -->
-  <div class="modal" id="rulesModal">
-    <div class="modal-content">
-      <button class="close-modal" onclick="closeModal('rulesModal')">&times;</button>
-      <h3 style="color: white; margin-bottom: 20px;"><i class="fas fa-book"></i> Game Rules & Tiers</h3>
-      
-      <h4 style="color: var(--game-accent); margin-top: 20px;">Difficulty Levels:</h4>
-      <ul style="color: #94a3b8; margin-left: 20px; margin-bottom: 20px;">
-        <li><strong>Beginner:</strong> 12 cards (6 pairs) - Grid: 4×3</li>
-        <li><strong>Intermediate:</strong> 20 cards (10 pairs) - Grid: 5×4</li>
-        <li><strong>Advanced:</strong> 30 cards (15 pairs) - Grid: 6×5</li>
-      </ul>
-      
-      <h4 style="color: var(--game-accent); margin-top: 20px;">Performance Tiers:</h4>
-      <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px; margin-bottom: 20px;">
-        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-          <span>GOD TIER ⚡</span><span>< 30 seconds</span>
-        </div>
-        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-          <span>CYBER MONK 🧘</span><span>< 45 seconds</span>
-        </div>
-        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-          <span>NEURAL NINJA 🥷</span><span>< 60 seconds</span>
-        </div>        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-          <span>SILICON SAGE 🤖</span><span>< 70 seconds</span>
-        </div>
-        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-          <span>DATA DRIFTER 🌊</span><span>< 80 seconds</span>
-        </div>
-        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-          <span>LINK LEARNER 📚</span><span>< 100 seconds</span>
-        </div>
-        <div style="display: flex; justify-content: space-between;">
-          <span>SYSTEM INITIATE 🔄</span><span>100+ seconds</span>
-        </div>
-      </div>
-      
-      <h4 style="color: var(--game-accent); margin-top: 20px;">Tips for Success:</h4>
-      <ul style="color: #94a3b8; margin-left: 20px;">
-        <li>Start with Beginner to learn the patterns</li>
-        <li>Focus on remembering positions rather than random clicking</li>
-        <li>Take a mental snapshot of the board after each turn</li>
-        <li>Practice daily to improve your neural pathways</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="modal" id="settingsModal">
-    <div class="modal-content">
-      <button class="close-modal" onclick="closeModal('settingsModal')">&times;</button>
-      <h3 style="color: white; margin-bottom: 20px;"><i class="fas fa-cog"></i> Game Settings</h3>
-      
-      <div style="margin-bottom: 20px;">
-        <label style="display: flex; align-items: center; gap: 10px; color: white; margin-bottom: 15px;">
-          <input type="checkbox" id="soundToggle" checked>
-          <span>Enable Sound Effects</span>
-        </label>
-        
-        <label style="display: flex; align-items: center; gap: 10px; color: white; margin-bottom: 15px;">
-          <input type="checkbox" id="animationsToggle" checked>
-          <span>Enable Animations</span>
-        </label>
-        
-        <label style="display: flex; align-items: center; gap: 10px; color: white; margin-bottom: 15px;">
-          <input type="checkbox" id="streakResetToggle">
-          <span>Reset Daily Streak at Midnight</span>
-        </label>
-      </div>
-      
-      <div style="margin-top: 30px;">
-        <button class="control-btn" onclick="resetAllProgress()" style="background: rgba(239, 68, 68, 0.2); border-color: #ef4444; color: #ef4444;">
-          <i class="fas fa-trash"></i> Reset All Progress
-        </button>        <button class="control-btn" onclick="closeModal('settingsModal')" style="margin-left: 10px;">
-          <i class="fas fa-check"></i> Save Settings
-        </button>
-      </div>
-    </div>
-  </div>
-
   <div class="mobile-nav">
     <div class="mobile-nav-inner">
       <button class="nav-btn" id="mobilePrevBtn"><i class="fas fa-arrow-left"></i></button>
@@ -1389,126 +1222,65 @@
   </div>
 
   <script>
-    // ========== ENHANCED MEMORY GAME ==========
+    // ========== MEMORY GAME LOGIC (SIMPLIFIED FROM YOUR WORKING FILE) ==========
     
-    // Expanded Icon Set (50+ icons)
-    const ALL_ICONS = [
-      '🤖', '💻', '📱', '🔧', '⚙️', '🔌', '📡', '🛰️', '🎮', '👾', 
-      '🕹️', '🎲', '♟️', '🎯', '❤️', '🤝', '✨', '🌟', '💎', '🔥', 
-      '⚡', '🌀', '♻️', '🔄', '💡', '🔐', '🌿', '🍃', '🌙', '⭐', 
-      '🌈', '📦', '🗝️', '🎁', '🔔', '🏆', '🎨', '🎭', '🎪', '🎤', 
-      '🎧', '🎸', '🎷', '🎺', '🥁', '🎬', '📷', '🎥', '📺', '📻',
-      '📚', '✏️', '📝', '📌', '📍', '📎', '🖇️', '✂️', '📏', '📐',
-      '🧭', '⏰', '⏳', '⌛', '📅', '📊', '📈', '📉', '🧮', '🛡️',
-      '⚔️', '🏹', '🪃', '🔫', '💣', '🧨', '🎇', '🎆', '🧿', '🪬'
-    ];
-
-    // Game State
-    const gameState = {
-      difficulty: 'beginner',
-      currentLevel: 0,
-      totalLevels: 8,
-      sectionIds: ['level1', 'level2', 'level3', 'level4', 'level5', 'level6', 'level7', 'level8'],
-      titles: [
-        "PLAYER PROFILE", "KNOWLEDGE TREE", "QUEST LOG", "SKILL ARSENAL", "BUILDS", "NEURAL LINK", "TROPHY ROOM", "UPLINK"
-      ],
-      
-      // Memory Game State
-      memoryGame: {
-        difficultySettings: {
-          beginner: { pairs: 6, gridCols: 4, gridClass: 'beginner' },
-          intermediate: { pairs: 10, gridCols: 5, gridClass: 'intermediate' },
-          advanced: { pairs: 15, gridCols: 6, gridClass: 'advanced' }
-        },        hasFlipped: false,
-        lockBoard: false,
-        firstCard: null,
-        secondCard: null,
-        moves: 0,
-        matches: 0,
-        time: 0,
-        timer: null,
-        totalPairs: 6,
-        gameActive: false,
-        isTransitioning: false,
-        deck: []
-      },
-      
-      // Player Stats
-      playerStats: {
-        gamesPlayed: 0,
-        totalWins: 0,
-        bestTime: { beginner: 999, intermediate: 999, advanced: 999 },
-        currentStreak: 0,
-        lastPlayDate: null,
-        achievements: {
-          firstLink: false,
-          speedDemon: false,
-          flawlessVictory: false,
-          masterStrategist: false
-        }
-      },
-      
-      // Leaderboard
-      leaderboard: []
+    // Memory Game Variables
+    let memoryIcons = ['🤖', '💻', '📱', '🔧', '⚙️', '🔌', '📡', '🛰️', '🎮', '👾'];
+    let memoryGrid = document.getElementById('memory-board');
+    let hasFlipped = false, lockBoard = false;
+    let firstCard, secondCard;
+    let moves = 0, matches = 0, time = 0, timer;
+    
+    // Current game state
+    let currentDifficulty = 'beginner';
+    let gameActive = false;
+    
+    // Difficulty settings
+    const difficultySettings = {
+      beginner: { pairs: 6, gridCols: 4, gridClass: 'beginner' },
+      intermediate: { pairs: 10, gridCols: 5, gridClass: 'intermediate' },
+      advanced: { pairs: 15, gridCols: 6, gridClass: 'advanced' }
     };
+    
+    // ========== PORTFOLIO NAVIGATION ==========
+    let currentLevel = 0; 
+    const totalLevels = 8;
+    const sectionIds = ['level1', 'level2', 'level3', 'level4', 'level5', 'level6', 'level7', 'level8'];
+    const titles = [
+      "PLAYER PROFILE", "KNOWLEDGE TREE", "QUEST LOG", "SKILL ARSENAL", "BUILDS", "NEURAL LINK", "TROPHY ROOM", "UPLINK"
+    ];
 
     // DOM Elements
     const hero = document.getElementById('heroSection');
-    const sections = gameState.sectionIds.map(id => document.getElementById(id));
+    const sections = sectionIds.map(id => document.getElementById(id));
     const startBtn = document.getElementById('startBtn');
     const header = document.querySelector('header');
     
-    // Memory Game Elements
-    const memoryGrid = document.getElementById('memory-board');
-    const gridLoading = document.getElementById('gridLoading');
-    const memMoves = document.getElementById('mem-moves');
-    const memTimer = document.getElementById('mem-timer');
-    const memMatches = document.getElementById('mem-matches');
-    const memDifficulty = document.getElementById('mem-difficulty');
-    const gameProgress = document.getElementById('gameProgress');
-    const gameStartScreen = document.getElementById('gameStartScreen');
-    const memOverlay = document.getElementById('mem-overlay');
-    const memRatingTitle = document.getElementById('mem-rating-title');    const memRatingDesc = document.getElementById('mem-rating-desc');
-    const motivationMessage = document.getElementById('motivationMessage');
-    const playerNameInput = document.getElementById('playerName');
-    const leaderboardBody = document.getElementById('leaderboardBody');
-    const leaderboardSection = document.getElementById('leaderboardSection');
-    const ratingTiersSection = document.getElementById('ratingTiersSection');
-    const achievementsSection = document.getElementById('achievementsSection');
-    
-    // Stats Elements
-    const streakCounter = document.getElementById('streakCounter');
-    const gamesPlayed = document.getElementById('gamesPlayed');
-    const bestTime = document.getElementById('bestTime');
-    const successRate = document.getElementById('successRate');
-    const startStreak = document.getElementById('startStreak');
-
-    // ========== INITIALIZATION ==========
+    // ========== INITIALIZE ==========
     function init() {
-      // Load saved data
-      loadGameData();
+      // Hide all sections initially
+      sections.forEach(s => s.style.display = 'none');
       
       // Set up event listeners
       startBtn.addEventListener('click', () => {
         enterQuest(0);
       });
 
-      // Navigation
+      // Nav Listeners
       document.getElementById('prevLevelBtn').addEventListener('click', () => changeLevel(-1));
       document.getElementById('nextLevelBtn').addEventListener('click', () => changeLevel(1));
       document.getElementById('mobilePrevBtn').addEventListener('click', () => changeLevel(-1));
       document.getElementById('mobileNextBtn').addEventListener('click', () => changeLevel(1));
       
-      // Control buttons
-      document.getElementById('rulesBtn').addEventListener('click', () => openModal('rulesModal'));
-      document.getElementById('leaderboardBtn').addEventListener('click', toggleLeaderboard);
+      // Game control buttons
+      document.getElementById('rulesBtn').addEventListener('click', showRules);
+      document.getElementById('leaderboardBtn').addEventListener('click', showLeaderboard);
       document.getElementById('statsBtn').addEventListener('click', showStats);
-      document.getElementById('achievementsBtn').addEventListener('click', toggleAchievements);
-      document.getElementById('settingsBtn').addEventListener('click', () => openModal('settingsModal'));
-      document.getElementById('leaderboardFilter').addEventListener('change', updateLeaderboard);
+      document.getElementById('achievementsBtn').addEventListener('click', showAchievements);
+      document.getElementById('settingsBtn').addEventListener('click', showSettings);
       
       // Difficulty buttons
-      document.querySelectorAll('.difficulty-selector .difficulty-btn').forEach(btn => {
+      document.querySelectorAll('.difficulty-btn').forEach(btn => {
         btn.addEventListener('click', function() {
           selectDifficulty(this.dataset.level);
         });
@@ -1517,697 +1289,18 @@
       // Mouse move effect
       document.addEventListener('mousemove', (e) => {
         const x = (e.clientX / window.innerWidth) * 100;
-        const y = (e.clientY / window.innerHeight) * 100;        document.documentElement.style.setProperty('--mouse-x', `${x}%`);
+        const y = (e.clientY / window.innerHeight) * 100;
+        document.documentElement.style.setProperty('--mouse-x', `${x}%`);
         document.documentElement.style.setProperty('--mouse-y', `${y}%`);
       });
-      
+
       // Swipe support
       setupSwipeSupport();
       
-      // Update stats display
-      updateStatsDisplay();
-      
-      // Initialize the grid with default difficulty
-      createGridForDifficulty('beginner');
+      // Initialize memory game with default difficulty
+      selectDifficulty('beginner');
     }
 
-    // ========== GAME DATA MANAGEMENT ==========
-    function loadGameData() {
-      // Load player stats
-      const savedStats = localStorage.getItem('neuralLinkStats');
-      if (savedStats) {
-        gameState.playerStats = JSON.parse(savedStats);
-      }
-      
-      // Load leaderboard
-      const savedLeaderboard = localStorage.getItem('neuralLinkLeaderboard');
-      if (savedLeaderboard) {
-        gameState.leaderboard = JSON.parse(savedLeaderboard);
-      }
-      
-      // Check and reset streak if needed
-      checkStreakReset();
-    }
-
-    function saveGameData() {
-      localStorage.setItem('neuralLinkStats', JSON.stringify(gameState.playerStats));
-      localStorage.setItem('neuralLinkLeaderboard', JSON.stringify(gameState.leaderboard));
-    }
-
-    function checkStreakReset() {
-      const today = new Date().toDateString();
-      const lastPlayed = gameState.playerStats.lastPlayDate;
-      
-      if (lastPlayed && lastPlayed !== today) {
-        const yesterday = new Date();
-        yesterday.setDate(yesterday.getDate() - 1);
-        
-        if (lastPlayed !== yesterday.toDateString()) {
-          gameState.playerStats.currentStreak = 0;
-          saveGameData();
-        }
-      }    }
-
-    // ========== PORTFOLIO NAVIGATION ==========
-    function enterQuest(levelIndex) {
-        hero.style.display = 'none';
-        header.style.transform = 'translateY(0)';
-        goToLevel(levelIndex);
-    }
-
-    function jumpToGame() {
-        enterQuest(5); // Index 5 is Level 6 (Game)
-    }
-
-    function changeLevel(dir) {
-      let next = gameState.currentLevel + dir;
-      if (next < 0) next = 0;
-      if (next >= gameState.totalLevels) next = gameState.totalLevels - 1;
-      goToLevel(next);
-    }
-
-    function goToLevel(index) {
-      // Hide all sections
-      sections.forEach(s => s.style.display = 'none');
-      
-      // Show current section
-      gameState.currentLevel = index;
-      sections[gameState.currentLevel].style.display = 'block';
-      window.scrollTo(0, 0);
-      
-      // Hide game-specific sections when leaving level 6
-      if (index !== 5) {
-        hideAllGameSections();
-      }
-      
-      // Update HUD
-      document.getElementById('currentLevelTitle').innerText = `LVL ${index + 1}: ${gameState.titles[index]}`;
-      document.getElementById('levelProgress').style.width = `${((index + 1) / gameState.totalLevels) * 100}%`;
-      document.getElementById('prevLevelBtn').disabled = (index === 0);
-      document.getElementById('nextLevelBtn').disabled = (index === gameState.totalLevels - 1);
-      
-      // Update game stats if on level 6
-      if (index === 5) {
-        updateStatsDisplay();
-      }
-    }
-
-    function hideAllGameSections() {
-      leaderboardSection.style.display = 'none';
-      ratingTiersSection.style.display = 'none';
-      achievementsSection.style.display = 'none';    }
-
-    // ========== MEMORY GAME FUNCTIONS ==========
-    function selectDifficulty(level) {
-      if (gameState.memoryGame.isTransitioning) return;
-      
-      // Update selected button UI
-      document.querySelectorAll('.difficulty-btn').forEach(btn => {
-        btn.classList.remove('selected');
-        if (btn.dataset.level === level) {
-          btn.classList.add('selected');
-        }
-      });
-      
-      gameState.difficulty = level;
-      gameState.memoryGame.totalPairs = gameState.memoryGame.difficultySettings[level].pairs;
-      
-      // Update display
-      memDifficulty.textContent = level.toUpperCase();
-      memMatches.textContent = `0/${gameState.memoryGame.totalPairs}`;
-      
-      // Update start screen streak
-      startStreak.textContent = gameState.playerStats.currentStreak;
-      
-      // Create new grid for the selected difficulty
-      createGridForDifficulty(level);
-    }
-
-    function createGridForDifficulty(level) {
-      if (gameState.memoryGame.isTransitioning) return;
-      
-      gameState.memoryGame.isTransitioning = true;
-      
-      // Show loading and hide current grid
-      if (memoryGrid.children.length > 0) {
-        memoryGrid.classList.add('transitioning');
-      }
-      
-      gridLoading.style.display = 'flex';
-      memoryGrid.style.display = 'none';
-      
-      // Clear existing grid
-      memoryGrid.innerHTML = '';
-      
-      // Set grid class for the new difficulty
-      memoryGrid.className = 'memory-grid ' + gameState.memoryGame.difficultySettings[level].gridClass;
-      
-      // Get icons for current difficulty
-      const pairsNeeded = gameState.memoryGame.difficultySettings[level].pairs;
-      const selectedIcons = getRandomIcons(pairsNeeded);      
-      // Create deck with pairs
-      let deck = [...selectedIcons, ...selectedIcons];
-      
-      // Shuffle
-      deck = shuffleArray(deck);
-      
-      // Store deck in game state
-      gameState.memoryGame.deck = deck;
-      
-      // Brief pause for smooth transition
-      setTimeout(() => {
-        // Create cards with proper flipping
-        deck.forEach(icon => {
-          const card = document.createElement('div');
-          card.className = 'memory-card';
-          card.dataset.icon = icon;
-          
-          card.innerHTML = `
-            <div class="front-face">${icon}</div>
-            <div class="back-face"><i class="fas fa-fingerprint"></i></div>
-          `;
-          
-          // Add click event listener with proper binding
-          card.addEventListener('click', flipCard.bind(null, card));
-          memoryGrid.appendChild(card);
-        });
-        
-        // Show the new grid and start screen
-        gridLoading.style.display = 'none';
-        memoryGrid.style.display = 'grid';
-        memoryGrid.classList.remove('transitioning');
-        gameStartScreen.style.display = 'flex'; // Show the start screen
-        
-        // Reset game state
-        resetMemoryGameState();
-        
-        gameState.memoryGame.isTransitioning = false;
-      }, 300);
-    }
-
-    function getRandomIcons(count) {
-      // Shuffle all icons and take the first 'count' ones
-      const shuffled = [...ALL_ICONS].sort(() => Math.random() - 0.5);
-      return shuffled.slice(0, count);
-    }
-
-    function shuffleArray(array) {
-      for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));        [array[i], array[j]] = [array[j], array[i]];
-      }
-      return array;
-    }
-
-    function flipCard(card) {
-      if (!gameState.memoryGame.gameActive || 
-          gameState.memoryGame.lockBoard || 
-          card.classList.contains('flip') || 
-          card.classList.contains('matched')) {
-        return;
-      }
-      
-      card.classList.add('flip');
-      
-      if (!gameState.memoryGame.hasFlipped) {
-        gameState.memoryGame.hasFlipped = true;
-        gameState.memoryGame.firstCard = card;
-        return;
-      }
-      
-      gameState.memoryGame.secondCard = card;
-      gameState.memoryGame.moves++;
-      memMoves.textContent = gameState.memoryGame.moves;
-      
-      checkForMatch();
-    }
-
-    function checkForMatch() {
-      gameState.memoryGame.lockBoard = true;
-      
-      const firstIcon = gameState.memoryGame.firstCard.dataset.icon;
-      const secondIcon = gameState.memoryGame.secondCard.dataset.icon;
-      const isMatch = firstIcon === secondIcon;
-      
-      if (isMatch) {
-        setTimeout(() => {
-          disableCards();
-          gameState.memoryGame.matches++;
-          memMatches.textContent = `${gameState.memoryGame.matches}/${gameState.memoryGame.totalPairs}`;
-          
-          // Update progress
-          const progress = (gameState.memoryGame.matches / gameState.memoryGame.totalPairs) * 100;
-          gameProgress.style.width = `${progress}%`;
-          
-          resetBoard();
-          
-          // Check for win
-          if (gameState.memoryGame.matches === gameState.memoryGame.totalPairs) {
-            endGame();          }
-        }, 300);
-      } else {
-        setTimeout(() => {
-          unflipCards();
-        }, 1000);
-      }
-    }
-
-    function disableCards() {
-      gameState.memoryGame.firstCard.classList.add('matched');
-      gameState.memoryGame.secondCard.classList.add('matched');
-      
-      // Add match animation
-      gameState.memoryGame.firstCard.classList.add('matched-animation');
-      gameState.memoryGame.secondCard.classList.add('matched-animation');
-      
-      // Remove event listeners for matched cards
-      gameState.memoryGame.firstCard.removeEventListener('click', flipCard);
-      gameState.memoryGame.secondCard.removeEventListener('click', flipCard);
-    }
-
-    function unflipCards() {
-      gameState.memoryGame.firstCard.classList.remove('flip');
-      gameState.memoryGame.secondCard.classList.remove('flip');
-      resetBoard();
-    }
-
-    function resetBoard() {
-      [gameState.memoryGame.hasFlipped, gameState.memoryGame.lockBoard] = [false, false];
-      [gameState.memoryGame.firstCard, gameState.memoryGame.secondCard] = [null, null];
-    }
-
-    function resetMemoryGameState() {
-      gameState.memoryGame.moves = 0;
-      gameState.memoryGame.matches = 0;
-      gameState.memoryGame.time = 0;
-      gameState.memoryGame.gameActive = false;
-      gameState.memoryGame.hasFlipped = false;
-      gameState.memoryGame.lockBoard = false;
-      gameState.memoryGame.firstCard = null;
-      gameState.memoryGame.secondCard = null;
-      
-      // Clear all card flips
-      document.querySelectorAll('.memory-card').forEach(card => {
-        card.classList.remove('flip', 'matched', 'matched-animation');
-      });
-      
-      // Update UI
-      memMoves.textContent = '0';      memTimer.textContent = '0s';
-      memMatches.textContent = `0/${gameState.memoryGame.totalPairs}`;
-      gameProgress.style.width = '0%';
-    }
-
-    function startGame() {
-      if (gameState.memoryGame.gameActive || gameState.memoryGame.isTransitioning) return;
-      
-      gameStartScreen.style.display = 'none';
-      gameState.memoryGame.gameActive = true;
-      
-      // Reset game state
-      gameState.memoryGame.moves = 0;
-      gameState.memoryGame.matches = 0;
-      gameState.memoryGame.time = 0;
-      gameState.memoryGame.hasFlipped = false;
-      gameState.memoryGame.lockBoard = false;
-      gameState.memoryGame.firstCard = null;
-      gameState.memoryGame.secondCard = null;
-      
-      // Update UI
-      memMoves.textContent = '0';
-      memTimer.textContent = '0s';
-      memMatches.textContent = `0/${gameState.memoryGame.totalPairs}`;
-      gameProgress.style.width = '0%';
-      
-      // Start timer
-      if (gameState.memoryGame.timer) {
-        clearInterval(gameState.memoryGame.timer);
-      }
-      
-      gameState.memoryGame.timer = setInterval(() => {
-        gameState.memoryGame.time++;
-        memTimer.textContent = `${gameState.memoryGame.time}s`;
-      }, 1000);
-    }
-
-    function endGame() {
-      clearInterval(gameState.memoryGame.timer);
-      gameState.memoryGame.gameActive = false;
-      
-      // Update player stats
-      gameState.playerStats.gamesPlayed++;
-      
-      // Update streak
-      const today = new Date().toDateString();
-      const lastPlayed = gameState.playerStats.lastPlayDate;
-      
-      if (!lastPlayed || lastPlayed === today) {
-        gameState.playerStats.currentStreak++;      } else {
-        const yesterday = new Date();
-        yesterday.setDate(yesterday.getDate() - 1);
-        if (lastPlayed === yesterday.toDateString()) {
-          gameState.playerStats.currentStreak++;
-        } else {
-          gameState.playerStats.currentStreak = 1;
-        }
-      }
-      
-      gameState.playerStats.lastPlayDate = today;
-      
-      // Check for personal best
-      const currentBest = gameState.playerStats.bestTime[gameState.difficulty];
-      if (gameState.memoryGame.time < currentBest) {
-        gameState.playerStats.bestTime[gameState.difficulty] = gameState.memoryGame.time;
-      }
-      
-      // Check achievements
-      checkAchievements();
-      
-      // Determine rating
-      const rating = getPerformanceRating(gameState.memoryGame.time);
-      const motivation = getMotivationMessage(rating.tier);
-      
-      // Update overlay
-      memRatingTitle.textContent = rating.title;
-      memRatingTitle.style.color = rating.color;
-      memRatingDesc.textContent = `Time: ${gameState.memoryGame.time}s | Moves: ${gameState.memoryGame.moves} | Difficulty: ${gameState.difficulty.toUpperCase()}`;
-      motivationMessage.innerHTML = `<i class="fas fa-quote-left"></i> ${motivation} <i class="fas fa-quote-right"></i>`;
-      
-      // Clear player name input
-      playerNameInput.value = '';
-      
-      // Show overlay
-      memOverlay.style.display = 'flex';
-      
-      // Save data
-      saveGameData();
-      updateStatsDisplay();
-    }
-
-    function getPerformanceRating(time) {
-      if (time < 30) return { tier: 'god', title: 'GOD TIER ⚡', color: '#fbbf24' };
-      if (time < 45) return { tier: 'monk', title: 'CYBER MONK 🧘', color: '#8b5cf6' };
-      if (time < 60) return { tier: 'ninja', title: 'NEURAL NINJA 🥷', color: '#3b82f6' };
-      if (time < 70) return { tier: 'sage', title: 'SILICON SAGE 🤖', color: '#10b981' };
-      if (time < 80) return { tier: 'drifter', title: 'DATA DRIFTER 🌊', color: '#0ea5e9' };
-      if (time < 100) return { tier: 'learner', title: 'LINK LEARNER 📚', color: '#f59e0b' };
-      return { tier: 'initiate', title: 'SYSTEM INITIATE 🔄', color: '#64748b' };    }
-
-    function getMotivationMessage(tier) {
-      const messages = {
-        god: "You're operating at quantum speed! The neural pathways are firing at maximum efficiency! 🚀",
-        monk: "Your focus is unparalleled! The mind-body connection is perfectly synchronized! 🧠",
-        ninja: "Precision and speed in perfect harmony! You move through the data like a shadow! ⚡",
-        sage: "Steady progress leads to mastery! Your cognitive endurance is impressive! 🌟",
-        drifter: "You're finding your rhythm in the digital stream! Each connection strengthens the link! 💫",
-        learner: "Every attempt builds new neural pathways! Consistency is the key to mastery! 🔗",
-        initiate: "The journey begins here! Each game strengthens your cognitive foundation! 🌱"
-      };
-      return messages[tier] || "Keep practicing to improve your neural connections!";
-    }
-
-    function resetGame() {
-      clearInterval(gameState.memoryGame.timer);
-      memOverlay.style.display = 'none';
-      gameState.memoryGame.gameActive = false;
-      
-      // Reset the grid for current difficulty
-      createGridForDifficulty(gameState.difficulty);
-    }
-
-    function returnToMenu() {
-      resetGame();
-    }
-
-    // ========== LEADERBOARD FUNCTIONS ==========
-    function saveScore() {
-      const playerName = playerNameInput.value.trim() || 'Anonymous';
-      const score = {
-        name: playerName,
-        difficulty: gameState.difficulty,
-        time: gameState.memoryGame.time,
-        moves: gameState.memoryGame.moves,
-        rating: memRatingTitle.textContent,
-        date: new Date().toLocaleDateString('en-US', { 
-          month: 'short', 
-          day: 'numeric',
-          hour: '2-digit',
-          minute: '2-digit'
-        })
-      };
-      
-      // Add to leaderboard
-      gameState.leaderboard.push(score);
-      
-      // Sort by time (ascending) and moves (ascending)
-      gameState.leaderboard.sort((a, b) => {        if (a.time === b.time) {
-          return a.moves - b.moves;
-        }
-        return a.time - b.time;
-      });
-      
-      // Keep only top 10
-      if (gameState.leaderboard.length > 10) {
-        gameState.leaderboard = gameState.leaderboard.slice(0, 10);
-      }
-      
-      // Save and update
-      saveGameData();
-      updateLeaderboard();
-      
-      // Show leaderboard
-      toggleLeaderboard();
-      
-      // Show confirmation
-      alert(`Score saved! You're ranked #${gameState.leaderboard.findIndex(s => 
-        s.name === playerName && 
-        s.time === gameState.memoryGame.time
-      ) + 1} on the leaderboard!`);
-    }
-
-    function updateLeaderboard() {
-      const filter = document.getElementById('leaderboardFilter').value;
-      let filteredScores = gameState.leaderboard;
-      
-      if (filter !== 'all') {
-        filteredScores = gameState.leaderboard.filter(score => score.difficulty === filter);
-      }
-      
-      leaderboardBody.innerHTML = '';
-      
-      if (filteredScores.length === 0) {
-        leaderboardBody.innerHTML = `
-          <tr>
-            <td colspan="7" style="text-align: center; padding: 40px; color: #64748b;">
-              <i class="fas fa-trophy" style="font-size: 2rem; margin-bottom: 10px; display: block;"></i>
-              No scores yet. Be the first to claim the top spot!
-            </td>
-          </tr>
-        `;
-        return;
-      }
-      
-      filteredScores.forEach((score, index) => {
-        const row = document.createElement('tr');
-        const rank = index + 1;        
-        let rankBadge = '';
-        if (rank === 1) rankBadge = '<span class="rank-badge rank-1">🥇</span>';
-        else if (rank === 2) rankBadge = '<span class="rank-badge rank-2">🥈</span>';
-        else if (rank === 3) rankBadge = '<span class="rank-badge rank-3">🥉</span>';
-        else rankBadge = `<span class="rank-badge" style="background: rgba(255,255,255,0.1);">${rank}</span>`;
-        
-        row.innerHTML = `
-          <td>${rankBadge}</td>
-          <td>${score.name}</td>
-          <td><span class="tag" style="text-transform: capitalize;">${score.difficulty}</span></td>
-          <td><strong>${score.time}s</strong></td>
-          <td>${score.moves}</td>
-          <td style="color: ${getRatingColor(score.rating)}">${score.rating}</td>
-          <td style="font-size: 0.8rem; color: #94a3b8;">${score.date}</td>
-        `;
-        
-        leaderboardBody.appendChild(row);
-      });
-    }
-
-    function getRatingColor(rating) {
-      if (rating.includes('GOD')) return '#fbbf24';
-      if (rating.includes('MONK')) return '#8b5cf6';
-      if (rating.includes('NINJA')) return '#3b82f6';
-      if (rating.includes('SAGE')) return '#10b981';
-      if (rating.includes('DRIFTER')) return '#0ea5e9';
-      if (rating.includes('LEARNER')) return '#f59e0b';
-      return '#64748b';
-    }
-
-    function toggleLeaderboard() {
-      hideAllGameSections();
-      updateLeaderboard();
-      leaderboardSection.style.display = leaderboardSection.style.display === 'none' ? 'block' : 'none';
-    }
-
-    function resetLeaderboard() {
-      if (confirm('Are you sure you want to reset the leaderboard? This cannot be undone.')) {
-        gameState.leaderboard = [];
-        saveGameData();
-        updateLeaderboard();
-      }
-    }
-
-    // ========== ACHIEVEMENTS ==========
-    function checkAchievements() {
-      const stats = gameState.playerStats;
-      const game = gameState.memoryGame;
-            // First Link
-      if (!stats.achievements.firstLink) {
-        stats.achievements.firstLink = true;
-        document.getElementById('achievement1').classList.add('unlocked');
-        showAchievementNotification('First Link', 'Complete your first game!');
-      }
-      
-      // Speed Demon
-      if (!stats.achievements.speedDemon && game.time < 30) {
-        stats.achievements.speedDemon = true;
-        document.getElementById('achievement2').classList.add('unlocked');
-        showAchievementNotification('Speed Demon', 'Complete a game under 30 seconds!');
-      }
-      
-      // Flawless Victory
-      if (!stats.achievements.flawlessVictory && game.moves === game.totalPairs) {
-        stats.achievements.flawlessVictory = true;
-        document.getElementById('achievement3').classList.add('unlocked');
-        showAchievementNotification('Flawless Victory', '0 mismatches in a game!');
-      }
-      
-      // Master Strategist
-      const difficulties = ['beginner', 'intermediate', 'advanced'];
-      const allCompleted = difficulties.every(diff => stats.bestTime[diff] < 999);
-      if (!stats.achievements.masterStrategist && allCompleted) {
-        stats.achievements.masterStrategist = true;
-        document.getElementById('achievement4').classList.add('unlocked');
-        showAchievementNotification('Master Strategist', 'Complete all difficulty levels!');
-      }
-      
-      saveGameData();
-    }
-
-    function showAchievementNotification(title, description) {
-      // Create notification
-      const notification = document.createElement('div');
-      notification.style.cssText = `
-        position: fixed;
-        top: 100px;
-        right: 20px;
-        background: rgba(15, 23, 42, 0.95);
-        border: 2px solid #fbbf24;
-        border-radius: 12px;
-        padding: 15px;
-        color: white;
-        z-index: 10000;
-        max-width: 300px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        animation: slideIn 0.5s ease;
-      `;      
-      notification.innerHTML = `
-        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
-          <div style="font-size: 2rem;">🏆</div>
-          <div>
-            <strong style="color: #fbbf24;">ACHIEVEMENT UNLOCKED!</strong><br>
-            <span style="font-size: 1.2rem;">${title}</span>
-          </div>
-        </div>
-        <div style="color: #cbd5e1; font-size: 0.9rem;">${description}</div>
-      `;
-      
-      document.body.appendChild(notification);
-      
-      // Remove after 5 seconds
-      setTimeout(() => {
-        notification.style.animation = 'slideOut 0.5s ease';
-        setTimeout(() => {
-          document.body.removeChild(notification);
-        }, 500);
-      }, 5000);
-    }
-
-    function toggleAchievements() {
-      hideAllGameSections();
-      achievementsSection.style.display = achievementsSection.style.display === 'none' ? 'grid' : 'none';
-    }
-
-    // ========== STATS DISPLAY ==========
-    function updateStatsDisplay() {
-      const stats = gameState.playerStats;
-      
-      // Calculate success rate
-      const successRateValue = stats.gamesPlayed > 0 
-        ? Math.round((stats.totalWins / stats.gamesPlayed) * 100) 
-        : 0;
-      
-      // Get best time across all difficulties
-      const bestTimes = Object.values(stats.bestTime).filter(t => t < 999);
-      const overallBestTime = bestTimes.length > 0 ? Math.min(...bestTimes) : 0;
-      
-      // Update displays
-      streakCounter.textContent = stats.currentStreak;
-      gamesPlayed.textContent = stats.gamesPlayed;
-      bestTime.textContent = overallBestTime > 0 ? `${overallBestTime}s` : '0s';
-      successRate.textContent = `${successRateValue}%`;
-      startStreak.textContent = stats.currentStreak;
-      
-      // Update achievement displays
-      if (stats.achievements.firstLink) {        document.getElementById('achievement1').classList.add('unlocked');
-      }
-      if (stats.achievements.speedDemon) {
-        document.getElementById('achievement2').classList.add('unlocked');
-      }
-      if (stats.achievements.flawlessVictory) {
-        document.getElementById('achievement3').classList.add('unlocked');
-      }
-      if (stats.achievements.masterStrategist) {
-        document.getElementById('achievement4').classList.add('unlocked');
-      }
-    }
-
-    function showStats() {
-      hideAllGameSections();
-      ratingTiersSection.style.display = ratingTiersSection.style.display === 'none' ? 'grid' : 'none';
-    }
-
-    // ========== MODAL FUNCTIONS ==========
-    function openModal(modalId) {
-      document.getElementById(modalId).classList.add('active');
-    }
-
-    function closeModal(modalId) {
-      document.getElementById(modalId).classList.remove('active');
-    }
-
-    function resetAllProgress() {
-      if (confirm('Are you sure you want to reset ALL progress? This will delete all stats, achievements, and leaderboard entries.')) {
-        gameState.playerStats = {
-          gamesPlayed: 0,
-          totalWins: 0,
-          bestTime: { beginner: 999, intermediate: 999, advanced: 999 },
-          currentStreak: 0,
-          lastPlayDate: null,
-          achievements: {
-            firstLink: false,
-            speedDemon: false,
-            flawlessVictory: false,
-            masterStrategist: false
-          }
-        };
-        
-        gameState.leaderboard = [];
-        
-        saveGameData();
-        updateStatsDisplay();
-        updateLeaderboard();
-        
-        closeModal('settingsModal');        alert('All progress has been reset.');
-      }
-    }
-
-    // ========== UTILITY FUNCTIONS ==========
     function setupSwipeSupport() {
       let touchStartX = 0;
       let touchStartY = 0;
@@ -2235,48 +1328,308 @@
       }
     }
 
+    // ========== PORTFOLIO NAVIGATION FUNCTIONS ==========
+    function enterQuest(levelIndex) {
+      hero.style.display = 'none';
+      header.style.transform = 'translateY(0)';
+      goToLevel(levelIndex);
+    }
+
+    function jumpToGame() {
+      enterQuest(5); // Index 5 is Level 6 (Game)
+    }
+
+    function changeLevel(dir) {
+      let next = currentLevel + dir;
+      if (next < 0) next = 0;
+      if (next >= totalLevels) next = totalLevels - 1;
+      goToLevel(next);
+    }
+
+    function goToLevel(index) {
+      sections[currentLevel].style.display = 'none';
+      currentLevel = index;
+      sections[currentLevel].style.display = 'block';
+      window.scrollTo(0, 0);
+      
+      // Update HUD
+      document.getElementById('currentLevelTitle').innerText = `LVL ${index + 1}: ${titles[index]}`;
+      document.getElementById('levelProgress').style.width = `${((index + 1) / totalLevels) * 100}%`;
+      document.getElementById('prevLevelBtn').disabled = (index === 0);
+      document.getElementById('nextLevelBtn').disabled = (index === totalLevels - 1);
+    }
+
     // ========== DOWNLOAD FUNCTIONS ==========
     function downloadResume() {
-        const link = document.createElement('a');
-        link.href = 'SATYAM (1) (1).pdf'; 
-        link.download = 'Satyam_Kumar_Resume.pdf';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+      const link = document.createElement('a');
+      link.href = 'SATYAM (1) (1).pdf'; 
+      link.download = 'Satyam_Kumar_Resume.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
     }
 
     function downloadCerts() {
-        const link = document.createElement('a');
-        link.href = 'Certificates.pdf';
-        link.download = 'Satyam_Certificates.pdf';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+      const link = document.createElement('a');
+      link.href = 'Certificates.pdf';
+      link.download = 'Satyam_Certificates.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
     }
-    // ========== INITIALIZE ==========
+
+    // ========== MEMORY GAME FUNCTIONS ==========
+    function selectDifficulty(level) {
+      currentDifficulty = level;
+      const settings = difficultySettings[level];
+      
+      // Update UI
+      document.querySelectorAll('.difficulty-btn').forEach(btn => {
+        btn.classList.remove('selected');
+        if (btn.dataset.level === level) {
+          btn.classList.add('selected');
+        }
+      });
+      
+      // Update display
+      document.getElementById('mem-difficulty').textContent = level.toUpperCase();
+      document.getElementById('mem-matches').textContent = `0/${settings.pairs}`;
+      
+      // Reset and prepare game
+      resetMemoryGame();
+      
+      // Create grid for the selected difficulty
+      createMemoryGrid(level);
+    }
+
+    function createMemoryGrid(difficulty) {
+      const settings = difficultySettings[difficulty];
+      const grid = document.getElementById('memory-board');
+      
+      // Clear existing grid
+      grid.innerHTML = '';
+      
+      // Set grid class
+      grid.className = 'memory-grid ' + settings.gridClass;
+      
+      // Get icons for current difficulty
+      const icons = getIconsForDifficulty(difficulty);
+      const deck = [...icons, ...icons].sort(() => Math.random() - 0.5);
+      
+      // Create cards
+      deck.forEach(icon => {
+        const card = document.createElement('div');
+        card.classList.add('memory-card');
+        card.dataset.icon = icon;
+        card.innerHTML = `
+          <div class="front-face">${icon}</div>
+          <div class="back-face"><i class="fas fa-fingerprint"></i></div>
+        `;
+        
+        // Add click event - THIS IS THE CRITICAL FIX
+        card.addEventListener('click', () => {
+          if (!gameActive) return;
+          flipMemoryCard(card);
+        });
+        
+        grid.appendChild(card);
+      });
+    }
+
+    function getIconsForDifficulty(difficulty) {
+      const settings = difficultySettings[difficulty];
+      // Shuffle the icons and take the number needed
+      const shuffled = [...memoryIcons].sort(() => Math.random() - 0.5);
+      return shuffled.slice(0, settings.pairs);
+    }
+
+    function startMemoryGame() {
+      if (gameActive) return;
+      
+      document.getElementById('gameStartScreen').style.display = 'none';
+      gameActive = true;
+      
+      // Reset game state
+      moves = 0;
+      matches = 0;
+      time = 0;
+      hasFlipped = false;
+      lockBoard = false;
+      firstCard = null;
+      secondCard = null;
+      
+      // Update UI
+      document.getElementById('mem-moves').textContent = '0';
+      document.getElementById('mem-timer').textContent = '0s';
+      document.getElementById('mem-matches').textContent = `0/${difficultySettings[currentDifficulty].pairs}`;
+      document.getElementById('gameProgress').style.width = '0%';
+      
+      // Start timer
+      if (timer) clearInterval(timer);
+      timer = setInterval(() => {
+        time++;
+        document.getElementById('mem-timer').textContent = time + 's';
+      }, 1000);
+    }
+
+    function flipMemoryCard(card) {
+      if (lockBoard) return;
+      if (card === firstCard) return;
+      if (card.classList.contains('matched')) return;
+      
+      card.classList.add('flip');
+      
+      if (!hasFlipped) {
+        hasFlipped = true;
+        firstCard = card;
+        return;
+      }
+      
+      secondCard = card;
+      moves++;
+      document.getElementById('mem-moves').textContent = moves;
+      checkMemoryMatch();
+    }
+
+    function checkMemoryMatch() {
+      const isMatch = firstCard.dataset.icon === secondCard.dataset.icon;
+      
+      if (isMatch) {
+        disableMemoryCards();
+      } else {
+        unflipMemoryCards();
+      }
+    }
+
+    function disableMemoryCards() {
+      firstCard.classList.add('matched');
+      secondCard.classList.add('matched');
+      
+      firstCard.removeEventListener('click', () => flipMemoryCard(firstCard));
+      secondCard.removeEventListener('click', () => flipMemoryCard(secondCard));
+      
+      matches++;
+      document.getElementById('mem-matches').textContent = `${matches}/${difficultySettings[currentDifficulty].pairs}`;
+      
+      // Update progress
+      const progress = (matches / difficultySettings[currentDifficulty].pairs) * 100;
+      document.getElementById('gameProgress').style.width = `${progress}%`;
+      
+      resetMemoryBoard();
+      
+      // Check for win
+      if (matches === difficultySettings[currentDifficulty].pairs) {
+        endMemoryGame();
+      }
+    }
+
+    function unflipMemoryCards() {
+      lockBoard = true;
+      
+      setTimeout(() => {
+        firstCard.classList.remove('flip');
+        secondCard.classList.remove('flip');
+        resetMemoryBoard();
+      }, 1000);
+    }
+
+    function resetMemoryBoard() {
+      [hasFlipped, lockBoard] = [false, false];
+      [firstCard, secondCard] = [null, null];
+    }
+
+    function endMemoryGame() {
+      clearInterval(timer);
+      gameActive = false;
+      
+      // Determine rating
+      const rating = getPerformanceRating(time);
+      const motivation = getMotivationMessage(rating.tier);
+      
+      // Update overlay
+      document.getElementById('mem-rating-title').textContent = rating.title;
+      document.getElementById('mem-rating-title').style.color = rating.color;
+      document.getElementById('mem-rating-desc').textContent = `Time: ${time}s | Moves: ${moves} | Difficulty: ${currentDifficulty.toUpperCase()}`;
+      document.getElementById('motivationMessage').innerHTML = `<i class="fas fa-quote-left"></i> ${motivation} <i class="fas fa-quote-right"></i>`;
+      
+      // Clear player name input
+      document.getElementById('playerName').value = '';
+      
+      // Show overlay
+      document.getElementById('mem-overlay').style.display = 'flex';
+    }
+
+    function getPerformanceRating(time) {
+      if (time < 30) return { tier: 'god', title: 'GOD TIER ⚡', color: '#fbbf24' };
+      if (time < 45) return { tier: 'monk', title: 'CYBER MONK 🧘', color: '#8b5cf6' };
+      if (time < 60) return { tier: 'ninja', title: 'NEURAL NINJA 🥷', color: '#3b82f6' };
+      if (time < 70) return { tier: 'sage', title: 'SILICON SAGE 🤖', color: '#10b981' };
+      if (time < 80) return { tier: 'drifter', title: 'DATA DRIFTER 🌊', color: '#0ea5e9' };
+      if (time < 100) return { tier: 'learner', title: 'LINK LEARNER 📚', color: '#f59e0b' };
+      return { tier: 'initiate', title: 'SYSTEM INITIATE 🔄', color: '#64748b' };
+    }
+
+    function getMotivationMessage(tier) {
+      const messages = {
+        god: "You're operating at quantum speed! The neural pathways are firing at maximum efficiency! 🚀",
+        monk: "Your focus is unparalleled! The mind-body connection is perfectly synchronized! 🧠",
+        ninja: "Precision and speed in perfect harmony! You move through the data like a shadow! ⚡",
+        sage: "Steady progress leads to mastery! Your cognitive endurance is impressive! 🌟",
+        drifter: "You're finding your rhythm in the digital stream! Each connection strengthens the link! 💫",
+        learner: "Every attempt builds new neural pathways! Consistency is the key to mastery! 🔗",
+        initiate: "The journey begins here! Each game strengthens your cognitive foundation! 🌱"
+      };
+      return messages[tier] || "Keep practicing to improve your neural connections!";
+    }
+
+    function resetMemoryGame() {
+      clearInterval(timer);
+      document.getElementById('mem-overlay').style.display = 'none';
+      document.getElementById('gameStartScreen').style.display = 'flex';
+      gameActive = false;
+      
+      // Recreate grid for current difficulty
+      createMemoryGrid(currentDifficulty);
+    }
+
+    function returnToMemoryMenu() {
+      resetMemoryGame();
+    }
+
+    function saveScore() {
+      const playerName = document.getElementById('playerName').value.trim() || 'Anonymous';
+      alert(`Score saved for ${playerName}! Time: ${time}s, Moves: ${moves}`);
+      // In a real app, you would save to localStorage or a backend
+    }
+
+    // ========== MODAL FUNCTIONS ==========
+    function showRules() {
+      alert("Memory Game Rules:\n1. Click cards to flip them\n2. Match pairs of icons\n3. Complete all pairs as fast as possible\n4. Your rating depends on completion time");
+    }
+
+    function showLeaderboard() {
+      alert("Leaderboard feature coming soon!");
+    }
+
+    function showStats() {
+      alert("Game Stats:\nGames Played: 0\nBest Time: 0s\nCurrent Streak: 0");
+    }
+
+    function showAchievements() {
+      alert("Achievements:\n• First Game\n• Speed Demon\n• Perfect Match");
+    }
+
+    function showSettings() {
+      alert("Game Settings:\n• Sound: On\n• Animations: On\n• Difficulty: " + currentDifficulty);
+    }
+
+    // ========== INITIALIZE APP ==========
     // Run initialization
     init();
     
-    // Add CSS for notifications and animations
+    // Add CSS for animations
     const style = document.createElement('style');
     style.textContent = `
-      @keyframes slideIn {
-        from { transform: translateX(100%); opacity: 0; }
-        to { transform: translateX(0); opacity: 1; }
-      }
-      @keyframes slideOut {
-        from { transform: translateX(0); opacity: 1; }
-        to { transform: translateX(100%); opacity: 0; }
-      }
-      @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
-      }
-      @keyframes matchPulse {
-        0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
-        70% { box-shadow: 0 0 0 15px rgba(16, 185, 129, 0); }
-        100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
-      }
       .fa-spin {
         animation: fa-spin 1s infinite linear;
       }
@@ -2284,11 +1637,8 @@
         0% { transform: rotate(0deg); }
         100% { transform: rotate(360deg); }
       }
-      .matched-animation {
-        animation: matchPulse 0.8s ease;
-      }
     `;
     document.head.appendChild(style);
   </script>
 </body>
-  </html>
+              </html>
