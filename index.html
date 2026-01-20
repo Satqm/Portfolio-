@@ -1048,7 +1048,7 @@
               </div>
 
               <!-- Game Board -->
-              <div class="memory-grid" id="memory-board">
+              <div class="memory-grid beginner" id="memory-board">
                   <!-- Cards will be generated here -->
               </div>
               
@@ -1422,7 +1422,7 @@
         "PLAYER PROFILE", "KNOWLEDGE TREE", "QUEST LOG", "SKILL ARSENAL", "BUILDS", "NEURAL LINK", "TROPHY ROOM", "UPLINK"
       ],
       
-      // Memory Game State
+      // Memory Game State - FIXED: Using approach from index (42).html
       memoryGame: {
         difficultySettings: {
           beginner: { pairs: 6, gridCols: 4, gridClass: 'beginner' },
@@ -1535,22 +1535,11 @@
       // Swipe support
       setupSwipeSupport();
       
-      // Keyboard shortcuts
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'r' || e.key === 'R') {
-          if (gameState.memoryGame.gameActive) {
-            resetGame();
-          }
-        }
-      });
-      
       // Update stats display
       updateStatsDisplay();
       
       // Initialize the grid with default difficulty
-      setTimeout(() => {
-        createGridForDifficulty('beginner');
-      }, 100);
+      createGridForDifficulty('beginner');
     }
 
     // ========== GAME DATA MANAGEMENT ==========
@@ -1700,7 +1689,7 @@
       // Brief pause for smooth transition
       await sleep(300);
       
-      // Create cards
+      // Create cards - USING THE CORRECT APPROACH FROM index (42).html
       deck.forEach(icon => {
         const card = document.createElement('div');
         card.className = 'memory-card';
@@ -1711,7 +1700,8 @@
           <div class="back-face"><i class="fas fa-fingerprint"></i></div>
         `;
         
-        card.addEventListener('click', () => flipCard(card));
+        // FIXED: Using the correct event listener from index (42).html
+        card.addEventListener('click', flipCard);
         memoryGrid.appendChild(card);
       });
       
@@ -1722,20 +1712,7 @@
       gameStartScreen.style.display = 'flex'; // Show the start screen
       
       // Reset game state
-      gameState.memoryGame.moves = 0;
-      gameState.memoryGame.matches = 0;
-      gameState.memoryGame.time = 0;
-      gameState.memoryGame.gameActive = false;
-      gameState.memoryGame.hasFlipped = false;
-      gameState.memoryGame.lockBoard = false;
-      gameState.memoryGame.firstCard = null;
-      gameState.memoryGame.secondCard = null;
-      
-      // Update UI
-      memMoves.textContent = '0';
-      memTimer.textContent = '0s';
-      memMatches.textContent = `0/${gameState.memoryGame.totalPairs}`;
-      gameProgress.style.width = '0%';
+      resetMemoryGameState();
       
       gameState.memoryGame.isTransitioning = false;
     }
@@ -1756,6 +1733,92 @@
 
     function sleep(ms) {
       return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    // FIXED: Using the flipCard function from index (42).html
+    function flipCard() {
+      if (!gameState.memoryGame.gameActive) return;
+      if (gameState.memoryGame.lockBoard) return;
+      if (this === gameState.memoryGame.firstCard) return;
+      if (this.classList.contains('matched')) return;
+      
+      this.classList.add('flip');
+      
+      if (!gameState.memoryGame.hasFlipped) {
+        gameState.memoryGame.hasFlipped = true;
+        gameState.memoryGame.firstCard = this;
+        return;
+      }
+      
+      gameState.memoryGame.secondCard = this;
+      gameState.memoryGame.moves++;
+      memMoves.textContent = gameState.memoryGame.moves;
+      
+      checkForMatch();
+    }
+
+    function checkForMatch() {
+      const isMatch = gameState.memoryGame.firstCard.dataset.icon === gameState.memoryGame.secondCard.dataset.icon;
+      
+      if (isMatch) {
+        disableCards();
+      } else {
+        unflipCards();
+      }
+    }
+
+    function disableCards() {
+      gameState.memoryGame.firstCard.classList.add('matched');
+      gameState.memoryGame.secondCard.classList.add('matched');
+      
+      gameState.memoryGame.firstCard.removeEventListener('click', flipCard);
+      gameState.memoryGame.secondCard.removeEventListener('click', flipCard);
+      
+      gameState.memoryGame.matches++;
+      memMatches.textContent = `${gameState.memoryGame.matches}/${gameState.memoryGame.totalPairs}`;
+      
+      // Update progress
+      const progress = (gameState.memoryGame.matches / gameState.memoryGame.totalPairs) * 100;
+      gameProgress.style.width = `${progress}%`;
+      
+      resetBoard();
+      
+      // Check for win
+      if (gameState.memoryGame.matches === gameState.memoryGame.totalPairs) {
+        endGame();
+      }
+    }
+
+    function unflipCards() {
+      gameState.memoryGame.lockBoard = true;
+      
+      setTimeout(() => {
+        gameState.memoryGame.firstCard.classList.remove('flip');
+        gameState.memoryGame.secondCard.classList.remove('flip');
+        resetBoard();
+      }, 1000);
+    }
+
+    function resetBoard() {
+      [gameState.memoryGame.hasFlipped, gameState.memoryGame.lockBoard] = [false, false];
+      [gameState.memoryGame.firstCard, gameState.memoryGame.secondCard] = [null, null];
+    }
+
+    function resetMemoryGameState() {
+      gameState.memoryGame.moves = 0;
+      gameState.memoryGame.matches = 0;
+      gameState.memoryGame.time = 0;
+      gameState.memoryGame.gameActive = false;
+      gameState.memoryGame.hasFlipped = false;
+      gameState.memoryGame.lockBoard = false;
+      gameState.memoryGame.firstCard = null;
+      gameState.memoryGame.secondCard = null;
+      
+      // Update UI
+      memMoves.textContent = '0';
+      memTimer.textContent = '0s';
+      memMatches.textContent = `0/${gameState.memoryGame.totalPairs}`;
+      gameProgress.style.width = '0%';
     }
 
     function startGame() {
@@ -1788,74 +1851,6 @@
         gameState.memoryGame.time++;
         memTimer.textContent = gameState.memoryGame.time + 's';
       }, 1000);
-    }
-
-    function flipCard(card) {
-      if (!gameState.memoryGame.gameActive) return;
-      if (gameState.memoryGame.lockBoard) return;
-      if (card === gameState.memoryGame.firstCard) return;
-      if (card.classList.contains('matched')) return;
-      
-      card.classList.add('flip');
-      
-      if (!gameState.memoryGame.hasFlipped) {
-        gameState.memoryGame.hasFlipped = true;
-        gameState.memoryGame.firstCard = card;
-        return;
-      }
-      
-      gameState.memoryGame.secondCard = card;
-      gameState.memoryGame.moves++;
-      memMoves.textContent = gameState.memoryGame.moves;
-      
-      checkForMatch();
-    }
-
-    function checkForMatch() {
-      const isMatch = gameState.memoryGame.firstCard.dataset.icon === gameState.memoryGame.secondCard.dataset.icon;
-      
-      if (isMatch) {
-        disableCards();
-      } else {
-        unflipCards();
-      }
-    }
-
-    function disableCards() {
-      gameState.memoryGame.firstCard.classList.add('matched');
-      gameState.memoryGame.secondCard.classList.add('matched');
-      
-      gameState.memoryGame.firstCard.removeEventListener('click', () => flipCard(gameState.memoryGame.firstCard));
-      gameState.memoryGame.secondCard.removeEventListener('click', () => flipCard(gameState.memoryGame.secondCard));
-      
-      gameState.memoryGame.matches++;
-      memMatches.textContent = `${gameState.memoryGame.matches}/${gameState.memoryGame.totalPairs}`;
-      
-      // Update progress
-      const progress = (gameState.memoryGame.matches / gameState.memoryGame.totalPairs) * 100;
-      gameProgress.style.width = `${progress}%`;
-      
-      resetBoard();
-      
-      // Check for win
-      if (gameState.memoryGame.matches === gameState.memoryGame.totalPairs) {
-        endGame();
-      }
-    }
-
-    function unflipCards() {
-      gameState.memoryGame.lockBoard = true;
-      
-      setTimeout(() => {
-        gameState.memoryGame.firstCard.classList.remove('flip');
-        gameState.memoryGame.secondCard.classList.remove('flip');
-        resetBoard();
-      }, 1000);
-    }
-
-    function resetBoard() {
-      [gameState.memoryGame.hasFlipped, gameState.memoryGame.lockBoard] = [false, false];
-      [gameState.memoryGame.firstCard, gameState.memoryGame.secondCard] = [null, null];
     }
 
     function endGame() {
@@ -2309,4 +2304,4 @@
     document.head.appendChild(style);
   </script>
 </body>
-          </html>
+               </html>
