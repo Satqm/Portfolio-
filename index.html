@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <!-- Optimized viewport for native-app feel on mobile devices -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Satyam | AI-Empowered Techno-Financial Strategist</title>
 
@@ -24,6 +23,12 @@
       --text-muted: #737373;
       --border-color: #e5e5e5;
       --nav-bg: #111111;
+      
+      /* Principles Pastel Palette (Matching itsvg.in screenshot) */
+      --prin-blue: #b9e3fc;
+      --prin-purple: #b7b3e1;
+      --prin-yellow: #fbf0b5;
+      --prin-coral: #f7ad9d;
     }
 
     * {
@@ -37,7 +42,7 @@
     html, body {
       width: 100%;
       overflow-x: hidden;
-      scroll-behavior: auto; /* Scroll handled by custom JS morph transition */
+      scroll-behavior: auto; /* Handled by custom JS morph transition */
     }
 
     body {
@@ -68,7 +73,7 @@
     }
 
     .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-    a, button { text-decoration: none; color: inherit; border: none; background: none; }
+    a, button { text-decoration: none; color: inherit; border: none; background: none; outline: none; }
 
     /* =========================================================
        3. PREMIUM PAGE MORPH TRANSITION (Light Gray -> Black)
@@ -83,14 +88,12 @@
     .morph-overlay.exit { top: -100%; }
     
     .morph-logo {
-      font-family: 'Outfit', sans-serif; font-size: clamp(2.5rem, 5vw, 4rem);
+      font-family: 'Outfit', sans-serif; font-size: clamp(2.2rem, 4vw, 3.5rem);
       font-weight: 900; color: #ffffff; letter-spacing: 4px; text-transform: uppercase;
       opacity: 0; transform: scale(0.9); transition: opacity 0.3s, transform 0.3s;
       text-align: center; padding: 0 20px;
     }
-    .morph-overlay.active .morph-logo { 
-      opacity: 1; transform: scale(1); transition-delay: 0.3s; 
-    }
+    .morph-overlay.active .morph-logo { opacity: 1; transform: scale(1); transition-delay: 0.3s; }
 
     /* =========================================================
        4. HEADER & LIVE CLOCK
@@ -210,18 +213,43 @@
     .terminal-ui.day-mode .term-title { color: #64748b; }
 
     /* =========================================================
-       7. SECTION TITLES (itsvg inspired)
+       7. SECTION TITLES
        ========================================================= */
     .section-head { margin: 120px 0 50px; }
     .sec-title {
-      font-family: 'Outfit', sans-serif; font-size: 2.8rem; font-weight: 900; text-transform: uppercase;
-      letter-spacing: 3px; display: flex; align-items: center; gap: 15px; color: #000;
+      font-family: 'Outfit', sans-serif; font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 900; 
+      letter-spacing: -1.5px; display: flex; align-items: center; gap: 15px; color: #000;
     }
-    .sec-title::before { content: ""; width: 45px; height: 6px; background: #000; border-radius: 10px; }
-    .sec-subtitle { font-size: 1.1rem; color: var(--text-muted); font-weight: 600; margin-top: 6px; margin-left: 60px; }
+    .sec-subtitle { font-size: 1.1rem; color: var(--text-muted); font-weight: 500; margin-top: 6px; }
 
     /* =========================================================
-       8. PROJECTS GRID (Ambient Background + Touch 3D Tilt)
+       8. PRINCIPLES (Exact itsvg.in Screenshot Style)
+       ========================================================= */
+    .principles-grid {
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+      gap: 20px;
+      align-items: stretch;
+    }
+    .prin-card {
+      border-radius: 16px; padding: 30px 25px; display: flex; flex-direction: column;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      color: #000000;
+    }
+    .prin-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.05); }
+    
+    .prin-icon { font-size: 1.8rem; margin-bottom: 25px; color: #111; }
+    .prin-card h3 { font-size: 1.25rem; font-weight: 500; margin-bottom: 15px; }
+    .prin-card p { font-size: 0.95rem; font-weight: 400; line-height: 1.6; color: #333333; }
+
+    /* Exact Pastel Colors */
+    .bg-blue { background-color: var(--prin-blue); }
+    .bg-purple { background-color: var(--prin-purple); }
+    .bg-yellow { background-color: var(--prin-yellow); }
+    .bg-coral { background-color: var(--prin-coral); }
+
+    /* =========================================================
+       9. PROJECTS GRID
        ========================================================= */
     #projects { position: relative; }
     .projects-ambient-bg {
@@ -241,6 +269,7 @@
     .live-badge { display: flex; align-items: center; gap: 8px; background: #ecfdf5; color: #059669; padding: 6px 16px; border-radius: 30px; font-size: 0.85rem; font-weight: 800; border: 1px solid #a7f3d0; }
     .live-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: #10b981; animation: blink 1.5s infinite; }
     @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
+
     .project-box h3 { font-size: 1.5rem; font-weight: 900; margin-bottom: 15px; transform: translateZ(40px); color: #000; }
     .project-box p { color: var(--text-muted); font-size: 1.05rem; line-height: 1.6; margin-bottom: 30px; flex-grow: 1; transform: translateZ(20px); }
     .tech-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 35px; transform: translateZ(25px); }
@@ -252,30 +281,40 @@
     .btn-launch:hover { background: var(--accent-blue); }
 
     /* =========================================================
-       9. PREMIUM MASTERCARD EXPERIENCE SECTION (itsvg style)
+       10. EXPERIENCE SECTION (Broken Glass + Animated Multicolored Edge)
        ========================================================= */
-    .experience-stack { position: relative; padding-bottom: 60px; perspective: 1200px; }
+    .experience-stack { position: relative; padding-bottom: 60px; perspective: 1000px; }
 
     .exp-sticky-card {
       position: sticky; top: 120px;
-      /* The sleek, dark premium look from itsvg */
-      background: linear-gradient(135deg, #111111 0%, #1a1a1a 50%, #050505 100%);
-      border: 1px solid #2a2a2a;
-      border-radius: 28px;
-      padding: 45px 50px;
       margin-bottom: 25px;
-      box-shadow: 0 -15px 40px rgba(0,0,0,0.15), 0 20px 40px rgba(0,0,0,0.4);
-      display: flex; flex-direction: column; justify-content: space-between;
+      border-radius: 28px;
+      overflow: hidden;
+      display: flex; flex-direction: column;
+      padding: 2px; /* Border width for the animated gradient */
+      box-shadow: 0 30px 60px rgba(0,0,0,0.15);
       transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s;
       transform-origin: top center;
-      min-height: 280px;
-      overflow: hidden;
     }
 
-    /* Abstract dark glowing orbs in the background of cards */
-    .exp-sticky-card::before {
-      content: ""; position: absolute; top: -50%; right: -20%; width: 300px; height: 300px;
-      background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%); border-radius: 50%; pointer-events: none;
+    /* Animated Multi-color Edge */
+    .glass-border-anim {
+      position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+      background: conic-gradient(from 0deg, transparent 60%, #3b82f6 75%, #ec4899 90%, transparent 100%);
+      animation: spinBorder 4s linear infinite;
+      z-index: 0; pointer-events: none;
+    }
+    @keyframes spinBorder { 100% { transform: rotate(360deg); } }
+
+    /* The "Broken Glass" Dark Inner Content */
+    .exp-inner {
+      background: rgba(15, 15, 15, 0.85); /* Dark base */
+      backdrop-filter: blur(20px); /* Broken Glass Effect */
+      border-radius: 26px;
+      padding: 45px 50px;
+      width: 100%; height: 100%;
+      z-index: 1; position: relative;
+      display: flex; flex-direction: column; justify-content: space-between;
     }
 
     /* Stacking logic offsets */
@@ -284,34 +323,17 @@
     .exp-card-3 { z-index: 3; top: 150px; }
     .exp-card-4 { z-index: 4; top: 175px; }
 
-    /* The 'Smart Card' Chip UI */
-    .card-chip {
-      width: 48px; height: 36px; margin-bottom: 35px; border-radius: 6px;
-      background: linear-gradient(135deg, #d4d4d8 0%, #71717a 40%, #e4e4e7 60%, #52525b 100%);
-      box-shadow: inset 0 0 4px rgba(0,0,0,0.5), 0 2px 5px rgba(0,0,0,0.5);
-      position: relative; overflow: hidden;
-    }
-    .card-chip::after, .card-chip::before {
-      content: ""; position: absolute; background: rgba(0,0,0,0.3);
-    }
-    .card-chip::before { top: 30%; left: 0; width: 100%; height: 1px; }
-    .card-chip::after { top: 60%; left: 0; width: 100%; height: 1px; }
-
-    /* Wide Tracked-out Role Typography */
     .exp-role { 
-      font-family: 'Outfit', sans-serif; font-size: 1.8rem; font-weight: 800; color: #ffffff; 
-      letter-spacing: 6px; text-transform: uppercase; margin-bottom: 40px; text-align: center;
-      text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      font-family: 'Outfit', sans-serif; font-size: 1.6rem; font-weight: 800; color: #ffffff; 
+      letter-spacing: 4px; text-transform: uppercase; margin-bottom: 30px; text-shadow: 0 4px 10px rgba(0,0,0,0.5);
     }
 
-    .exp-bottom-grid {
-      display: flex; justify-content: space-between; align-items: flex-end; width: 100%;
-    }
+    .exp-bottom-grid { display: flex; justify-content: space-between; align-items: flex-end; width: 100%; }
     .exp-label { color: #a1a1aa; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 6px; font-weight: 600; }
     .exp-value { color: #ffffff; font-size: 1.15rem; font-weight: 700; font-family: 'Fira Code', monospace; }
-    
+
     /* =========================================================
-       10. AUTO-PLAYING TESTIMONIALS (Big Box Feed)
+       11. AUTO-PLAYING TESTIMONIALS
        ========================================================= */
     .testimonials-container {
       background: #ffffff; border: 1px solid var(--border-color); border-radius: 36px; padding: 60px; position: relative;
@@ -332,8 +354,16 @@
     .testi-author p { font-size: 0.95rem; font-weight: 600; color: var(--text-muted); margin-top: 4px; }
     .testi-stars { color: #f59e0b; font-size: 1.1rem; display: flex; gap: 5px; }
 
+    /* Navigation arrows */
+    .testi-nav { position: absolute; bottom: 40px; right: 40px; display: flex; gap: 10px; }
+    .testi-nav button {
+      width: 45px; height: 45px; border-radius: 50%; background: #f4f4f5; border: 1px solid #e2e8f0; 
+      display: flex; align-items: center; justify-content: center; transition: 0.2s;
+    }
+    .testi-nav button:hover { background: #000; color: #fff; transform: translateY(-2px); }
+
     /* =========================================================
-       11. COMMUNITY & TOAST FEED
+       12. COMMUNITY & TOAST FEED
        ========================================================= */
     .support-wrapper {
       background: #ffffff; border: 1px solid var(--border-color); border-radius: 36px; padding: 70px 50px; text-align: center; max-width: 960px; margin: 0 auto; box-shadow: 0 30px 60px -20px rgba(0,0,0,0.08); display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center;
@@ -367,7 +397,7 @@
     .toast-time { font-size: 0.8rem; font-weight: 700; color: #94a3b8; }
 
     /* =========================================================
-       12. MARQUEE & FOOTER (Soft Greyish Look)
+       13. GREYISH FOOTER MARQUEE
        ========================================================= */
     .marquee-block {
       margin: 100px 0 0; overflow: hidden; white-space: nowrap;
@@ -376,13 +406,14 @@
     }
     .marquee-track {
       display: inline-block; animation: marquee-scroll 40s linear infinite;
-      font-size: 1.25rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: #6b7280; /* Soft Greyish */
+      font-size: 1.25rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; 
+      color: #9ca3af; /* Soft Slate Grey as requested */
     }
     .marquee-track span { margin: 0 25px; }
     @keyframes marquee-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
     /* =========================================================
-       13. FLOATING BOTTOM NAVIGATION
+       14. FLOATING BOTTOM NAVIGATION
        ========================================================= */
     .floating-nav {
       position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
@@ -403,18 +434,20 @@
     .reveal.active { opacity: 1; transform: translateY(0); }
 
     /* =========================================================
-       14. MOBILE RESPONSIVENESS
+       15. MOBILE RESPONSIVENESS
        ========================================================= */
     @media (max-width: 950px) {
       .support-wrapper { grid-template-columns: 1fr; text-align: center; padding: 50px 25px; }
       .support-left { text-align: center; }
-      .exp-sticky-card { padding: 35px 25px; min-height: 240px; }
-      .exp-role { font-size: 1.4rem; letter-spacing: 4px; margin-bottom: 30px; }
-      .exp-bottom-grid { flex-direction: column; align-items: flex-start; gap: 20px; }
+      .exp-inner { padding: 35px 25px; }
+      .exp-role { font-size: 1.25rem; letter-spacing: 2px; }
+      .exp-bottom-grid { flex-direction: column; align-items: flex-start; gap: 15px; }
       .top-header { justify-content: center; }
       .clock-display { text-align: center; width: 100%; }
       .floating-nav { width: 96%; justify-content: space-between; padding: 8px; }
       .floating-nav a { padding: 10px 10px; font-size: 0.78rem; }
+      .testi-nav { position: relative; bottom: 0; right: 0; justify-content: center; margin-top: 30px; }
+      .testi-slide { width: 100%; }
       .testi-quote { font-size: 1.15rem; }
     }
   </style>
@@ -445,6 +478,7 @@
           <i class="fas fa-volume-up" id="soundIcon"></i> Sound: <span id="soundTxt">ON</span>
         </button>
         <div class="social-icons">
+          <!-- Exact Mapping -->
           <a href="https://linkedin.com/in/satyam-kumar5286o" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
           <a href="https://youtube.com/@observe_with_satyam?si=xKMKJHWzcjVFeDFj" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
           <a href="https://instagram.com/observe_with_satyam?igsh=MWdxYnp1Z283b2ZyeQ==" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
@@ -522,6 +556,44 @@
       </div>
     </section>
 
+    <!-- PRINCIPLES (Restored exactly like itsvg.in screenshot) -->
+    <section class="container" id="principles">
+      <div class="section-head reveal">
+        <div class="sec-title">Principles</div>
+        <div class="sec-subtitle">The core pillars driving my techno-financial philosophy</div>
+      </div>
+
+      <div class="principles-grid">
+        <!-- Card 1: Soft Blue -->
+        <div class="prin-card bg-blue reveal">
+          <div class="prin-icon"><i class="fa-regular fa-lightbulb"></i></div>
+          <h3>English is the New Code</h3>
+          <p>Programming has shifted from raw syntax to precision of intent. Leveraging Agentic AI to instruct machines and solve complex audit hurdles.</p>
+        </div>
+        
+        <!-- Card 2: Lavender Purple -->
+        <div class="prin-card bg-purple reveal">
+          <div class="prin-icon"><i class="fa-solid fa-shield-halved"></i></div>
+          <h3>Techno-Financial Audit</h3>
+          <p>Rigorous financial compliance meets automation. Specializing in IFC/ICFR testing, enterprise risk mitigation, and automated verification.</p>
+        </div>
+
+        <!-- Card 3: Pale Yellow -->
+        <div class="prin-card bg-yellow reveal">
+          <div class="prin-icon"><i class="fa-solid fa-chart-pie"></i></div>
+          <h3>Data-Driven Clarity</h3>
+          <p>Transforming chaotic transactional ledgers into executive-ready intelligence using Python, SQL, and interactive Tableau dashboards.</p>
+        </div>
+
+        <!-- Card 4: Light Coral -->
+        <div class="prin-card bg-coral reveal">
+          <div class="prin-icon"><i class="fa-solid fa-gears"></i></div>
+          <h3>Zero Manual Friction</h3>
+          <p>If a repetitive task takes more than 10 minutes twice, it gets scripted with VBA, Power Query, or autonomous AI agents.</p>
+        </div>
+      </div>
+    </section>
+
     <!-- PROJECTS -->
     <section class="container" id="projects">
       <div class="projects-ambient-bg"></div>
@@ -582,7 +654,7 @@
       </div>
     </section>
 
-    <!-- PREMIUM BLACK CREDIT CARD EXPERIENCE SECTION -->
+    <!-- PREMIUM "BROKEN GLASS" & MULTICOLOR EDGE EXPERIENCE SECTION -->
     <section class="container" id="experience">
       <div class="section-head reveal">
         <div class="sec-title">Experience</div>
@@ -593,64 +665,72 @@
         
         <!-- Experience Card 1 -->
         <div class="exp-sticky-card exp-card-1">
-          <div class="card-chip"></div>
-          <div class="exp-role">INDUSTRIAL TRAINEE</div>
-          <div class="exp-bottom-grid">
-            <div>
-              <div class="exp-label">Organization</div>
-              <div class="exp-value">Sun Life Global Solutions</div>
-            </div>
-            <div style="text-align: right;">
-              <div class="exp-label">Tenure</div>
-              <div class="exp-value">06/2025 - Present</div>
+          <div class="glass-border-anim"></div>
+          <div class="exp-inner">
+            <div class="exp-role">INDUSTRIAL TRAINEE</div>
+            <div class="exp-bottom-grid">
+              <div>
+                <div class="exp-label">Organization</div>
+                <div class="exp-value">Sun Life Global Solutions</div>
+              </div>
+              <div style="text-align: right;">
+                <div class="exp-label">Tenure</div>
+                <div class="exp-value">06/2025 - Present</div>
+              </div>
             </div>
           </div>
         </div>
 
         <!-- Experience Card 2 -->
         <div class="exp-sticky-card exp-card-2">
-          <div class="card-chip"></div>
-          <div class="exp-role">ARTICLE TRAINEE (RISK ADVISORY)</div>
-          <div class="exp-bottom-grid">
-            <div>
-              <div class="exp-label">Organization</div>
-              <div class="exp-value">MGB Advisors Pvt Ltd</div>
-            </div>
-            <div style="text-align: right;">
-              <div class="exp-label">Tenure</div>
-              <div class="exp-value">05/2024 - 06/2025</div>
+          <div class="glass-border-anim"></div>
+          <div class="exp-inner">
+            <div class="exp-role">ARTICLE TRAINEE (RISK ADVISORY)</div>
+            <div class="exp-bottom-grid">
+              <div>
+                <div class="exp-label">Organization</div>
+                <div class="exp-value">MGB Advisors Pvt Ltd</div>
+              </div>
+              <div style="text-align: right;">
+                <div class="exp-label">Tenure</div>
+                <div class="exp-value">05/2024 - 06/2025</div>
+              </div>
             </div>
           </div>
         </div>
 
         <!-- Experience Card 3 -->
         <div class="exp-sticky-card exp-card-3">
-          <div class="card-chip"></div>
-          <div class="exp-role">CA FINALIST</div>
-          <div class="exp-bottom-grid">
-            <div>
-              <div class="exp-label">Organization</div>
-              <div class="exp-value">Inst. of Chartered Accountants</div>
-            </div>
-            <div style="text-align: right;">
-              <div class="exp-label">Tenure</div>
-              <div class="exp-value">2022 - Present</div>
+          <div class="glass-border-anim"></div>
+          <div class="exp-inner">
+            <div class="exp-role">CA FINALIST</div>
+            <div class="exp-bottom-grid">
+              <div>
+                <div class="exp-label">Organization</div>
+                <div class="exp-value">Inst. of Chartered Accountants</div>
+              </div>
+              <div style="text-align: right;">
+                <div class="exp-label">Tenure</div>
+                <div class="exp-value">2022 - Present</div>
+              </div>
             </div>
           </div>
         </div>
 
         <!-- Experience Card 4 -->
         <div class="exp-sticky-card exp-card-4">
-          <div class="card-chip"></div>
-          <div class="exp-role">BACHELOR OF ARTS (COMMERCE)</div>
-          <div class="exp-bottom-grid">
-            <div>
-              <div class="exp-label">Organization</div>
-              <div class="exp-value">Shaheed Bhagat Singh, DU</div>
-            </div>
-            <div style="text-align: right;">
-              <div class="exp-label">Tenure</div>
-              <div class="exp-value">2021 - 2024</div>
+          <div class="glass-border-anim"></div>
+          <div class="exp-inner">
+            <div class="exp-role">BACHELOR OF ARTS (COMMERCE)</div>
+            <div class="exp-bottom-grid">
+              <div>
+                <div class="exp-label">Organization</div>
+                <div class="exp-value">Shaheed Bhagat Singh, DU</div>
+              </div>
+              <div style="text-align: right;">
+                <div class="exp-label">Tenure</div>
+                <div class="exp-value">2021 - 2024</div>
+              </div>
             </div>
           </div>
         </div>
@@ -729,6 +809,11 @@
             </div>
           </div>
         </div>
+
+        <div class="testi-nav">
+          <button class="testi-btn" id="t-prev"><i class="fas fa-chevron-left"></i></button>
+          <button class="testi-btn" id="t-next"><i class="fas fa-chevron-right"></i></button>
+        </div>
       </div>
     </section>
 
@@ -794,6 +879,7 @@
   <!-- FLOATING BOTTOM NAVIGATION (Morph Trigger) -->
   <nav class="floating-nav">
     <a href="#home" class="nav-link active"><i class="fas fa-house"></i></a>
+    <a href="#principles" class="nav-link">Principles</a>
     <a href="#projects" class="nav-link">Projects</a>
     <a href="#experience" class="nav-link">Experience</a>
     <a href="#testimonials" class="nav-link">Testimonials</a>
@@ -893,14 +979,31 @@
       });
     });
 
-    // --- 6. Auto-Playing Testimonial Feed ---
+    // --- 6. Auto-Playing Testimonial Slider ---
     const tSlides = document.querySelectorAll('.testi-slide');
     let tIndex = 0;
-    setInterval(() => {
-      tSlides[tIndex].classList.remove('active-slide');
+    
+    function showTesti(idx) {
+      tSlides.forEach((s, i) => s.classList.toggle('active-slide', i === idx));
+    }
+    
+    // Auto-play interval
+    let testiInterval = setInterval(() => {
       tIndex = (tIndex + 1) % tSlides.length;
-      tSlides[tIndex].classList.add('active-slide');
-    }, 6000); // Changes every 6 seconds smoothly
+      showTesti(tIndex);
+    }, 6000);
+
+    // Manual Controls
+    document.getElementById('t-next').addEventListener('click', () => {
+      clearInterval(testiInterval);
+      tIndex = (tIndex + 1) % tSlides.length;
+      showTesti(tIndex); playPop(500, 'triangle');
+    });
+    document.getElementById('t-prev').addEventListener('click', () => {
+      clearInterval(testiInterval);
+      tIndex = (tIndex - 1 + tSlides.length) % tSlides.length;
+      showTesti(tIndex); playPop(450, 'triangle');
+    });
 
     // --- 7. Experience Cards Dynamic Scale (Sticky Depth) ---
     const stickyCards = document.querySelectorAll('.exp-sticky-card');
@@ -915,10 +1018,13 @@
           }
           const scaleVal = 1 - (depth * 0.05); 
           card.style.transform = `scale(${Math.max(0.95, scaleVal)})`;
-          card.style.filter = `brightness(${1 - (depth * 0.15)})`;
+          // Target the inner div to avoid messing with the gradient border
+          const inner = card.querySelector('.exp-inner');
+          if(inner) inner.style.filter = `brightness(${1 - (depth * 0.2)})`;
         } else {
           card.style.transform = 'scale(1)';
-          card.style.filter = 'brightness(1)';
+          const inner = card.querySelector('.exp-inner');
+          if(inner) inner.style.filter = 'brightness(1)';
         }
       });
     });
@@ -956,7 +1062,7 @@
         if(targetSection) {
           playPop(750, 'triangle');
           
-          // Set dynamic text on overlay ("SATYAM'S PROJECTS", "SATYAM'S EXPERIENCE", etc.)
+          // Set dynamic text on overlay
           const secName = targetId.replace('#', '').toUpperCase();
           overlayLogo.innerText = targetId === '#home' ? "SATYAM" : `SATYAM'S ${secName}`;
           
